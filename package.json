@@ -16,7 +16,19 @@
     "url": "https://github.com/pjbr/js-challenge/issues"
   },
   "homepage": "https://github.com/pjbr/js-challenge#readme",
+  "dependencies": {
+    "fixed-data-table": "^0.6.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
+  },
   "devDependencies": {
-    "webpack": "^1.12.9"
+    "browser-sync": "^2.10.0",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.7",
+    "jsx-loader": "^0.13.2",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.1.2",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }
