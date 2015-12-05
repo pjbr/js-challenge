@@ -1,0 +1,15 @@
+.modal-button{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
+  padding: 5px 15px;
+  background:$CK_blue;
+  height: 30px;
+  font-size: 10pt;
+  outline: none;
+  color: $white;
+  &:active, &.active{
+  	background: $CK_orange;
+  }
+}

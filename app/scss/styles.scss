@@ -1,0 +1,14 @@
+//normalize
+@import "vendors/normalize";
+
+//import open sans from google
+@import url(http://fonts.googleapis.com/css?Open+Sans:300italic,700italic,300,700);
+
+//variables
+@import 'modules/colors';
+
+//partials
+@import 'partials/header';
+@import 'partials/searchBar';
+@import 'partials/modalButton';
+@import 'partials/table'
