@@ -80,12 +80,13 @@ gulp.task("webpack-dev-server", function(callback) {
 	});
 });
 
-//browserSync static server 
-gulp.task('serve', ['build-dev'], function() {
+//browserSync static server
+gulp.task('serve', ["webpack:build-dev"], function() {
 
   browserSync.init({
   server: "./dist"
   });
 
   gulp.watch("dist/**.**").on('change', browserSync.reload);
+  gulp.watch(["app/**/*"], ["webpack:build-dev"]).on('change', browserSync.reload);
 });

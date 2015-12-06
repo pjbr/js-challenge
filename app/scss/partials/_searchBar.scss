@@ -3,11 +3,13 @@
   width: 300px;
   vertical-align: middle;
   white-space: nowrap;
+  margin: 50px 0 50px 80px;
+  float:left;
   .search-input{
     width: 300px;
     height: 30px;
     background: $white;
-    border: 2px solid black;
+    border: 1px solid black;
     font-size: 10pt;
     float: left;
     color: #fff;
@@ -39,14 +41,20 @@
     opacity: 1;
     margin-left: -45px;
 
-    -webkit-transition: all .55s ease;
-    -moz-transition: all .55s ease;
-    -ms-transition: all .55s ease;
-    -o-transition: all .55s ease;
-    transition: all .55s ease;
+    -webkit-transition: background-color .55s ease;
+    -moz-transition: background-color .55s ease;
+    -ms-transition: background-color .55s ease;
+    -o-transition: background-color .55s ease;
+    transition: background-color .55s ease;
 
     &:hover{
       background: darken($CK_blue, 20%);
     }
   }
+}
+.modal-active .right-button, .modal-active .right-button:hover{
+  background:$white;
+  color: $CK_gray;
+  border:1px solid $black;
+  border-left: none;
 }

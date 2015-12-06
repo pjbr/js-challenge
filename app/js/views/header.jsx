@@ -1,10 +1,10 @@
-const React = require('react');
+var React = require('react');
 
 module.exports = React.createClass({
   render() {
     return (
       <div className= 'header'>
-        Contacts Keeper
+        <span className='title'> Contacts Keeper </span>
       </div>
     );
   },

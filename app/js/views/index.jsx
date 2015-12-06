@@ -1,3 +1,4 @@
+'use strict;'
 const React = require('react');
 const Header = require('./header.jsx');
 const SearchButton = require('./searchButton.jsx');
@@ -13,7 +14,9 @@ module.exports = React.createClass({
         <SearchButton/>
         <ModalButton/>
         <Table/>
-        <hr/>
+        <div className='footer'>
+          <hr/>
+        </div>
         <Modal/>
       </div>
     );
