@@ -30,15 +30,25 @@ const DEFAULT_STATE = {
   }
 };
 
-function appReducer(state, action){
-  if (typeof state === 'undefined') {
-    return DEFAULT_STATE
-  }
+function contactReducer(state=[], action){
   switch (action.type) {
     case 'ADD_CONTACT':
-      var newState = Object.assign({}, state)
-      newState.contacts.push(action.contact);
-      return newState;
+      return[
+        ...state,
+        action.contact
+      ]
+    case 'SEED_CONTACTS':
+    default:
+      return state
+  }
+};
+module.exports = function appReducer(state=DEFAULT_STATE, action){
+  switch (action.type) {
+    case 'ADD_CONTACT':
+    case 'SEED_CONTACTS':
+      return Object.assign({}, state, {
+        contacts: contactReducer(state.contacts, action)
+      })
     case 'SORT_TABLE':
 
       if('DESC' === action.direction){

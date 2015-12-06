@@ -15,8 +15,12 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx$/,    loader: "jsx-loader?insertPragma=React.DOM&harmony=true" },
-      { test: /\.js$/,     loader: "jsx-loader?harmony=true" },
+      { test: /\.jsx?$/,
+        loader: "babel-loader",
+        query: {
+          presets: ['react', 'es2015']
+        }
+      },
       { test: /\.scss$/,   loaders: ["style", "css", "sass"] },
       { test: /\.woff$/,   loader: "url-loader?prefix=font/&limit=10000&mimetype=application/font-woff" },
       { test: /\.ttf$/,    loader: "file-loader?prefix=font/" },
