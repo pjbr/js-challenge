@@ -1,6 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {addContact} from '../redux/actions.js';
 
-module.exports = React.createClass({
+// Which props do we want to inject, given the global state?
+// Note: use https://github.com/faassen/reselect for better performance.
+function select(state) {
+  return {
+    state
+  }
+}
+
+const ModalClass = React.createClass({
   propTypes: {
     modalShow: React.PropTypes.string.isRequired,
     handleToggle: React.PropTypes.func.isRequired,
@@ -16,6 +26,16 @@ module.exports = React.createClass({
       email: '',
       notes: '',
     };
+  },
+  clearInputs: function(){
+    this.setState({
+      firstname: '',
+      lastname: '',
+      dob: '',
+      phone: '',
+      email: '',
+      notes: '',
+    });
   },
   handleFirstnameChange: function(event){
     this.setState({
@@ -47,6 +67,13 @@ module.exports = React.createClass({
       notes: event.target.value
     });
   },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    this.props.dispatch(addContact(this.state));
+    // TODO: send request to the server
+    this.clearInputs();
+    this.props.handleToggle();
+  },
   render() {
     return (
       <div className={'modal-show '+this.props.modalShow}>
@@ -59,7 +86,7 @@ module.exports = React.createClass({
               ×
             </span>
           </div>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className='modal-body'>
               <div className='form-group'>
                 <label> First Name </label>
@@ -88,7 +115,7 @@ module.exports = React.createClass({
             </div>
             <div className='modal-footer'>
               <hr/>
-              <button> Save </button>
+              <button type='submit'> Save </button>
             </div>
           </form>
         </div>
@@ -96,3 +123,5 @@ module.exports = React.createClass({
     );
   },
 });
+
+export default connect(select)(ModalClass)

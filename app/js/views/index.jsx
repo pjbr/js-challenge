@@ -20,11 +20,14 @@ module.exports = React.createClass({
       })
     }
   },
-  getInitialState: function() {
+  getInitialState: function(){
     return {
       modal_show: 'hide',
       body_modal_class: ''
     };
+  },
+  handleContactSubmit: function(){
+
   },
   render() {
     return (
@@ -34,7 +37,7 @@ module.exports = React.createClass({
           <SearchButton/>
           <ModalButton handleClick={this.handleModalToggle}/>
           <Table/>
-          <Modal modalShow={this.state.modal_show} handleToggle={this.handleModalToggle}/>
+          <Modal modalShow={this.state.modal_show} handleToggle={this.handleModalToggle} onContactSubmit={this.handleContactSubmit}/>
         </div>
         <div className='footer'>
           <hr/>

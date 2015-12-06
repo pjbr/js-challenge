@@ -5,12 +5,11 @@ import View from './js/views/index.jsx';
 const container = document.getElementById('content');
 
 //import Redux from 'Redux'
-import redux from 'redux'
-import reactRedux from 'react-redux';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
-import { appReducer } from './js/redux/reducer'
-const store = redux.createStore(appReducer);
-var Provider = reactRedux.Provider
+import {appReducer} from './js/redux/reducer'
+const store = createStore(appReducer);
 
 ReactDOM.render((
   <Provider store={store}>
