@@ -2,7 +2,7 @@ var path = require("path");
 var webpack = require("webpack");
 module.exports = {
   entry: {
-    app: './app/app'
+    app: './app/app.jsx'
   },
   target: 'web',
   watch: true,

@@ -81,7 +81,7 @@ gulp.task("webpack-dev-server", function(callback) {
 });
 
 //browserSync static server 
-gulp.task('serve', ['build'], function() {
+gulp.task('serve', ['build-dev'], function() {
 
   browserSync.init({
   server: "./dist"

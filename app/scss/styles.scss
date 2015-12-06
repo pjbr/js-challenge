@@ -1,8 +1,6 @@
 //normalize
 @import "vendors/normalize";
-
-//import open sans from google
-@import url(http://fonts.googleapis.com/css?Open+Sans:300italic,700italic,300,700);
+@import "vendors/fixedDataTable";
 
 //variables
 @import 'modules/colors';
