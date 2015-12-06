@@ -47,15 +47,14 @@
 	/** @jsx React.DOM */const css = __webpack_require__(1);
 	const React = __webpack_require__(5);
 	const ReactDOM = __webpack_require__(162);
-	const $__0=    __webpack_require__(163),Table=$__0.Table,Column=$__0.Column,Cell=$__0.Cell;
-	const View = __webpack_require__(213)
+	const View = __webpack_require__(163)
 	const container = document.getElementById('content');
+	const redux = __webpack_require__(219);
+	
 	
 	
 	ReactDOM.render((
-	  React.createElement("div", null, 
 	    React.createElement(View, null)
-	  )
 	), container);
 
 
@@ -95,7 +94,7 @@
 	exports.push([module.id, "@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);", ""]);
 	
 	// module
-	exports.push([module.id, "/*! normalize.scss v0.1.0 | MIT License | based on git.io/normalize */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS text size adjust after orientation change, without disabling\n *    user zoom.\n */\nhtml {\n  font-family: 'Open Sans', sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability when focused and also mouse hovered in all browsers.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome\n *    (include `-moz` to future-proof).\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  /* 2 */\n  box-sizing: content-box; }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/**\n * FixedDataTable v0.6.0\n *\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n */\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule Scrollbar\n *\n */\n/**\n * Scrollbars.\n */\n/* Touching the scroll-track directly makes the scroll-track bolder */\n.public_Scrollbar_main.public_Scrollbar_mainActive,\n.public_Scrollbar_main:hover {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.public_Scrollbar_mainOpaque,\n.public_Scrollbar_mainOpaque.public_Scrollbar_mainActive,\n.public_Scrollbar_mainOpaque:hover {\n  background-color: #fff; }\n\n.public_Scrollbar_face:after {\n  background-color: #c2c2c2; }\n\n.public_Scrollbar_main:hover .public_Scrollbar_face:after,\n.public_Scrollbar_mainActive .public_Scrollbar_face:after,\n.public_Scrollbar_faceActive:after {\n  background-color: #7d7d7d; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTable\n *\n */\n/**\n * Table.\n */\n.public_fixedDataTable_main {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_header,\n.public_fixedDataTable_hasBottomBorder {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_header .public_fixedDataTableCell_main {\n  font-weight: bold; }\n\n.public_fixedDataTable_header,\n.public_fixedDataTable_header .public_fixedDataTableCell_main {\n  background-color: #f6f7f8;\n  background-image: -webkit-linear-gradient(#fff, #efefef);\n  background-image: linear-gradient(#fff, #efefef); }\n\n.public_fixedDataTable_footer .public_fixedDataTableCell_main {\n  background-color: #f6f7f8;\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_topShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAF0lEQVR4AWPUkNeSBhHCjJoK2twgFisAFagCCp3pJlAAAAAASUVORK5CYII=) repeat-x; }\n\n.public_fixedDataTable_bottomShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAHElEQVQI12MwNjZmZdAT1+Nm0JDWEGZQk1GTBgAWkwIeAEp52AAAAABJRU5ErkJggg==) repeat-x; }\n\n.public_fixedDataTable_horizontalScrollbar .public_Scrollbar_mainHorizontal {\n  background-color: #fff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCell\n */\n/**\n * Table cell.\n */\n.public_fixedDataTableCell_main {\n  background-color: #fff;\n  border-color: #d3d3d3; }\n\n.public_fixedDataTableCell_highlighted {\n  background-color: #f4f4f4; }\n\n.public_fixedDataTableCell_cellContent {\n  padding: 8px; }\n\n.public_fixedDataTableCell_columnResizerKnob {\n  background-color: #0284ff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableColumnResizerLine\n *\n */\n/**\n * Column resizer line.\n */\n.public_fixedDataTableColumnResizerLine_main {\n  border-color: #0284ff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableRow\n */\n/**\n * Table row.\n */\n.public_fixedDataTableRow_main {\n  background-color: #fff; }\n\n.public_fixedDataTableRow_highlighted,\n.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {\n  background-color: #f6f7f8; }\n\n.public_fixedDataTableRow_fixedColumnsDivider {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTableRow_columnsShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==) repeat-y; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule ScrollbarLayout\n */\n.ScrollbarLayout_main {\n  box-sizing: border-box;\n  outline: none;\n  overflow: hidden;\n  position: absolute;\n  -webkit-transition-duration: 250ms;\n  transition-duration: 250ms;\n  -webkit-transition-timing-function: ease;\n  transition-timing-function: ease;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.ScrollbarLayout_mainVertical {\n  bottom: 0;\n  right: 0;\n  top: 0;\n  -webkit-transition-property: background-color width;\n  transition-property: background-color width;\n  width: 15px; }\n\n.ScrollbarLayout_mainVertical.public_Scrollbar_mainActive,\n.ScrollbarLayout_mainVertical:hover {\n  width: 17px; }\n\n.ScrollbarLayout_mainHorizontal {\n  bottom: 0;\n  height: 15px;\n  left: 0;\n  -webkit-transition-property: background-color height;\n  transition-property: background-color height; }\n\n/* Touching the scroll-track directly makes the scroll-track bolder */\n.ScrollbarLayout_mainHorizontal.public_Scrollbar_mainActive,\n.ScrollbarLayout_mainHorizontal:hover {\n  height: 17px; }\n\n.ScrollbarLayout_face {\n  left: 0;\n  overflow: hidden;\n  position: absolute;\n  z-index: 1; }\n\n/**\n * This selector renders the \"nub\" of the scrollface. The nub must\n * be rendered as pseudo-element so that it won't receive any UI events then\n * we can get the correct `event.offsetX` and `event.offsetY` from the\n * scrollface element while dragging it.\n */\n.ScrollbarLayout_face:after {\n  border-radius: 6px;\n  content: '';\n  display: block;\n  position: absolute;\n  -webkit-transition: background-color 250ms ease;\n  transition: background-color 250ms ease; }\n\n.ScrollbarLayout_faceHorizontal {\n  bottom: 0;\n  left: 0;\n  top: 0; }\n\n.ScrollbarLayout_faceHorizontal:after {\n  bottom: 4px;\n  left: 0;\n  top: 4px;\n  width: 100%; }\n\n.ScrollbarLayout_faceVertical {\n  left: 0;\n  right: 0;\n  top: 0; }\n\n.ScrollbarLayout_faceVertical:after {\n  height: 100%;\n  left: 4px;\n  right: 4px;\n  top: 0; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCellGroupLayout\n */\n.fixedDataTableCellGroupLayout_cellGroup {\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  left: 0;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  white-space: nowrap; }\n\n.fixedDataTableCellGroupLayout_cellGroup > .public_fixedDataTableCell_main {\n  display: inline-block;\n  vertical-align: top;\n  white-space: normal; }\n\n.fixedDataTableCellGroupLayout_cellGroupWrapper {\n  position: absolute;\n  top: 0; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCellLayout\n */\n.fixedDataTableCellLayout_main {\n  border-right-style: solid;\n  border-right-width: 1px;\n  border-width: 0 1px 0 0;\n  box-sizing: border-box;\n  display: block;\n  overflow: hidden;\n  position: absolute;\n  white-space: normal; }\n\n.fixedDataTableCellLayout_lastChild {\n  border-width: 0 1px 1px 0; }\n\n.fixedDataTableCellLayout_alignRight {\n  text-align: right; }\n\n.fixedDataTableCellLayout_alignCenter {\n  text-align: center; }\n\n.fixedDataTableCellLayout_wrap1 {\n  display: table; }\n\n.fixedDataTableCellLayout_wrap2 {\n  display: table-row; }\n\n.fixedDataTableCellLayout_wrap3 {\n  display: table-cell;\n  vertical-align: middle; }\n\n.fixedDataTableCellLayout_columnResizerContainer {\n  position: absolute;\n  right: 0px;\n  width: 6px;\n  z-index: 1; }\n\n.fixedDataTableCellLayout_columnResizerContainer:hover {\n  cursor: ew-resize; }\n\n.fixedDataTableCellLayout_columnResizerContainer:hover .fixedDataTableCellLayout_columnResizerKnob {\n  visibility: visible; }\n\n.fixedDataTableCellLayout_columnResizerKnob {\n  position: absolute;\n  right: 0px;\n  visibility: hidden;\n  width: 4px; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableColumnResizerLineLayout\n */\n.fixedDataTableColumnResizerLineLayout_mouseArea {\n  cursor: ew-resize;\n  position: absolute;\n  right: -5px;\n  width: 12px; }\n\n.fixedDataTableColumnResizerLineLayout_main {\n  border-right-style: solid;\n  border-right-width: 1px;\n  box-sizing: border-box;\n  position: absolute;\n  z-index: 10; }\n\nbody[dir=\"rtl\"] .fixedDataTableColumnResizerLineLayout_main {\n  /* the resizer line is in the wrong position in RTL with no easy fix.\n   * Disabling is more useful than displaying it.\n   * #167 (github) should look into this and come up with a permanent fix.\n   */\n  display: none !important; }\n\n.fixedDataTableColumnResizerLineLayout_hiddenElem {\n  display: none !important; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableLayout\n */\n.fixedDataTableLayout_main {\n  border-style: solid;\n  border-width: 1px;\n  box-sizing: border-box;\n  overflow: hidden;\n  position: relative; }\n\n.fixedDataTableLayout_header,\n.fixedDataTableLayout_hasBottomBorder {\n  border-bottom-style: solid;\n  border-bottom-width: 1px; }\n\n.fixedDataTableLayout_footer .public_fixedDataTableCell_main {\n  border-top-style: solid;\n  border-top-width: 1px; }\n\n.fixedDataTableLayout_topShadow,\n.fixedDataTableLayout_bottomShadow {\n  height: 4px;\n  left: 0;\n  position: absolute;\n  right: 0;\n  z-index: 1; }\n\n.fixedDataTableLayout_bottomShadow {\n  margin-top: -4px; }\n\n.fixedDataTableLayout_rowsContainer {\n  overflow: hidden;\n  position: relative; }\n\n.fixedDataTableLayout_horizontalScrollbar {\n  bottom: 0;\n  position: absolute; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableRowLayout\n */\n.fixedDataTableRowLayout_main {\n  box-sizing: border-box;\n  overflow: hidden;\n  position: absolute;\n  top: 0; }\n\n.fixedDataTableRowLayout_body {\n  left: 0;\n  position: absolute;\n  top: 0; }\n\n.fixedDataTableRowLayout_fixedColumnsDivider {\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  border-left-style: solid;\n  border-left-width: 1px;\n  left: 0;\n  position: absolute;\n  top: 0;\n  width: 0; }\n\n.fixedDataTableRowLayout_columnsShadow {\n  width: 4px; }\n\n.fixedDataTableRowLayout_rowWrapper {\n  position: absolute;\n  top: 0; }\n\n.footer {\n  width: 100%;\n  margin: 20px 0;\n  clear: both; }\n  .footer hr {\n    width: 90%;\n    left: 5%;\n    border: 1px solid #e7e7e7; }\n\n.header {\n  background-color: #f58025;\n  color: #fff;\n  width: 100%;\n  padding: 25px 0;\n  margin: 0;\n  border-bottom: 15px solid #e7e7e7; }\n  .header .title {\n    margin-left: 30px; }\n\n.modal-show {\n  display: block; }\n  .modal-show.hide {\n    display: none; }\n\n.modal-backdrop {\n  background-color: rgba(0, 0, 0, 0.7);\n  z-index: 20;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0; }\n\n.modal {\n  z-index: 30;\n  position: absolute;\n  top: 15%;\n  left: 25%;\n  background: #fff;\n  width: 50%;\n  margin-bottom: 40px; }\n  .modal .form-group {\n    width: 50%;\n    float: left;\n    padding: 15px 0; }\n    .modal .form-group label {\n      font-size: 10pt;\n      margin-left: 10%; }\n    .modal .form-group.wide {\n      width: 100%; }\n      .modal .form-group.wide label {\n        margin-left: 5%; }\n  .modal input {\n    height: 30px;\n    width: 80%;\n    background: #fff;\n    border: 1px solid black;\n    font-size: 10pt;\n    float: left;\n    margin-left: 10%;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px; }\n  .modal textarea {\n    border: 1px solid black;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    font-size: 10pt;\n    float: left;\n    width: 90%;\n    margin-left: 5%; }\n  .modal .modal-header, .modal .modal-body, .modal .modal-footer {\n    width: 100%;\n    float: left; }\n  .modal .modal-header {\n    background-color: #216fb5;\n    color: #fff;\n    padding: 25px 0;\n    margin: 0; }\n    .modal .modal-header .title {\n      margin-left: 30px; }\n    .modal .modal-header .modal-close {\n      color: #f58025;\n      background-color: #fff;\n      border-radius: 100%;\n      float: right;\n      width: .8em;\n      height: .8em;\n      margin-right: 30px;\n      cursor: pointer;\n      line-height: .8em;\n      font-size: 1.3em;\n      text-align: center;\n      -webkit-transition: background-color .55s ease;\n      -moz-transition: background-color .55s ease;\n      -ms-transition: background-color .55s ease;\n      -o-transition: background-color .55s ease;\n      transition: background-color .55s ease; }\n      .modal .modal-header .modal-close:hover {\n        background-color: #e7e7e7; }\n  .modal .modal-footer hr {\n    width: 100%;\n    border: 1px solid #e7e7e7;\n    box-sizing: border-box; }\n  .modal .modal-footer button {\n    float: right;\n    margin: 15px 5%;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    border: none;\n    padding: 5px 15px;\n    background: #676767;\n    height: 30px;\n    font-size: 10pt;\n    outline: none;\n    color: #fff;\n    -webkit-transition: background-color .55s ease;\n    -moz-transition: background-color .55s ease;\n    -ms-transition: background-color .55s ease;\n    -o-transition: background-color .55s ease;\n    transition: background-color .55s ease; }\n    .modal .modal-footer button:hover {\n      background: #4e4e4e; }\n\n.search {\n  overflow: hidden;\n  width: 300px;\n  vertical-align: middle;\n  white-space: nowrap;\n  margin: 50px 0 50px 80px;\n  float: left; }\n  .search .search-input {\n    width: 300px;\n    height: 30px;\n    background: #fff;\n    border: 1px solid black;\n    font-size: 10pt;\n    float: left;\n    padding-left: 10px;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box; }\n  .search .right-button {\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-border-top-right-radius: 3px;\n    -webkit-border-bottom-right-radius: 3px;\n    -moz-border-radius-topright: 3px;\n    -moz-border-radius-bottomright: 3px;\n    border-top-right-radius: 3px;\n    border-bottom-right-radius: 3px;\n    border: none;\n    background: #216fb5;\n    height: 30px;\n    width: 45px;\n    color: #fff;\n    font-size: 10pt;\n    top: 0;\n    outline: none;\n    opacity: 1;\n    margin-left: -45px; }\n    .search .right-button:hover {\n      background: #113a5f; }\n\n.modal-active .right-button, .modal-active .right-button:hover {\n  background: #fff;\n  color: #e7e7e7;\n  border: 1px solid #000;\n  border-left: none; }\n\n.modal-button {\n  -webkit-border-radius: 3px;\n  -moz-border-radius: 3px;\n  border-radius: 3px;\n  border: none;\n  padding: 5px 15px;\n  background: #216fb5;\n  height: 30px;\n  font-size: 10pt;\n  outline: none;\n  color: #fff;\n  margin: 50px 80px 50px 0;\n  float: right;\n  clear: none; }\n  .modal-button:hover {\n    background: #113a5f; }\n\n.modal-active .modal-button, .modal-active .modal-button:hover {\n  background: #f58025; }\n\n.table {\n  width: 1000px;\n  margin: 30px auto; }\n  .table .public_fixedDataTable_header, .table .public_fixedDataTable_header .public_fixedDataTableCell_main {\n    background-image: none;\n    background-color: #676767;\n    color: white;\n    font-size: .8em; }\n  .table .public_fixedDataTableCell_cellContent {\n    font-size: .8em; }\n", ""]);
+	exports.push([module.id, "/*! normalize.scss v0.1.0 | MIT License | based on git.io/normalize */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS text size adjust after orientation change, without disabling\n *    user zoom.\n */\nhtml {\n  font-family: 'Open Sans', sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability when focused and also mouse hovered in all browsers.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome\n *    (include `-moz` to future-proof).\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  /* 2 */\n  box-sizing: content-box; }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/**\n * FixedDataTable v0.6.0\n *\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n */\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule Scrollbar\n *\n */\n/**\n * Scrollbars.\n */\n/* Touching the scroll-track directly makes the scroll-track bolder */\n.public_Scrollbar_main.public_Scrollbar_mainActive,\n.public_Scrollbar_main:hover {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.public_Scrollbar_mainOpaque,\n.public_Scrollbar_mainOpaque.public_Scrollbar_mainActive,\n.public_Scrollbar_mainOpaque:hover {\n  background-color: #fff; }\n\n.public_Scrollbar_face:after {\n  background-color: #c2c2c2; }\n\n.public_Scrollbar_main:hover .public_Scrollbar_face:after,\n.public_Scrollbar_mainActive .public_Scrollbar_face:after,\n.public_Scrollbar_faceActive:after {\n  background-color: #7d7d7d; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTable\n *\n */\n/**\n * Table.\n */\n.public_fixedDataTable_main {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_header,\n.public_fixedDataTable_hasBottomBorder {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_header .public_fixedDataTableCell_main {\n  font-weight: bold; }\n\n.public_fixedDataTable_header,\n.public_fixedDataTable_header .public_fixedDataTableCell_main {\n  background-color: #f6f7f8;\n  background-image: -webkit-linear-gradient(#fff, #efefef);\n  background-image: linear-gradient(#fff, #efefef); }\n\n.public_fixedDataTable_footer .public_fixedDataTableCell_main {\n  background-color: #f6f7f8;\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_topShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAF0lEQVR4AWPUkNeSBhHCjJoK2twgFisAFagCCp3pJlAAAAAASUVORK5CYII=) repeat-x; }\n\n.public_fixedDataTable_bottomShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAHElEQVQI12MwNjZmZdAT1+Nm0JDWEGZQk1GTBgAWkwIeAEp52AAAAABJRU5ErkJggg==) repeat-x; }\n\n.public_fixedDataTable_horizontalScrollbar .public_Scrollbar_mainHorizontal {\n  background-color: #fff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCell\n */\n/**\n * Table cell.\n */\n.public_fixedDataTableCell_main {\n  background-color: #fff;\n  border-color: #d3d3d3; }\n\n.public_fixedDataTableCell_highlighted {\n  background-color: #f4f4f4; }\n\n.public_fixedDataTableCell_cellContent {\n  padding: 8px; }\n\n.public_fixedDataTableCell_columnResizerKnob {\n  background-color: #0284ff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableColumnResizerLine\n *\n */\n/**\n * Column resizer line.\n */\n.public_fixedDataTableColumnResizerLine_main {\n  border-color: #0284ff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableRow\n */\n/**\n * Table row.\n */\n.public_fixedDataTableRow_main {\n  background-color: #fff; }\n\n.public_fixedDataTableRow_highlighted,\n.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {\n  background-color: #f6f7f8; }\n\n.public_fixedDataTableRow_fixedColumnsDivider {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTableRow_columnsShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==) repeat-y; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule ScrollbarLayout\n */\n.ScrollbarLayout_main {\n  box-sizing: border-box;\n  outline: none;\n  overflow: hidden;\n  position: absolute;\n  -webkit-transition-duration: 250ms;\n  transition-duration: 250ms;\n  -webkit-transition-timing-function: ease;\n  transition-timing-function: ease;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.ScrollbarLayout_mainVertical {\n  bottom: 0;\n  right: 0;\n  top: 0;\n  -webkit-transition-property: background-color width;\n  transition-property: background-color width;\n  width: 15px; }\n\n.ScrollbarLayout_mainVertical.public_Scrollbar_mainActive,\n.ScrollbarLayout_mainVertical:hover {\n  width: 17px; }\n\n.ScrollbarLayout_mainHorizontal {\n  bottom: 0;\n  height: 15px;\n  left: 0;\n  -webkit-transition-property: background-color height;\n  transition-property: background-color height; }\n\n/* Touching the scroll-track directly makes the scroll-track bolder */\n.ScrollbarLayout_mainHorizontal.public_Scrollbar_mainActive,\n.ScrollbarLayout_mainHorizontal:hover {\n  height: 17px; }\n\n.ScrollbarLayout_face {\n  left: 0;\n  overflow: hidden;\n  position: absolute;\n  z-index: 1; }\n\n/**\n * This selector renders the \"nub\" of the scrollface. The nub must\n * be rendered as pseudo-element so that it won't receive any UI events then\n * we can get the correct `event.offsetX` and `event.offsetY` from the\n * scrollface element while dragging it.\n */\n.ScrollbarLayout_face:after {\n  border-radius: 6px;\n  content: '';\n  display: block;\n  position: absolute;\n  -webkit-transition: background-color 250ms ease;\n  transition: background-color 250ms ease; }\n\n.ScrollbarLayout_faceHorizontal {\n  bottom: 0;\n  left: 0;\n  top: 0; }\n\n.ScrollbarLayout_faceHorizontal:after {\n  bottom: 4px;\n  left: 0;\n  top: 4px;\n  width: 100%; }\n\n.ScrollbarLayout_faceVertical {\n  left: 0;\n  right: 0;\n  top: 0; }\n\n.ScrollbarLayout_faceVertical:after {\n  height: 100%;\n  left: 4px;\n  right: 4px;\n  top: 0; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCellGroupLayout\n */\n.fixedDataTableCellGroupLayout_cellGroup {\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  left: 0;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  white-space: nowrap; }\n\n.fixedDataTableCellGroupLayout_cellGroup > .public_fixedDataTableCell_main {\n  display: inline-block;\n  vertical-align: top;\n  white-space: normal; }\n\n.fixedDataTableCellGroupLayout_cellGroupWrapper {\n  position: absolute;\n  top: 0; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCellLayout\n */\n.fixedDataTableCellLayout_main {\n  border-right-style: solid;\n  border-right-width: 1px;\n  border-width: 0 1px 0 0;\n  box-sizing: border-box;\n  display: block;\n  overflow: hidden;\n  position: absolute;\n  white-space: normal; }\n\n.fixedDataTableCellLayout_lastChild {\n  border-width: 0 1px 1px 0; }\n\n.fixedDataTableCellLayout_alignRight {\n  text-align: right; }\n\n.fixedDataTableCellLayout_alignCenter {\n  text-align: center; }\n\n.fixedDataTableCellLayout_wrap1 {\n  display: table; }\n\n.fixedDataTableCellLayout_wrap2 {\n  display: table-row; }\n\n.fixedDataTableCellLayout_wrap3 {\n  display: table-cell;\n  vertical-align: middle; }\n\n.fixedDataTableCellLayout_columnResizerContainer {\n  position: absolute;\n  right: 0px;\n  width: 6px;\n  z-index: 1; }\n\n.fixedDataTableCellLayout_columnResizerContainer:hover {\n  cursor: ew-resize; }\n\n.fixedDataTableCellLayout_columnResizerContainer:hover .fixedDataTableCellLayout_columnResizerKnob {\n  visibility: visible; }\n\n.fixedDataTableCellLayout_columnResizerKnob {\n  position: absolute;\n  right: 0px;\n  visibility: hidden;\n  width: 4px; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableColumnResizerLineLayout\n */\n.fixedDataTableColumnResizerLineLayout_mouseArea {\n  cursor: ew-resize;\n  position: absolute;\n  right: -5px;\n  width: 12px; }\n\n.fixedDataTableColumnResizerLineLayout_main {\n  border-right-style: solid;\n  border-right-width: 1px;\n  box-sizing: border-box;\n  position: absolute;\n  z-index: 10; }\n\nbody[dir=\"rtl\"] .fixedDataTableColumnResizerLineLayout_main {\n  /* the resizer line is in the wrong position in RTL with no easy fix.\n   * Disabling is more useful than displaying it.\n   * #167 (github) should look into this and come up with a permanent fix.\n   */\n  display: none !important; }\n\n.fixedDataTableColumnResizerLineLayout_hiddenElem {\n  display: none !important; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableLayout\n */\n.fixedDataTableLayout_main {\n  border-style: solid;\n  border-width: 1px;\n  box-sizing: border-box;\n  overflow: hidden;\n  position: relative; }\n\n.fixedDataTableLayout_header,\n.fixedDataTableLayout_hasBottomBorder {\n  border-bottom-style: solid;\n  border-bottom-width: 1px; }\n\n.fixedDataTableLayout_footer .public_fixedDataTableCell_main {\n  border-top-style: solid;\n  border-top-width: 1px; }\n\n.fixedDataTableLayout_topShadow,\n.fixedDataTableLayout_bottomShadow {\n  height: 4px;\n  left: 0;\n  position: absolute;\n  right: 0;\n  z-index: 1; }\n\n.fixedDataTableLayout_bottomShadow {\n  margin-top: -4px; }\n\n.fixedDataTableLayout_rowsContainer {\n  overflow: hidden;\n  position: relative; }\n\n.fixedDataTableLayout_horizontalScrollbar {\n  bottom: 0;\n  position: absolute; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableRowLayout\n */\n.fixedDataTableRowLayout_main {\n  box-sizing: border-box;\n  overflow: hidden;\n  position: absolute;\n  top: 0; }\n\n.fixedDataTableRowLayout_body {\n  left: 0;\n  position: absolute;\n  top: 0; }\n\n.fixedDataTableRowLayout_fixedColumnsDivider {\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  border-left-style: solid;\n  border-left-width: 1px;\n  left: 0;\n  position: absolute;\n  top: 0;\n  width: 0; }\n\n.fixedDataTableRowLayout_columnsShadow {\n  width: 4px; }\n\n.fixedDataTableRowLayout_rowWrapper {\n  position: absolute;\n  top: 0; }\n\nhtml, body, .page {\n  height: 100%;\n  margin: 0; }\n\n.page-wrap {\n  min-height: 100%;\n  margin-bottom: -50px; }\n\n.page-wrap:after {\n  content: \"\";\n  display: block;\n  height: 40px; }\n\n.footer {\n  width: 100%;\n  height: 40px;\n  position: relative;\n  margin: 0px; }\n  .footer hr {\n    width: 90%;\n    left: 5%;\n    border: 1px solid #e7e7e7; }\n\n.header {\n  background-color: #f58025;\n  color: #fff;\n  width: 100%;\n  padding: 25px 0;\n  margin: 0;\n  border-bottom: 15px solid #e7e7e7; }\n  .header .title {\n    margin-left: 30px; }\n\n.modal-show {\n  display: block; }\n  .modal-show.hide {\n    display: none; }\n\n.modal-backdrop {\n  background-color: rgba(0, 0, 0, 0.7);\n  z-index: 20;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0; }\n\n.modal {\n  z-index: 30;\n  position: absolute;\n  top: 15%;\n  left: 25%;\n  background: #fff;\n  width: 50%;\n  margin-bottom: 40px; }\n  .modal .form-group {\n    width: 50%;\n    float: left;\n    padding: 15px 0; }\n    .modal .form-group label {\n      font-size: 10pt;\n      margin-left: 10%; }\n    .modal .form-group.wide {\n      width: 100%; }\n      .modal .form-group.wide label {\n        margin-left: 5%; }\n  .modal input {\n    height: 30px;\n    width: 80%;\n    background: #fff;\n    border: 1px solid black;\n    font-size: 10pt;\n    float: left;\n    margin-left: 10%;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px; }\n  .modal textarea {\n    border: 1px solid black;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    font-size: 10pt;\n    float: left;\n    width: 90%;\n    margin-left: 5%; }\n  .modal .modal-header, .modal .modal-body, .modal .modal-footer {\n    width: 100%;\n    float: left; }\n  .modal .modal-header {\n    background-color: #216fb5;\n    color: #fff;\n    padding: 25px 0;\n    margin: 0; }\n    .modal .modal-header .title {\n      margin-left: 30px; }\n    .modal .modal-header .modal-close {\n      color: #f58025;\n      background-color: #fff;\n      border-radius: 100%;\n      float: right;\n      width: .8em;\n      height: .8em;\n      margin-right: 30px;\n      cursor: pointer;\n      line-height: .8em;\n      font-size: 1.3em;\n      text-align: center;\n      -webkit-transition: background-color .55s ease;\n      -moz-transition: background-color .55s ease;\n      -ms-transition: background-color .55s ease;\n      -o-transition: background-color .55s ease;\n      transition: background-color .55s ease; }\n      .modal .modal-header .modal-close:hover {\n        background-color: #e7e7e7; }\n  .modal .modal-footer hr {\n    width: 100%;\n    border: 1px solid #e7e7e7;\n    box-sizing: border-box; }\n  .modal .modal-footer button {\n    float: right;\n    margin: 15px 5%;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    border: none;\n    padding: 5px 15px;\n    background: #676767;\n    height: 30px;\n    font-size: 10pt;\n    outline: none;\n    color: #fff;\n    -webkit-transition: background-color .55s ease;\n    -moz-transition: background-color .55s ease;\n    -ms-transition: background-color .55s ease;\n    -o-transition: background-color .55s ease;\n    transition: background-color .55s ease; }\n    .modal .modal-footer button:hover {\n      background: #4e4e4e; }\n\n.search {\n  overflow: hidden;\n  width: 300px;\n  vertical-align: middle;\n  white-space: nowrap;\n  margin: 50px 0 50px 80px;\n  float: left; }\n  .search .search-input {\n    width: 300px;\n    height: 30px;\n    background: #fff;\n    border: 1px solid black;\n    font-size: 10pt;\n    float: left;\n    padding-left: 10px;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box; }\n  .search .right-button {\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-border-top-right-radius: 3px;\n    -webkit-border-bottom-right-radius: 3px;\n    -moz-border-radius-topright: 3px;\n    -moz-border-radius-bottomright: 3px;\n    border-top-right-radius: 3px;\n    border-bottom-right-radius: 3px;\n    border: none;\n    background: #216fb5;\n    height: 30px;\n    width: 45px;\n    color: #fff;\n    font-size: 10pt;\n    top: 0;\n    outline: none;\n    opacity: 1;\n    margin-left: -45px; }\n    .search .right-button:hover {\n      background: #113a5f; }\n\n.modal-active .right-button, .modal-active .right-button:hover {\n  background: #fff;\n  color: #e7e7e7;\n  border: 1px solid #000;\n  border-left: none; }\n\n.modal-button {\n  -webkit-border-radius: 3px;\n  -moz-border-radius: 3px;\n  border-radius: 3px;\n  border: none;\n  padding: 5px 15px;\n  background: #216fb5;\n  height: 30px;\n  font-size: 10pt;\n  outline: none;\n  color: #fff;\n  margin: 50px 80px 50px 0;\n  float: right;\n  clear: none; }\n  .modal-button:hover {\n    background: #113a5f; }\n\n.modal-active .modal-button, .modal-active .modal-button:hover {\n  background: #f58025; }\n\n.table {\n  width: 1000px;\n  margin: 30px auto; }\n  .table .public_fixedDataTable_header, .table .public_fixedDataTable_header .public_fixedDataTableCell_main {\n    background-image: none;\n    background-color: #676767;\n    color: white;\n    font-size: .8em; }\n  .table .public_fixedDataTableCell_cellContent {\n    font-size: .8em; }\n", ""]);
 	
 	// exports
 
@@ -20001,11 +20000,246 @@
 /* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(164);
+	/** @jsx React.DOM */'use strict;'
+	const React = __webpack_require__(5);
+	const Header = __webpack_require__(164);
+	const SearchButton = __webpack_require__(165);
+	const ModalButton = __webpack_require__(166);
+	const Table = __webpack_require__(167);
+	const Modal = __webpack_require__(218);
+	
+	module.exports = React.createClass({displayName: "module.exports",
+	  handleModalToggle: function(){
+	    if('hide' === this.state.modal_show){
+	      this.setState({
+	        modal_show: '',
+	        body_modal_class: 'modal-active',
+	      })
+	    } else {
+	      this.setState({
+	        modal_show: 'hide',
+	        body_modal_class: '',
+	      })
+	    }
+	  },
+	  getInitialState: function() {
+	    return {
+	      modal_show: 'hide',
+	      body_modal_class: ''
+	    };
+	  },
+	  render:function() {
+	    return (
+	      React.createElement("div", {className: 'page ' + this.state.body_modal_class}, 
+	        React.createElement("div", {className: "page-wrap"}, 
+	          React.createElement(Header, null), 
+	          React.createElement(SearchButton, null), 
+	          React.createElement(ModalButton, {handleClick: this.handleModalToggle}), 
+	          React.createElement(Table, null), 
+	          React.createElement(Modal, {modalShow: this.state.modal_show, handleToggle: this.handleModalToggle})
+	        ), 
+	        React.createElement("div", {className: "footer"}, 
+	          React.createElement("hr", null)
+	        )
+	      )
+	    );
+	  },
+	});
 
 
 /***/ },
 /* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */var React = __webpack_require__(5);
+	
+	module.exports = React.createClass({displayName: "module.exports",
+	  render:function() {
+	    return (
+	      React.createElement("div", {className: "header"}, 
+	        React.createElement("span", {className: "title"}, " Contacts Keeper ")
+	      )
+	    );
+	  },
+	});
+
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */const React = __webpack_require__(5);
+	
+	module.exports = React.createClass({displayName: "module.exports",
+	  getInitialState: function() {
+	    return {value: ''};
+	  },
+	  handleChange: function(event) {
+	    this.setState({value: event.target.value});
+	  },
+	  render:function() {
+	    return (
+	      React.createElement("div", {className: "search"}, 
+	        React.createElement("input", {type: "text", placeholder: "Search", className: "search-input", value: this.state.value, onChange: this.handleChange}), 
+	        React.createElement("button", {type: "button", className: "right-button"}, 
+	          React.createElement("span", {className: "fa fa-search"})
+	        )
+	      )
+	    );
+	  },
+	});
+
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */const React = __webpack_require__(5);
+	
+	module.exports = React.createClass({displayName: "module.exports",
+	  propTypes: {
+	    handleClick: React.PropTypes.func.isRequired,
+	  },
+	  render:function() {
+	    return (
+	      React.createElement("button", {type: "button", className: "modal-button", title: "Add Contact", onClick: this.props.handleClick}, 
+	        React.createElement("span", {className: "fa fa-plus-circle"}), "   Contacts Keeper"
+	      )
+	    );
+	  },
+	});
+
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */const React = __webpack_require__(5);
+	const $__0=    __webpack_require__(168),Table=$__0.Table,Column=$__0.Column,Cell=$__0.Cell;
+	
+	var ____Class9=React.Component;for(var ____Class9____Key in ____Class9){if(____Class9.hasOwnProperty(____Class9____Key)){TextCell[____Class9____Key]=____Class9[____Class9____Key];}}var ____SuperProtoOf____Class9=____Class9===null?null:____Class9.prototype;TextCell.prototype=Object.create(____SuperProtoOf____Class9);TextCell.prototype.constructor=TextCell;TextCell.__superConstructor__=____Class9;function TextCell(){"use strict";if(____Class9!==null){____Class9.apply(this,arguments);}}
+	  Object.defineProperty(TextCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
+	    const $__0=     this.props,rowIndex=$__0.rowIndex,field=$__0.field,data=$__0.data,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{rowIndex:1,field:1,data:1});
+	    return (
+	      React.createElement(Cell, React.__spread({},  props), 
+	        data[rowIndex][field]
+	      )
+	    );
+	  }});
+	
+	
+	var ____Classa=React.Component;for(var ____Classa____Key in ____Classa){if(____Classa.hasOwnProperty(____Classa____Key)){EmailCell[____Classa____Key]=____Classa[____Classa____Key];}}var ____SuperProtoOf____Classa=____Classa===null?null:____Classa.prototype;EmailCell.prototype=Object.create(____SuperProtoOf____Classa);EmailCell.prototype.constructor=EmailCell;EmailCell.__superConstructor__=____Classa;function EmailCell(){"use strict";if(____Classa!==null){____Classa.apply(this,arguments);}}
+	  Object.defineProperty(EmailCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
+	    const $__0=     this.props,rowIndex=$__0.rowIndex,field=$__0.field,data=$__0.data,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{rowIndex:1,field:1,data:1});
+	    const link = data[rowIndex][field];
+	    return (
+	      React.createElement(Cell, React.__spread({},  props), 
+	        React.createElement("a", {href: 'mailto:'+link}, link)
+	      )
+	    );
+	  }});
+	
+	var ____Classb=React.Component;for(var ____Classb____Key in ____Classb){if(____Classb.hasOwnProperty(____Classb____Key)){MyTable[____Classb____Key]=____Classb[____Classb____Key];}}var ____SuperProtoOf____Classb=____Classb===null?null:____Classb.prototype;MyTable.prototype=Object.create(____SuperProtoOf____Classb);MyTable.prototype.constructor=MyTable;MyTable.__superConstructor__=____Classb;
+	  function MyTable(props) {"use strict";
+	    ____Classb.call(this,props);
+	
+	    this.state = {
+	      myTableData: [
+	        {firstname: 'Rylan', lastname: 'Rylan', dob: 'Rylan', phone: 'Rylan', notes: 'Rylan',  email: 'Angelita_Weimann42@gmail.com'},
+	        {firstname: 'Amelia', lastname: 'Amelia', dob: 'Amelia', phone: 'Amelia', notes: 'Amelia',  email: 'Dexter.Trantow57@hotmail.com'},
+	        {firstname: 'Estevan', lastname: 'Estevan', dob: 'Estevan', phone: 'Estevan', notes: 'Estevan',  email: 'Aimee7@hotmail.com'},
+	        {firstname: 'Florence', lastname: 'Florence', dob: 'Florence', phone: 'Florence', notes: 'Florence',  email: 'Jarrod.Bernier13@yahoo.com'},
+	        {firstname: 'Tressa', lastname: 'Tressa', dob: 'Tressa', phone: 'Tressa', notes: 'Tressa',  email: 'Yadira1@hotmail.com'},
+	      ],
+	    };
+	  }
+	
+	  Object.defineProperty(MyTable.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
+	    return (
+	      React.createElement("div", {className: "table"}, 
+	      React.createElement(Table, {
+	        rowsCount: this.state.myTableData.length, 
+	        rowHeight: 30, 
+	        headerHeight: 30, 
+	        width: 1000, 
+	        maxHeight: 500}, 
+	        React.createElement(Column, {
+	          header: React.createElement(Cell, null, "First Name"), 
+	          cell: 
+	            React.createElement(TextCell, {
+	              data: this.state.myTableData, 
+	              field: "firstname"}
+	            ), 
+	          
+	          width: 100}
+	        ), 
+	        React.createElement(Column, {
+	          header: React.createElement(Cell, null, "Last Name"), 
+	          cell: 
+	            React.createElement(TextCell, {
+	              data: this.state.myTableData, 
+	              field: "lastname"}
+	            ), 
+	          
+	          width: 100}
+	        ), 
+	        React.createElement(Column, {
+	          header: React.createElement(Cell, null, "Date of Birth"), 
+	          cell: 
+	            React.createElement(TextCell, {
+	              data: this.state.myTableData, 
+	              field: "dob"}
+	            ), 
+	          
+	          width: 100}
+	        ), 
+	        React.createElement(Column, {
+	          header: React.createElement(Cell, null, "Phone"), 
+	          cell: 
+	            React.createElement(TextCell, {
+	              data: this.state.myTableData, 
+	              field: "phone"}
+	            ), 
+	          
+	          width: 100}
+	        ), 
+	        React.createElement(Column, {
+	          header: React.createElement(Cell, null, "Email"), 
+	          cell: 
+	            React.createElement(EmailCell, {
+	              data: this.state.myTableData, 
+	              field: "email"}
+	            ), 
+	          
+	          width: 300}
+	        ), 
+	        React.createElement(Column, {
+	          header: React.createElement(Cell, null, "Notes"), 
+	          cell: 
+	            React.createElement(TextCell, {
+	              data: this.state.myTableData, 
+	              field: "notes"}
+	            ), 
+	          
+	          width: 300}
+	        )
+	      )
+	      )
+	    );
+	  }});
+	
+	module.exports = MyTable;
+
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(169);
+
+
+/***/ },
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20021,10 +20255,10 @@
 	
 	'use strict';
 	
-	var FixedDataTable = __webpack_require__(165);
-	var FixedDataTableCellDefault = __webpack_require__(202);
-	var FixedDataTableColumn = __webpack_require__(200);
-	var FixedDataTableColumnGroup = __webpack_require__(199);
+	var FixedDataTable = __webpack_require__(170);
+	var FixedDataTableCellDefault = __webpack_require__(207);
+	var FixedDataTableColumn = __webpack_require__(205);
+	var FixedDataTableColumnGroup = __webpack_require__(204);
 	
 	var FixedDataTableRoot = {
 	  Cell: FixedDataTableCellDefault,
@@ -20036,7 +20270,7 @@
 	module.exports = FixedDataTableRoot;
 
 /***/ },
-/* 165 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -20062,19 +20296,19 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var React = __webpack_require__(166);
+	var React = __webpack_require__(171);
 	
 	var ReactChildren = React.Children;
 	
 	var PropTypes = React.PropTypes;
 	
 	// New Table API
-	var Table = __webpack_require__(167);
-	var Column = __webpack_require__(210);
-	var ColumnGroup = __webpack_require__(211);
+	var Table = __webpack_require__(172);
+	var Column = __webpack_require__(215);
+	var ColumnGroup = __webpack_require__(216);
 	
 	// Transition Cell
-	var TransitionCell = __webpack_require__(212);
+	var TransitionCell = __webpack_require__(217);
 	
 	var NEXT_VERSION = '0.7.0';
 	var DOCUMENTATION_URL = 'https://fburl.com/FixedDataTable-v0.6';
@@ -20559,7 +20793,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 166 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20578,7 +20812,7 @@
 	module.exports = __webpack_require__(5);
 
 /***/ },
-/* 167 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20600,23 +20834,23 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var React = __webpack_require__(166);
-	var ReactComponentWithPureRenderMixin = __webpack_require__(168);
-	var ReactWheelHandler = __webpack_require__(169);
-	var Scrollbar = __webpack_require__(177);
-	var FixedDataTableBufferedRows = __webpack_require__(190);
-	var FixedDataTableColumnResizeHandle = __webpack_require__(204);
-	var FixedDataTableRow = __webpack_require__(195);
-	var FixedDataTableScrollHelper = __webpack_require__(205);
-	var FixedDataTableWidthHelper = __webpack_require__(207);
+	var React = __webpack_require__(171);
+	var ReactComponentWithPureRenderMixin = __webpack_require__(173);
+	var ReactWheelHandler = __webpack_require__(174);
+	var Scrollbar = __webpack_require__(182);
+	var FixedDataTableBufferedRows = __webpack_require__(195);
+	var FixedDataTableColumnResizeHandle = __webpack_require__(209);
+	var FixedDataTableRow = __webpack_require__(200);
+	var FixedDataTableScrollHelper = __webpack_require__(210);
+	var FixedDataTableWidthHelper = __webpack_require__(212);
 	
-	var cx = __webpack_require__(184);
-	var debounceCore = __webpack_require__(208);
-	var emptyFunction = __webpack_require__(170);
-	var invariant = __webpack_require__(189);
-	var joinClasses = __webpack_require__(203);
-	var shallowEqual = __webpack_require__(209);
-	var translateDOMPositionXY = __webpack_require__(185);
+	var cx = __webpack_require__(189);
+	var debounceCore = __webpack_require__(213);
+	var emptyFunction = __webpack_require__(175);
+	var invariant = __webpack_require__(194);
+	var joinClasses = __webpack_require__(208);
+	var shallowEqual = __webpack_require__(214);
+	var translateDOMPositionXY = __webpack_require__(190);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -21538,7 +21772,7 @@
 	// avaialble
 
 /***/ },
-/* 168 */
+/* 173 */
 /***/ function(module, exports) {
 
 	/**
@@ -21614,7 +21848,7 @@
 	module.exports = ReactComponentWithPureRenderMixin;
 
 /***/ },
-/* 169 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21638,9 +21872,9 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var emptyFunction = __webpack_require__(170);
-	var normalizeWheel = __webpack_require__(171);
-	var requestAnimationFramePolyfill = __webpack_require__(175);
+	var emptyFunction = __webpack_require__(175);
+	var normalizeWheel = __webpack_require__(176);
+	var requestAnimationFramePolyfill = __webpack_require__(180);
 	
 	var ReactWheelHandler = (function () {
 	  /**
@@ -21724,7 +21958,7 @@
 	module.exports = ReactWheelHandler;
 
 /***/ },
-/* 170 */
+/* 175 */
 /***/ function(module, exports) {
 
 	/**
@@ -21767,7 +22001,7 @@
 	module.exports = emptyFunction;
 
 /***/ },
-/* 171 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21784,9 +22018,9 @@
 	
 	'use strict';
 	
-	var UserAgent_DEPRECATED = __webpack_require__(172);
+	var UserAgent_DEPRECATED = __webpack_require__(177);
 	
-	var isEventSupported = __webpack_require__(173);
+	var isEventSupported = __webpack_require__(178);
 	
 	// Reasonable defaults
 	var PIXEL_STEP = 10;
@@ -21968,7 +22202,7 @@
 	module.exports = normalizeWheel;
 
 /***/ },
-/* 172 */
+/* 177 */
 /***/ function(module, exports) {
 
 	/**
@@ -22251,7 +22485,7 @@
 	module.exports = UserAgent_DEPRECATED;
 
 /***/ },
-/* 173 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22267,7 +22501,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(174);
+	var ExecutionEnvironment = __webpack_require__(179);
 	
 	var useHasFeature;
 	if (ExecutionEnvironment.canUseDOM) {
@@ -22316,7 +22550,7 @@
 	module.exports = isEventSupported;
 
 /***/ },
-/* 174 */
+/* 179 */
 /***/ function(module, exports) {
 
 	/**
@@ -22359,7 +22593,7 @@
 	module.exports = ExecutionEnvironment;
 
 /***/ },
-/* 175 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -22375,8 +22609,8 @@
 	
 	'use strict';
 	
-	var emptyFunction = __webpack_require__(170);
-	var nativeRequestAnimationFrame = __webpack_require__(176);
+	var emptyFunction = __webpack_require__(175);
+	var nativeRequestAnimationFrame = __webpack_require__(181);
 	
 	var lastTime = 0;
 	
@@ -22400,7 +22634,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 176 */
+/* 181 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -22422,7 +22656,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 177 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22439,17 +22673,17 @@
 	
 	'use strict';
 	
-	var DOMMouseMoveTracker = __webpack_require__(178);
-	var Keys = __webpack_require__(181);
-	var React = __webpack_require__(166);
-	var ReactDOM = __webpack_require__(182);
-	var ReactComponentWithPureRenderMixin = __webpack_require__(168);
-	var ReactWheelHandler = __webpack_require__(169);
+	var DOMMouseMoveTracker = __webpack_require__(183);
+	var Keys = __webpack_require__(186);
+	var React = __webpack_require__(171);
+	var ReactDOM = __webpack_require__(187);
+	var ReactComponentWithPureRenderMixin = __webpack_require__(173);
+	var ReactWheelHandler = __webpack_require__(174);
 	
-	var cssVar = __webpack_require__(183);
-	var cx = __webpack_require__(184);
-	var emptyFunction = __webpack_require__(170);
-	var translateDOMPositionXY = __webpack_require__(185);
+	var cssVar = __webpack_require__(188);
+	var cx = __webpack_require__(189);
+	var emptyFunction = __webpack_require__(175);
+	var translateDOMPositionXY = __webpack_require__(190);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -22863,7 +23097,7 @@
 	// pass
 
 /***/ },
-/* 178 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22891,10 +23125,10 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var EventListener = __webpack_require__(179);
+	var EventListener = __webpack_require__(184);
 	
-	var cancelAnimationFramePolyfill = __webpack_require__(180);
-	var requestAnimationFramePolyfill = __webpack_require__(175);
+	var cancelAnimationFramePolyfill = __webpack_require__(185);
+	var requestAnimationFramePolyfill = __webpack_require__(180);
 	
 	var DOMMouseMoveTracker = (function () {
 	  /**
@@ -23027,7 +23261,7 @@
 	module.exports = DOMMouseMoveTracker;
 
 /***/ },
-/* 179 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23044,7 +23278,7 @@
 	
 	'use strict';
 	
-	var emptyFunction = __webpack_require__(170);
+	var emptyFunction = __webpack_require__(175);
 	
 	/**
 	 * Upstream version of event listener. Does not take into account specific
@@ -23110,7 +23344,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 180 */
+/* 185 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -23136,7 +23370,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 181 */
+/* 186 */
 /***/ function(module, exports) {
 
 	/**
@@ -23178,7 +23412,7 @@
 	};
 
 /***/ },
-/* 182 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23197,7 +23431,7 @@
 	module.exports = __webpack_require__(162);
 
 /***/ },
-/* 183 */
+/* 188 */
 /***/ function(module, exports) {
 
 	/**
@@ -23241,7 +23475,7 @@
 	module.exports = cssVar;
 
 /***/ },
-/* 184 */
+/* 189 */
 /***/ function(module, exports) {
 
 	/**
@@ -23300,7 +23534,7 @@
 	module.exports = cx;
 
 /***/ },
-/* 185 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -23317,9 +23551,9 @@
 	
 	'use strict';
 	
-	var BrowserSupportCore = __webpack_require__(186);
+	var BrowserSupportCore = __webpack_require__(191);
 	
-	var getVendorPrefixedName = __webpack_require__(187);
+	var getVendorPrefixedName = __webpack_require__(192);
 	
 	var TRANSFORM = getVendorPrefixedName('transform');
 	var BACKFACE_VISIBILITY = getVendorPrefixedName('backfaceVisibility');
@@ -23354,7 +23588,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 186 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23370,7 +23604,7 @@
 	
 	'use strict';
 	
-	var getVendorPrefixedName = __webpack_require__(187);
+	var getVendorPrefixedName = __webpack_require__(192);
 	
 	var BrowserSupportCore = {
 	  /**
@@ -23404,7 +23638,7 @@
 	module.exports = BrowserSupportCore;
 
 /***/ },
-/* 187 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23421,10 +23655,10 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(174);
+	var ExecutionEnvironment = __webpack_require__(179);
 	
-	var camelize = __webpack_require__(188);
-	var invariant = __webpack_require__(189);
+	var camelize = __webpack_require__(193);
+	var invariant = __webpack_require__(194);
 	
 	var memoized = {};
 	var prefixes = ['Webkit', 'ms', 'Moz', 'O'];
@@ -23461,7 +23695,7 @@
 	module.exports = getVendorPrefixedName;
 
 /***/ },
-/* 188 */
+/* 193 */
 /***/ function(module, exports) {
 
 	/**
@@ -23498,7 +23732,7 @@
 	module.exports = camelize;
 
 /***/ },
-/* 189 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23553,7 +23787,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 190 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23570,14 +23804,14 @@
 	
 	'use strict';
 	
-	var React = __webpack_require__(166);
-	var FixedDataTableRowBuffer = __webpack_require__(191);
-	var FixedDataTableRow = __webpack_require__(195);
+	var React = __webpack_require__(171);
+	var FixedDataTableRowBuffer = __webpack_require__(196);
+	var FixedDataTableRow = __webpack_require__(200);
 	
-	var cx = __webpack_require__(184);
-	var emptyFunction = __webpack_require__(170);
-	var joinClasses = __webpack_require__(203);
-	var translateDOMPositionXY = __webpack_require__(185);
+	var cx = __webpack_require__(189);
+	var emptyFunction = __webpack_require__(175);
+	var joinClasses = __webpack_require__(208);
+	var translateDOMPositionXY = __webpack_require__(190);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -23706,7 +23940,7 @@
 	module.exports = FixedDataTableBufferedRows;
 
 /***/ },
-/* 191 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23727,10 +23961,10 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var IntegerBufferSet = __webpack_require__(192);
+	var IntegerBufferSet = __webpack_require__(197);
 	
-	var clamp = __webpack_require__(194);
-	var invariant = __webpack_require__(189);
+	var clamp = __webpack_require__(199);
+	var invariant = __webpack_require__(194);
 	var MIN_BUFFER_ROWS = 3;
 	var MAX_BUFFER_ROWS = 6;
 	
@@ -23834,7 +24068,7 @@
 	module.exports = FixedDataTableRowBuffer;
 
 /***/ },
-/* 192 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23855,9 +24089,9 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var Heap = __webpack_require__(193);
+	var Heap = __webpack_require__(198);
 	
-	var invariant = __webpack_require__(189);
+	var invariant = __webpack_require__(194);
 	
 	// Data structure that allows to store values and assign positions to them
 	// in a way to minimize changing positions of stored values when new ones are
@@ -24018,7 +24252,7 @@
 	module.exports = IntegerBufferSet;
 
 /***/ },
-/* 193 */
+/* 198 */
 /***/ function(module, exports) {
 
 	/**
@@ -24201,7 +24435,7 @@
 	module.exports = Heap;
 
 /***/ },
-/* 194 */
+/* 199 */
 /***/ function(module, exports) {
 
 	/**
@@ -24238,7 +24472,7 @@
 	module.exports = clamp;
 
 /***/ },
-/* 195 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24257,12 +24491,12 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var React = __webpack_require__(166);
-	var FixedDataTableCellGroup = __webpack_require__(196);
+	var React = __webpack_require__(171);
+	var FixedDataTableCellGroup = __webpack_require__(201);
 	
-	var cx = __webpack_require__(184);
-	var joinClasses = __webpack_require__(203);
-	var translateDOMPositionXY = __webpack_require__(185);
+	var cx = __webpack_require__(189);
+	var joinClasses = __webpack_require__(208);
+	var translateDOMPositionXY = __webpack_require__(190);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -24484,7 +24718,7 @@
 	module.exports = FixedDataTableRow;
 
 /***/ },
-/* 196 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24505,12 +24739,12 @@
 	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
-	var FixedDataTableHelper = __webpack_require__(197);
-	var React = __webpack_require__(166);
-	var FixedDataTableCell = __webpack_require__(201);
+	var FixedDataTableHelper = __webpack_require__(202);
+	var React = __webpack_require__(171);
+	var FixedDataTableCell = __webpack_require__(206);
 	
-	var cx = __webpack_require__(184);
-	var translateDOMPositionXY = __webpack_require__(185);
+	var cx = __webpack_require__(189);
+	var translateDOMPositionXY = __webpack_require__(190);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -24689,7 +24923,7 @@
 	module.exports = FixedDataTableCellGroup;
 
 /***/ },
-/* 197 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24706,10 +24940,10 @@
 	
 	'use strict';
 	
-	var Locale = __webpack_require__(198);
-	var React = __webpack_require__(166);
-	var FixedDataTableColumnGroup = __webpack_require__(199);
-	var FixedDataTableColumn = __webpack_require__(200);
+	var Locale = __webpack_require__(203);
+	var React = __webpack_require__(171);
+	var FixedDataTableColumnGroup = __webpack_require__(204);
+	var FixedDataTableColumn = __webpack_require__(205);
 	
 	var DIR_SIGN = Locale.isRTL() ? -1 : +1;
 	// A cell up to 5px outside of the visible area will still be considered visible
@@ -24796,7 +25030,7 @@
 	module.exports = FixedDataTableHelper;
 
 /***/ },
-/* 198 */
+/* 203 */
 /***/ function(module, exports) {
 
 	/**
@@ -24825,7 +25059,7 @@
 	module.exports = Locale;
 
 /***/ },
-/* 199 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24849,7 +25083,7 @@
 	
 	'use strict';
 	
-	var React = __webpack_require__(166);
+	var React = __webpack_require__(171);
 	
 	var TransitionColumnGroup = React.createClass({
 	  displayName: 'TransitionColumnGroup',
@@ -24869,7 +25103,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 200 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24893,7 +25127,7 @@
 	
 	'use strict';
 	
-	var React = __webpack_require__(166);
+	var React = __webpack_require__(171);
 	
 	var TransitionColumn = React.createClass({
 	  displayName: 'TransitionColumn',
@@ -24914,7 +25148,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 201 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24933,11 +25167,11 @@
 	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
-	var FixedDataTableCellDefault = __webpack_require__(202);
-	var FixedDataTableHelper = __webpack_require__(197);
-	var React = __webpack_require__(166);
-	var cx = __webpack_require__(184);
-	var joinClasses = __webpack_require__(203);
+	var FixedDataTableCellDefault = __webpack_require__(207);
+	var FixedDataTableHelper = __webpack_require__(202);
+	var React = __webpack_require__(171);
+	var cx = __webpack_require__(189);
+	var joinClasses = __webpack_require__(208);
 	
 	var DIR_SIGN = FixedDataTableHelper.DIR_SIGN;
 	
@@ -25084,7 +25318,7 @@
 	module.exports = FixedDataTableCell;
 
 /***/ },
-/* 202 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25105,10 +25339,10 @@
 	
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
-	var React = __webpack_require__(166);
+	var React = __webpack_require__(171);
 	
-	var cx = __webpack_require__(184);
-	var joinClasses = __webpack_require__(203);
+	var cx = __webpack_require__(189);
+	var joinClasses = __webpack_require__(208);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -25196,7 +25430,7 @@
 	module.exports = FixedDataTableCellDefault;
 
 /***/ },
-/* 203 */
+/* 208 */
 /***/ function(module, exports) {
 
 	/**
@@ -25240,7 +25474,7 @@
 	module.exports = joinClasses;
 
 /***/ },
-/* 204 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25261,13 +25495,13 @@
 	
 	'use strict';
 	
-	var DOMMouseMoveTracker = __webpack_require__(178);
-	var Locale = __webpack_require__(198);
-	var React = __webpack_require__(166);
-	var ReactComponentWithPureRenderMixin = __webpack_require__(168);
+	var DOMMouseMoveTracker = __webpack_require__(183);
+	var Locale = __webpack_require__(203);
+	var React = __webpack_require__(171);
+	var ReactComponentWithPureRenderMixin = __webpack_require__(173);
 	
-	var clamp = __webpack_require__(194);
-	var cx = __webpack_require__(184);
+	var clamp = __webpack_require__(199);
+	var cx = __webpack_require__(189);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -25401,7 +25635,7 @@
 	module.exports = FixedDataTableColumnResizeHandle;
 
 /***/ },
-/* 205 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25422,8 +25656,8 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var PrefixIntervalTree = __webpack_require__(206);
-	var clamp = __webpack_require__(194);
+	var PrefixIntervalTree = __webpack_require__(211);
+	var clamp = __webpack_require__(199);
 	
 	var BUFFER_ROWS = 5;
 	var NO_ROWS_SCROLL_RESULT = {
@@ -25702,7 +25936,7 @@
 	module.exports = FixedDataTableScrollHelper;
 
 /***/ },
-/* 206 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -25724,7 +25958,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var invariant = __webpack_require__(189);
+	var invariant = __webpack_require__(194);
 	
 	var parent = function parent(node) {
 	  return Math.floor(node / 2);
@@ -25966,7 +26200,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 207 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25983,7 +26217,7 @@
 	
 	'use strict';
 	
-	var React = __webpack_require__(166);
+	var React = __webpack_require__(171);
 	
 	function getTotalWidth( /*array*/columns) /*number*/{
 	  var totalWidth = 0;
@@ -26100,7 +26334,7 @@
 	module.exports = FixedDataTableWidthHelper;
 
 /***/ },
-/* 208 */
+/* 213 */
 /***/ function(module, exports) {
 
 	/**
@@ -26172,7 +26406,7 @@
 	module.exports = debounce;
 
 /***/ },
-/* 209 */
+/* 214 */
 /***/ function(module, exports) {
 
 	/**
@@ -26227,7 +26461,7 @@
 	module.exports = shallowEqual;
 
 /***/ },
-/* 210 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26244,7 +26478,7 @@
 	
 	'use strict';
 	
-	var React = __webpack_require__(166);
+	var React = __webpack_require__(171);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -26409,7 +26643,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 211 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26426,7 +26660,7 @@
 	
 	'use strict';
 	
-	var React = __webpack_require__(166);
+	var React = __webpack_require__(171);
 	
 	var PropTypes = React.PropTypes;
 	
@@ -26487,7 +26721,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 212 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26513,14 +26747,14 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var React = __webpack_require__(166);
+	var React = __webpack_require__(171);
 	var PropTypes = React.PropTypes;
 	
-	var cx = __webpack_require__(184);
-	var joinClasses = __webpack_require__(203);
-	var shallowEqual = __webpack_require__(209);
+	var cx = __webpack_require__(189);
+	var joinClasses = __webpack_require__(208);
+	var shallowEqual = __webpack_require__(214);
 	
-	var CellDefault = __webpack_require__(202);
+	var CellDefault = __webpack_require__(207);
 	
 	var TransitionCell = React.createClass({
 	  displayName: 'TransitionCell',
@@ -26685,239 +26919,6 @@
 	// footer
 
 /***/ },
-/* 213 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */'use strict;'
-	const React = __webpack_require__(5);
-	const Header = __webpack_require__(214);
-	const SearchButton = __webpack_require__(215);
-	const ModalButton = __webpack_require__(216);
-	const Table = __webpack_require__(217);
-	const Modal = __webpack_require__(218);
-	
-	module.exports = React.createClass({displayName: "module.exports",
-	  handleModalToggle: function(){
-	    if('hide' === this.state.modal_show){
-	      this.setState({
-	        modal_show: '',
-	        body_modal_class: 'modal-active',
-	      })
-	    } else {
-	      this.setState({
-	        modal_show: 'hide',
-	        body_modal_class: '',
-	      })
-	    }
-	  },
-	  getInitialState: function() {
-	    return {
-	      modal_show: 'hide',
-	      body_modal_class: ''
-	    };
-	  },
-	  render:function() {
-	    return (
-	      React.createElement("div", {className: this.state.body_modal_class}, 
-	        React.createElement(Header, null), 
-	        React.createElement(SearchButton, null), 
-	        React.createElement(ModalButton, {handleClick: this.handleModalToggle}), 
-	        React.createElement(Table, null), 
-	        React.createElement("div", {className: "footer"}, 
-	          React.createElement("hr", null)
-	        ), 
-	        React.createElement(Modal, {modalShow: this.state.modal_show, handleToggle: this.handleModalToggle})
-	      )
-	    );
-	  },
-	});
-
-
-/***/ },
-/* 214 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */var React = __webpack_require__(5);
-	
-	module.exports = React.createClass({displayName: "module.exports",
-	  render:function() {
-	    return (
-	      React.createElement("div", {className: "header"}, 
-	        React.createElement("span", {className: "title"}, " Contacts Keeper ")
-	      )
-	    );
-	  },
-	});
-
-
-/***/ },
-/* 215 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */const React = __webpack_require__(5);
-	
-	module.exports = React.createClass({displayName: "module.exports",
-	  getInitialState: function() {
-	    return {value: ''};
-	  },
-	  handleChange: function(event) {
-	    this.setState({value: event.target.value});
-	  },
-	  render:function() {
-	    return (
-	      React.createElement("div", {className: "search"}, 
-	        React.createElement("input", {type: "text", placeholder: "Search", className: "search-input", value: this.state.value, onChange: this.handleChange}), 
-	        React.createElement("button", {type: "button", className: "right-button"}, 
-	          React.createElement("span", {className: "fa fa-search"})
-	        )
-	      )
-	    );
-	  },
-	});
-
-
-/***/ },
-/* 216 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */const React = __webpack_require__(5);
-	
-	module.exports = React.createClass({displayName: "module.exports",
-	  propTypes: {
-	    handleClick: React.PropTypes.func.isRequired,
-	  },
-	  render:function() {
-	    return (
-	      React.createElement("button", {type: "button", className: "modal-button", onClick: this.props.handleClick}, 
-	        React.createElement("span", {className: "fa fa-plus-circle"}), "   Contacts Keeper"
-	      )
-	    );
-	  },
-	});
-
-
-/***/ },
-/* 217 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM */const React = __webpack_require__(5);
-	const $__0=    __webpack_require__(163),Table=$__0.Table,Column=$__0.Column,Cell=$__0.Cell;
-	
-	var ____ClassS=React.Component;for(var ____ClassS____Key in ____ClassS){if(____ClassS.hasOwnProperty(____ClassS____Key)){TextCell[____ClassS____Key]=____ClassS[____ClassS____Key];}}var ____SuperProtoOf____ClassS=____ClassS===null?null:____ClassS.prototype;TextCell.prototype=Object.create(____SuperProtoOf____ClassS);TextCell.prototype.constructor=TextCell;TextCell.__superConstructor__=____ClassS;function TextCell(){"use strict";if(____ClassS!==null){____ClassS.apply(this,arguments);}}
-	  Object.defineProperty(TextCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
-	    const $__0=     this.props,rowIndex=$__0.rowIndex,field=$__0.field,data=$__0.data,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{rowIndex:1,field:1,data:1});
-	    return (
-	      React.createElement(Cell, React.__spread({},  props), 
-	        data[rowIndex][field]
-	      )
-	    );
-	  }});
-	
-	
-	var ____ClassT=React.Component;for(var ____ClassT____Key in ____ClassT){if(____ClassT.hasOwnProperty(____ClassT____Key)){EmailCell[____ClassT____Key]=____ClassT[____ClassT____Key];}}var ____SuperProtoOf____ClassT=____ClassT===null?null:____ClassT.prototype;EmailCell.prototype=Object.create(____SuperProtoOf____ClassT);EmailCell.prototype.constructor=EmailCell;EmailCell.__superConstructor__=____ClassT;function EmailCell(){"use strict";if(____ClassT!==null){____ClassT.apply(this,arguments);}}
-	  Object.defineProperty(EmailCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
-	    const $__0=     this.props,rowIndex=$__0.rowIndex,field=$__0.field,data=$__0.data,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{rowIndex:1,field:1,data:1});
-	    const link = data[rowIndex][field];
-	    return (
-	      React.createElement(Cell, React.__spread({},  props), 
-	        React.createElement("a", {href: 'mailto:'+link}, link)
-	      )
-	    );
-	  }});
-	
-	var ____ClassU=React.Component;for(var ____ClassU____Key in ____ClassU){if(____ClassU.hasOwnProperty(____ClassU____Key)){MyTable[____ClassU____Key]=____ClassU[____ClassU____Key];}}var ____SuperProtoOf____ClassU=____ClassU===null?null:____ClassU.prototype;MyTable.prototype=Object.create(____SuperProtoOf____ClassU);MyTable.prototype.constructor=MyTable;MyTable.__superConstructor__=____ClassU;
-	  function MyTable(props) {"use strict";
-	    ____ClassU.call(this,props);
-	
-	    this.state = {
-	      myTableData: [
-	        {firstname: 'Rylan', lastname: 'Rylan', dob: 'Rylan', phone: 'Rylan', notes: 'Rylan',  email: 'Angelita_Weimann42@gmail.com'},
-	        {firstname: 'Amelia', lastname: 'Amelia', dob: 'Amelia', phone: 'Amelia', notes: 'Amelia',  email: 'Dexter.Trantow57@hotmail.com'},
-	        {firstname: 'Estevan', lastname: 'Estevan', dob: 'Estevan', phone: 'Estevan', notes: 'Estevan',  email: 'Aimee7@hotmail.com'},
-	        {firstname: 'Florence', lastname: 'Florence', dob: 'Florence', phone: 'Florence', notes: 'Florence',  email: 'Jarrod.Bernier13@yahoo.com'},
-	        {firstname: 'Tressa', lastname: 'Tressa', dob: 'Tressa', phone: 'Tressa', notes: 'Tressa',  email: 'Yadira1@hotmail.com'},
-	      ],
-	    };
-	  }
-	
-	  Object.defineProperty(MyTable.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
-	    return (
-	      React.createElement("div", {className: "table"}, 
-	      React.createElement(Table, {
-	        rowsCount: this.state.myTableData.length, 
-	        rowHeight: 30, 
-	        headerHeight: 30, 
-	        width: 1000, 
-	        maxHeight: 500}, 
-	        React.createElement(Column, {
-	          header: React.createElement(Cell, null, "First Name"), 
-	          cell: 
-	            React.createElement(TextCell, {
-	              data: this.state.myTableData, 
-	              field: "firstname"}
-	            ), 
-	          
-	          width: 100}
-	        ), 
-	        React.createElement(Column, {
-	          header: React.createElement(Cell, null, "Last Name"), 
-	          cell: 
-	            React.createElement(TextCell, {
-	              data: this.state.myTableData, 
-	              field: "lastname"}
-	            ), 
-	          
-	          width: 100}
-	        ), 
-	        React.createElement(Column, {
-	          header: React.createElement(Cell, null, "Date of Birth"), 
-	          cell: 
-	            React.createElement(TextCell, {
-	              data: this.state.myTableData, 
-	              field: "dob"}
-	            ), 
-	          
-	          width: 100}
-	        ), 
-	        React.createElement(Column, {
-	          header: React.createElement(Cell, null, "Phone"), 
-	          cell: 
-	            React.createElement(TextCell, {
-	              data: this.state.myTableData, 
-	              field: "phone"}
-	            ), 
-	          
-	          width: 100}
-	        ), 
-	        React.createElement(Column, {
-	          header: React.createElement(Cell, null, "Email"), 
-	          cell: 
-	            React.createElement(EmailCell, {
-	              data: this.state.myTableData, 
-	              field: "email"}
-	            ), 
-	          
-	          width: 300}
-	        ), 
-	        React.createElement(Column, {
-	          header: React.createElement(Cell, null, "Notes"), 
-	          cell: 
-	            React.createElement(TextCell, {
-	              data: this.state.myTableData, 
-	              field: "notes"}
-	            ), 
-	          
-	          width: 300}
-	        )
-	      )
-	      )
-	    );
-	  }});
-	
-	module.exports = MyTable;
-
-
-/***/ },
 /* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -26948,7 +26949,7 @@
 	      lastname: event.target.value
 	    });
 	  },
-	  handleDobChange: function(event){
+	  handleDOBChange: function(event){
 	    this.setState({
 	      dob: event.target.value
 	    });
@@ -26984,27 +26985,27 @@
 	            React.createElement("div", {className: "modal-body"}, 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " First Name "), 
-	                React.createElement("input", {type: "text", onChange: handleFirstnameChange, value: this.state.firstname})
+	                React.createElement("input", {type: "text", onChange: this.handleFirstnameChange, value: this.state.firstname})
 	              ), 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " Last Name "), 
-	                React.createElement("input", {type: "text", onChange: handleLastnameChange, value: this.state.lastname})
+	                React.createElement("input", {type: "text", onChange: this.handleLastnameChange, value: this.state.lastname})
 	              ), 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " Date of Birth "), 
-	                React.createElement("input", {type: "text", onChange: handleDobChange, value: this.state.dob})
+	                React.createElement("input", {type: "text", onChange: this.handleDOBChange, value: this.state.dob})
 	              ), 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " Phone Number "), 
-	                React.createElement("input", {type: "text", onChange: handlePhoneChange, value: this.state.phone})
+	                React.createElement("input", {type: "text", onChange: this.handlePhoneChange, value: this.state.phone})
 	              ), 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " Email "), 
-	                React.createElement("input", {type: "text", onChange: handleEmailChange, value: this.state.email})
+	                React.createElement("input", {type: "text", onChange: this.handleEmailChange, value: this.state.email})
 	              ), 
 	              React.createElement("div", {className: "form-group wide"}, 
 	                React.createElement("label", null, " Notes "), 
-	                React.createElement("textarea", {onChange: handleNotesChange, value: this.state.notes})
+	                React.createElement("textarea", {onChange: this.handleNotesChange, value: this.state.notes})
 	              )
 	            ), 
 	            React.createElement("div", {className: "modal-footer"}, 
@@ -27018,6 +27019,590 @@
 	  },
 	});
 
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _createStore = __webpack_require__(220);
+	
+	var _createStore2 = _interopRequireDefault(_createStore);
+	
+	var _utilsCombineReducers = __webpack_require__(222);
+	
+	var _utilsCombineReducers2 = _interopRequireDefault(_utilsCombineReducers);
+	
+	var _utilsBindActionCreators = __webpack_require__(225);
+	
+	var _utilsBindActionCreators2 = _interopRequireDefault(_utilsBindActionCreators);
+	
+	var _utilsApplyMiddleware = __webpack_require__(226);
+	
+	var _utilsApplyMiddleware2 = _interopRequireDefault(_utilsApplyMiddleware);
+	
+	var _utilsCompose = __webpack_require__(227);
+	
+	var _utilsCompose2 = _interopRequireDefault(_utilsCompose);
+	
+	exports.createStore = _createStore2['default'];
+	exports.combineReducers = _utilsCombineReducers2['default'];
+	exports.bindActionCreators = _utilsBindActionCreators2['default'];
+	exports.applyMiddleware = _utilsApplyMiddleware2['default'];
+	exports.compose = _utilsCompose2['default'];
+
+/***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports['default'] = createStore;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _utilsIsPlainObject = __webpack_require__(221);
+	
+	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
+	
+	/**
+	 * These are private action types reserved by Redux.
+	 * For any unknown actions, you must return the current state.
+	 * If the current state is undefined, you must return the initial state.
+	 * Do not reference these action types directly in your code.
+	 */
+	var ActionTypes = {
+	  INIT: '@@redux/INIT'
+	};
+	
+	exports.ActionTypes = ActionTypes;
+	/**
+	 * Creates a Redux store that holds the state tree.
+	 * The only way to change the data in the store is to call `dispatch()` on it.
+	 *
+	 * There should only be a single store in your app. To specify how different
+	 * parts of the state tree respond to actions, you may combine several reducers
+	 * into a single reducer function by using `combineReducers`.
+	 *
+	 * @param {Function} reducer A function that returns the next state tree, given
+	 * the current state tree and the action to handle.
+	 *
+	 * @param {any} [initialState] The initial state. You may optionally specify it
+	 * to hydrate the state from the server in universal apps, or to restore a
+	 * previously serialized user session.
+	 * If you use `combineReducers` to produce the root reducer function, this must be
+	 * an object with the same shape as `combineReducers` keys.
+	 *
+	 * @returns {Store} A Redux store that lets you read the state, dispatch actions
+	 * and subscribe to changes.
+	 */
+	
+	function createStore(reducer, initialState) {
+	  if (typeof reducer !== 'function') {
+	    throw new Error('Expected the reducer to be a function.');
+	  }
+	
+	  var currentReducer = reducer;
+	  var currentState = initialState;
+	  var listeners = [];
+	  var isDispatching = false;
+	
+	  /**
+	   * Reads the state tree managed by the store.
+	   *
+	   * @returns {any} The current state tree of your application.
+	   */
+	  function getState() {
+	    return currentState;
+	  }
+	
+	  /**
+	   * Adds a change listener. It will be called any time an action is dispatched,
+	   * and some part of the state tree may potentially have changed. You may then
+	   * call `getState()` to read the current state tree inside the callback.
+	   *
+	   * @param {Function} listener A callback to be invoked on every dispatch.
+	   * @returns {Function} A function to remove this change listener.
+	   */
+	  function subscribe(listener) {
+	    listeners.push(listener);
+	    var isSubscribed = true;
+	
+	    return function unsubscribe() {
+	      if (!isSubscribed) {
+	        return;
+	      }
+	
+	      isSubscribed = false;
+	      var index = listeners.indexOf(listener);
+	      listeners.splice(index, 1);
+	    };
+	  }
+	
+	  /**
+	   * Dispatches an action. It is the only way to trigger a state change.
+	   *
+	   * The `reducer` function, used to create the store, will be called with the
+	   * current state tree and the given `action`. Its return value will
+	   * be considered the **next** state of the tree, and the change listeners
+	   * will be notified.
+	   *
+	   * The base implementation only supports plain object actions. If you want to
+	   * dispatch a Promise, an Observable, a thunk, or something else, you need to
+	   * wrap your store creating function into the corresponding middleware. For
+	   * example, see the documentation for the `redux-thunk` package. Even the
+	   * middleware will eventually dispatch plain object actions using this method.
+	   *
+	   * @param {Object} action A plain object representing “what changed”. It is
+	   * a good idea to keep actions serializable so you can record and replay user
+	   * sessions, or use the time travelling `redux-devtools`. An action must have
+	   * a `type` property which may not be `undefined`. It is a good idea to use
+	   * string constants for action types.
+	   *
+	   * @returns {Object} For convenience, the same action object you dispatched.
+	   *
+	   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
+	   * return something else (for example, a Promise you can await).
+	   */
+	  function dispatch(action) {
+	    if (!_utilsIsPlainObject2['default'](action)) {
+	      throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
+	    }
+	
+	    if (typeof action.type === 'undefined') {
+	      throw new Error('Actions may not have an undefined "type" property. ' + 'Have you misspelled a constant?');
+	    }
+	
+	    if (isDispatching) {
+	      throw new Error('Reducers may not dispatch actions.');
+	    }
+	
+	    try {
+	      isDispatching = true;
+	      currentState = currentReducer(currentState, action);
+	    } finally {
+	      isDispatching = false;
+	    }
+	
+	    listeners.slice().forEach(function (listener) {
+	      return listener();
+	    });
+	    return action;
+	  }
+	
+	  /**
+	   * Replaces the reducer currently used by the store to calculate the state.
+	   *
+	   * You might need this if your app implements code splitting and you want to
+	   * load some of the reducers dynamically. You might also need this if you
+	   * implement a hot reloading mechanism for Redux.
+	   *
+	   * @param {Function} nextReducer The reducer for the store to use instead.
+	   * @returns {void}
+	   */
+	  function replaceReducer(nextReducer) {
+	    currentReducer = nextReducer;
+	    dispatch({ type: ActionTypes.INIT });
+	  }
+	
+	  // When a store is created, an "INIT" action is dispatched so that every
+	  // reducer returns their initial state. This effectively populates
+	  // the initial state tree.
+	  dispatch({ type: ActionTypes.INIT });
+	
+	  return {
+	    dispatch: dispatch,
+	    subscribe: subscribe,
+	    getState: getState,
+	    replaceReducer: replaceReducer
+	  };
+	}
+
+/***/ },
+/* 221 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports['default'] = isPlainObject;
+	var fnToString = function fnToString(fn) {
+	  return Function.prototype.toString.call(fn);
+	};
+	
+	/**
+	 * @param {any} obj The object to inspect.
+	 * @returns {boolean} True if the argument appears to be a plain object.
+	 */
+	
+	function isPlainObject(obj) {
+	  if (!obj || typeof obj !== 'object') {
+	    return false;
+	  }
+	
+	  var proto = typeof obj.constructor === 'function' ? Object.getPrototypeOf(obj) : Object.prototype;
+	
+	  if (proto === null) {
+	    return true;
+	  }
+	
+	  var constructor = proto.constructor;
+	
+	  return typeof constructor === 'function' && constructor instanceof constructor && fnToString(constructor) === fnToString(Object);
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	exports.__esModule = true;
+	exports['default'] = combineReducers;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _createStore = __webpack_require__(220);
+	
+	var _utilsIsPlainObject = __webpack_require__(221);
+	
+	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
+	
+	var _utilsMapValues = __webpack_require__(223);
+	
+	var _utilsMapValues2 = _interopRequireDefault(_utilsMapValues);
+	
+	var _utilsPick = __webpack_require__(224);
+	
+	var _utilsPick2 = _interopRequireDefault(_utilsPick);
+	
+	/* eslint-disable no-console */
+	
+	function getUndefinedStateErrorMessage(key, action) {
+	  var actionType = action && action.type;
+	  var actionName = actionType && '"' + actionType.toString() + '"' || 'an action';
+	
+	  return 'Reducer "' + key + '" returned undefined handling ' + actionName + '. ' + 'To ignore an action, you must explicitly return the previous state.';
+	}
+	
+	function getUnexpectedStateKeyWarningMessage(inputState, outputState, action) {
+	  var reducerKeys = Object.keys(outputState);
+	  var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
+	
+	  if (reducerKeys.length === 0) {
+	    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
+	  }
+	
+	  if (!_utilsIsPlainObject2['default'](inputState)) {
+	    return 'The ' + argumentName + ' has unexpected type of "' + ({}).toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
+	  }
+	
+	  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
+	    return reducerKeys.indexOf(key) < 0;
+	  });
+	
+	  if (unexpectedKeys.length > 0) {
+	    return 'Unexpected ' + (unexpectedKeys.length > 1 ? 'keys' : 'key') + ' ' + ('"' + unexpectedKeys.join('", "') + '" found in ' + argumentName + '. ') + 'Expected to find one of the known reducer keys instead: ' + ('"' + reducerKeys.join('", "') + '". Unexpected keys will be ignored.');
+	  }
+	}
+	
+	function assertReducerSanity(reducers) {
+	  Object.keys(reducers).forEach(function (key) {
+	    var reducer = reducers[key];
+	    var initialState = reducer(undefined, { type: _createStore.ActionTypes.INIT });
+	
+	    if (typeof initialState === 'undefined') {
+	      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined.');
+	    }
+	
+	    var type = '@@redux/PROBE_UNKNOWN_ACTION_' + Math.random().toString(36).substring(7).split('').join('.');
+	    if (typeof reducer(undefined, { type: type }) === 'undefined') {
+	      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + _createStore.ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined.');
+	    }
+	  });
+	}
+	
+	/**
+	 * Turns an object whose values are different reducer functions, into a single
+	 * reducer function. It will call every child reducer, and gather their results
+	 * into a single state object, whose keys correspond to the keys of the passed
+	 * reducer functions.
+	 *
+	 * @param {Object} reducers An object whose values correspond to different
+	 * reducer functions that need to be combined into one. One handy way to obtain
+	 * it is to use ES6 `import * as reducers` syntax. The reducers may never return
+	 * undefined for any action. Instead, they should return their initial state
+	 * if the state passed to them was undefined, and the current state for any
+	 * unrecognized action.
+	 *
+	 * @returns {Function} A reducer function that invokes every reducer inside the
+	 * passed object, and builds a state object with the same shape.
+	 */
+	
+	function combineReducers(reducers) {
+	  var finalReducers = _utilsPick2['default'](reducers, function (val) {
+	    return typeof val === 'function';
+	  });
+	  var sanityError;
+	
+	  try {
+	    assertReducerSanity(finalReducers);
+	  } catch (e) {
+	    sanityError = e;
+	  }
+	
+	  var defaultState = _utilsMapValues2['default'](finalReducers, function () {
+	    return undefined;
+	  });
+	
+	  return function combination(state, action) {
+	    if (state === undefined) state = defaultState;
+	
+	    if (sanityError) {
+	      throw sanityError;
+	    }
+	
+	    var hasChanged = false;
+	    var finalState = _utilsMapValues2['default'](finalReducers, function (reducer, key) {
+	      var previousStateForKey = state[key];
+	      var nextStateForKey = reducer(previousStateForKey, action);
+	      if (typeof nextStateForKey === 'undefined') {
+	        var errorMessage = getUndefinedStateErrorMessage(key, action);
+	        throw new Error(errorMessage);
+	      }
+	      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
+	      return nextStateForKey;
+	    });
+	
+	    if (process.env.NODE_ENV !== 'production') {
+	      var warningMessage = getUnexpectedStateKeyWarningMessage(state, finalState, action);
+	      if (warningMessage) {
+	        console.error(warningMessage);
+	      }
+	    }
+	
+	    return hasChanged ? finalState : state;
+	  };
+	}
+	
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+
+/***/ },
+/* 223 */
+/***/ function(module, exports) {
+
+	/**
+	 * Applies a function to every key-value pair inside an object.
+	 *
+	 * @param {Object} obj The source object.
+	 * @param {Function} fn The mapper function that receives the value and the key.
+	 * @returns {Object} A new object that contains the mapped values for the keys.
+	 */
+	"use strict";
+	
+	exports.__esModule = true;
+	exports["default"] = mapValues;
+	
+	function mapValues(obj, fn) {
+	  return Object.keys(obj).reduce(function (result, key) {
+	    result[key] = fn(obj[key], key);
+	    return result;
+	  }, {});
+	}
+	
+	module.exports = exports["default"];
+
+/***/ },
+/* 224 */
+/***/ function(module, exports) {
+
+	/**
+	 * Picks key-value pairs from an object where values satisfy a predicate.
+	 *
+	 * @param {Object} obj The object to pick from.
+	 * @param {Function} fn The predicate the values must satisfy to be copied.
+	 * @returns {Object} The object with the values that satisfied the predicate.
+	 */
+	"use strict";
+	
+	exports.__esModule = true;
+	exports["default"] = pick;
+	
+	function pick(obj, fn) {
+	  return Object.keys(obj).reduce(function (result, key) {
+	    if (fn(obj[key])) {
+	      result[key] = obj[key];
+	    }
+	    return result;
+	  }, {});
+	}
+	
+	module.exports = exports["default"];
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports['default'] = bindActionCreators;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _utilsMapValues = __webpack_require__(223);
+	
+	var _utilsMapValues2 = _interopRequireDefault(_utilsMapValues);
+	
+	function bindActionCreator(actionCreator, dispatch) {
+	  return function () {
+	    return dispatch(actionCreator.apply(undefined, arguments));
+	  };
+	}
+	
+	/**
+	 * Turns an object whose values are action creators, into an object with the
+	 * same keys, but with every function wrapped into a `dispatch` call so they
+	 * may be invoked directly. This is just a convenience method, as you can call
+	 * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
+	 *
+	 * For convenience, you can also pass a single function as the first argument,
+	 * and get a function in return.
+	 *
+	 * @param {Function|Object} actionCreators An object whose values are action
+	 * creator functions. One handy way to obtain it is to use ES6 `import * as`
+	 * syntax. You may also pass a single function.
+	 *
+	 * @param {Function} dispatch The `dispatch` function available on your Redux
+	 * store.
+	 *
+	 * @returns {Function|Object} The object mimicking the original object, but with
+	 * every action creator wrapped into the `dispatch` call. If you passed a
+	 * function as `actionCreators`, the return value will also be a single
+	 * function.
+	 */
+	
+	function bindActionCreators(actionCreators, dispatch) {
+	  if (typeof actionCreators === 'function') {
+	    return bindActionCreator(actionCreators, dispatch);
+	  }
+	
+	  if (typeof actionCreators !== 'object' || actionCreators === null || actionCreators === undefined) {
+	    // eslint-disable-line no-eq-null
+	    throw new Error('bindActionCreators expected an object or a function, instead received ' + (actionCreators === null ? 'null' : typeof actionCreators) + '. ' + 'Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?');
+	  }
+	
+	  return _utilsMapValues2['default'](actionCreators, function (actionCreator) {
+	    return bindActionCreator(actionCreator, dispatch);
+	  });
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports['default'] = applyMiddleware;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _compose = __webpack_require__(227);
+	
+	var _compose2 = _interopRequireDefault(_compose);
+	
+	/**
+	 * Creates a store enhancer that applies middleware to the dispatch method
+	 * of the Redux store. This is handy for a variety of tasks, such as expressing
+	 * asynchronous actions in a concise manner, or logging every action payload.
+	 *
+	 * See `redux-thunk` package as an example of the Redux middleware.
+	 *
+	 * Because middleware is potentially asynchronous, this should be the first
+	 * store enhancer in the composition chain.
+	 *
+	 * Note that each middleware will be given the `dispatch` and `getState` functions
+	 * as named arguments.
+	 *
+	 * @param {...Function} middlewares The middleware chain to be applied.
+	 * @returns {Function} A store enhancer applying the middleware.
+	 */
+	
+	function applyMiddleware() {
+	  for (var _len = arguments.length, middlewares = Array(_len), _key = 0; _key < _len; _key++) {
+	    middlewares[_key] = arguments[_key];
+	  }
+	
+	  return function (next) {
+	    return function (reducer, initialState) {
+	      var store = next(reducer, initialState);
+	      var _dispatch = store.dispatch;
+	      var chain = [];
+	
+	      var middlewareAPI = {
+	        getState: store.getState,
+	        dispatch: function dispatch(action) {
+	          return _dispatch(action);
+	        }
+	      };
+	      chain = middlewares.map(function (middleware) {
+	        return middleware(middlewareAPI);
+	      });
+	      _dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);
+	
+	      return _extends({}, store, {
+	        dispatch: _dispatch
+	      });
+	    };
+	  };
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 227 */
+/***/ function(module, exports) {
+
+	/**
+	 * Composes single-argument functions from right to left.
+	 *
+	 * @param {...Function} funcs The functions to compose.
+	 * @returns {Function} A function obtained by composing functions from right to
+	 * left. For example, compose(f, g, h) is identical to arg => f(g(h(arg))).
+	 */
+	"use strict";
+	
+	exports.__esModule = true;
+	exports["default"] = compose;
+	
+	function compose() {
+	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
+	    funcs[_key] = arguments[_key];
+	  }
+	
+	  return function (arg) {
+	    return funcs.reduceRight(function (composed, f) {
+	      return f(composed);
+	    }, arg);
+	  };
+	}
+	
+	module.exports = exports["default"];
 
 /***/ }
 /******/ ]);

@@ -25,7 +25,7 @@ module.exports = React.createClass({
       lastname: event.target.value
     });
   },
-  handleDobChange: function(event){
+  handleDOBChange: function(event){
     this.setState({
       dob: event.target.value
     });
@@ -61,27 +61,27 @@ module.exports = React.createClass({
             <div className='modal-body'>
               <div className='form-group'>
                 <label> First Name </label>
-                <input type='text'onChange={handleFirstnameChange} value={this.state.firstname}/>
+                <input type='text'onChange={this.handleFirstnameChange} value={this.state.firstname}/>
               </div>
               <div className='form-group'>
                 <label> Last Name </label>
-                <input type='text'onChange={handleLastnameChange} value={this.state.lastname}/>
+                <input type='text'onChange={this.handleLastnameChange} value={this.state.lastname}/>
               </div>
               <div className='form-group'>
                 <label> Date of Birth </label>
-                <input type='text'onChange={handleDobChange} value={this.state.dob}/>
+                <input type='text'onChange={this.handleDOBChange} value={this.state.dob}/>
               </div>
               <div className='form-group'>
                 <label> Phone Number </label>
-                <input type='text'onChange={handlePhoneChange} value={this.state.phone}/>
+                <input type='text'onChange={this.handlePhoneChange} value={this.state.phone}/>
               </div>
               <div className='form-group'>
                 <label> Email </label>
-                <input type='text'onChange={handleEmailChange} value={this.state.email}/>
+                <input type='text'onChange={this.handleEmailChange} value={this.state.email}/>
               </div>
               <div className='form-group wide'>
                 <label> Notes </label>
-                <textarea onChange={handleNotesChange} value={this.state.notes}/>
+                <textarea onChange={this.handleNotesChange} value={this.state.notes}/>
               </div>
             </div>
             <div className='modal-footer'>

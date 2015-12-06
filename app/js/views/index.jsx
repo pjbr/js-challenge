@@ -28,15 +28,17 @@ module.exports = React.createClass({
   },
   render() {
     return (
-      <div className={this.state.body_modal_class}>
-        <Header/>
-        <SearchButton/>
-        <ModalButton handleClick={this.handleModalToggle}/>
-        <Table/>
+      <div className={'page ' + this.state.body_modal_class}>
+        <div className='page-wrap'>
+          <Header/>
+          <SearchButton/>
+          <ModalButton handleClick={this.handleModalToggle}/>
+          <Table/>
+          <Modal modalShow={this.state.modal_show} handleToggle={this.handleModalToggle}/>
+        </div>
         <div className='footer'>
           <hr/>
         </div>
-        <Modal modalShow={this.state.modal_show} handleToggle={this.handleModalToggle}/>
       </div>
     );
   },

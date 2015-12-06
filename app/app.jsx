@@ -1,13 +1,12 @@
 const css = require("./scss/styles.scss");
 const React = require('react');
 const ReactDOM = require('react-dom');
-const {Table, Column, Cell} = require('fixed-data-table');
 const View = require('./js/views/index.jsx')
 const container = document.getElementById('content');
+const redux = require('redux');
+
 
 
 ReactDOM.render((
-  <div>
     <View/>
-  </div>
 ), container);

@@ -1,7 +1,18 @@
+html, body, .page{height:100%; margin:0;};
+.page-wrap{
+  min-height:100%;
+  margin-bottom:-50px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+  height:40px;
+}
 .footer{
   width:100%;
-  margin:20px 0;
-  clear:both;
+  height:40px;
+  position: relative;
+  margin:0px;
   hr{
     width:90%;
     left:5%;

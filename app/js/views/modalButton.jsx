@@ -6,7 +6,7 @@ module.exports = React.createClass({
   },
   render() {
     return (
-      <button type="button" className='modal-button' onClick={this.props.handleClick}>
+      <button type="button" className='modal-button' title='Add Contact' onClick={this.props.handleClick}>
         <span className='fa fa-plus-circle'></span>  &nbsp;Contacts Keeper
       </button>
     );
