@@ -20117,7 +20117,7 @@
 	/** @jsx React.DOM */const React = __webpack_require__(5);
 	const $__0=    __webpack_require__(168),Table=$__0.Table,Column=$__0.Column,Cell=$__0.Cell;
 	
-	var ____Class9=React.Component;for(var ____Class9____Key in ____Class9){if(____Class9.hasOwnProperty(____Class9____Key)){TextCell[____Class9____Key]=____Class9[____Class9____Key];}}var ____SuperProtoOf____Class9=____Class9===null?null:____Class9.prototype;TextCell.prototype=Object.create(____SuperProtoOf____Class9);TextCell.prototype.constructor=TextCell;TextCell.__superConstructor__=____Class9;function TextCell(){"use strict";if(____Class9!==null){____Class9.apply(this,arguments);}}
+	var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){TextCell[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;TextCell.prototype=Object.create(____SuperProtoOf____Class0);TextCell.prototype.constructor=TextCell;TextCell.__superConstructor__=____Class0;function TextCell(){"use strict";if(____Class0!==null){____Class0.apply(this,arguments);}}
 	  Object.defineProperty(TextCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
 	    const $__0=     this.props,rowIndex=$__0.rowIndex,field=$__0.field,data=$__0.data,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{rowIndex:1,field:1,data:1});
 	    return (
@@ -20128,7 +20128,7 @@
 	  }});
 	
 	
-	var ____Classa=React.Component;for(var ____Classa____Key in ____Classa){if(____Classa.hasOwnProperty(____Classa____Key)){EmailCell[____Classa____Key]=____Classa[____Classa____Key];}}var ____SuperProtoOf____Classa=____Classa===null?null:____Classa.prototype;EmailCell.prototype=Object.create(____SuperProtoOf____Classa);EmailCell.prototype.constructor=EmailCell;EmailCell.__superConstructor__=____Classa;function EmailCell(){"use strict";if(____Classa!==null){____Classa.apply(this,arguments);}}
+	var ____Class1=React.Component;for(var ____Class1____Key in ____Class1){if(____Class1.hasOwnProperty(____Class1____Key)){EmailCell[____Class1____Key]=____Class1[____Class1____Key];}}var ____SuperProtoOf____Class1=____Class1===null?null:____Class1.prototype;EmailCell.prototype=Object.create(____SuperProtoOf____Class1);EmailCell.prototype.constructor=EmailCell;EmailCell.__superConstructor__=____Class1;function EmailCell(){"use strict";if(____Class1!==null){____Class1.apply(this,arguments);}}
 	  Object.defineProperty(EmailCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
 	    const $__0=     this.props,rowIndex=$__0.rowIndex,field=$__0.field,data=$__0.data,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{rowIndex:1,field:1,data:1});
 	    const link = data[rowIndex][field];
@@ -20139,9 +20139,9 @@
 	    );
 	  }});
 	
-	var ____Classb=React.Component;for(var ____Classb____Key in ____Classb){if(____Classb.hasOwnProperty(____Classb____Key)){MyTable[____Classb____Key]=____Classb[____Classb____Key];}}var ____SuperProtoOf____Classb=____Classb===null?null:____Classb.prototype;MyTable.prototype=Object.create(____SuperProtoOf____Classb);MyTable.prototype.constructor=MyTable;MyTable.__superConstructor__=____Classb;
+	var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____Class2.hasOwnProperty(____Class2____Key)){MyTable[____Class2____Key]=____Class2[____Class2____Key];}}var ____SuperProtoOf____Class2=____Class2===null?null:____Class2.prototype;MyTable.prototype=Object.create(____SuperProtoOf____Class2);MyTable.prototype.constructor=MyTable;MyTable.__superConstructor__=____Class2;
 	  function MyTable(props) {"use strict";
-	    ____Classb.call(this,props);
+	    ____Class2.call(this,props);
 	
 	    this.state = {
 	      myTableData: [
