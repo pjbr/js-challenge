@@ -1,5 +1,6 @@
 const React = require('react');
-const Header = React.createClass({
+
+module.exports = React.createClass({
   render() {
     return (
       <div className= 'header'>
@@ -8,5 +9,3 @@ const Header = React.createClass({
     );
   },
 });
-
-module.exports = Header;

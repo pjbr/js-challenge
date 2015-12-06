@@ -9,6 +9,5 @@ const container = document.getElementById('content');
 ReactDOM.render((
   <div>
     <View/>
-    <hr/>
   </div>
 ), container);
