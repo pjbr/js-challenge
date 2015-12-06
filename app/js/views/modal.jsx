@@ -1,9 +1,11 @@
-const React = require('react');
+import React from 'react';
 
 module.exports = React.createClass({
   propTypes: {
     modalShow: React.PropTypes.string.isRequired,
-    handleToggle: React.PropTypes.func.isRequired
+    handleToggle: React.PropTypes.func.isRequired,
+    state: React.PropTypes.any.isRequired,
+    dispatch: React.PropTypes.func.isRequired
   },
   getInitialState: function() {
     return {

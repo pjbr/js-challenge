@@ -1,5 +1,5 @@
-const React = require('react');
-const {Table, Column, Cell} = require('fixed-data-table');
+import React from 'react';
+import {Table, Column, Cell} from 'fixed-data-table';
 
 class TextCell extends React.Component {
   render() {

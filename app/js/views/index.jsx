@@ -1,10 +1,10 @@
 'use strict;'
-const React = require('react');
-const Header = require('./header.jsx');
-const SearchButton = require('./searchButton.jsx');
-const ModalButton = require('./modalButton.jsx');
-const Table = require('./table.jsx');
-const Modal = require('./modal.jsx');
+import React from 'react';
+import Header from './header.jsx';
+import SearchButton from './searchButton.jsx';
+import ModalButton from './modalButton.jsx';
+import Table from './table.jsx';
+import Modal from './modal.jsx';
 
 module.exports = React.createClass({
   handleModalToggle: function(){

@@ -1,25 +1,5 @@
-const redux = require('redux');
-
-//these are actions
-const ADD_CONTACT = 'ADD_CONTACT';
-function addContact(contact){
-  return{ type: ADD_CONTACT, contact: contact };
-}
-
-const SORT_TABLE = 'SORT_TABLE';
-function sortTable(direction, field){
-  return{ type: SORT_TABLE, direction: direction, field: field };
-}
-
-const SEARCH_TABLE = 'SEARCH_TABLE';
-function sortTable(query){
-  return{ type: SEARCH_TABLE, query: query };
-}
-
-const SEED_CONTACTS = 'SEED_CONTACTS';
-function seedContacts(count){
-  return{ type: SEED_CONTACTS, count: count };
-}
+import redux from 'redux';
+import {ADD_CONTACT, SORT_TABLE, SEARCH_TABLE, SEED_CONTACTS} from './actiontypes';
 
 // this is an action reducer, a simple switch will determine the action type and return a new state object if the state changes
 const DEFAULT_STATE = {
@@ -42,7 +22,7 @@ function contactReducer(state=[], action){
       return state
   }
 };
-module.exports = function appReducer(state=DEFAULT_STATE, action){
+export function appReducer(state=DEFAULT_STATE, action){
   switch (action.type) {
     case 'ADD_CONTACT':
     case 'SEED_CONTACTS':

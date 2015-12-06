@@ -1,12 +1,19 @@
 const css = require("./scss/styles.scss");
-const React = require('react');
-const ReactDOM = require('react-dom');
-const View = require('./js/views/index.jsx')
+import React from 'react';
+import ReactDOM from 'react-dom';
+import View from './js/views/index.jsx';
 const container = document.getElementById('content');
-const redux = require('redux');
 
+//import Redux from 'Redux'
+import redux from 'redux'
+import reactRedux from 'react-redux';
 
+import { appReducer } from './js/redux/reducer'
+const store = redux.createStore(appReducer);
+var Provider = reactRedux.Provider
 
 ReactDOM.render((
-    <View/>
+  <Provider store={store}>
+      <View/>
+  </Provider>
 ), container);
