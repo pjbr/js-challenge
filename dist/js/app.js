@@ -26775,90 +26775,10 @@
 	/** @jsx React.DOM */const React = __webpack_require__(5);
 	const $__0=    __webpack_require__(163),Table=$__0.Table,Column=$__0.Column,Cell=$__0.Cell;
 	
-	var SortTypes = {
-	  ASC: 'ASC',
-	  DESC: 'DESC',
-	};
 	
-	function reverseSortDirection(sortDir) {
-	  return sortDir === SortTypes.DESC ? SortTypes.ASC : SortTypes.DESC;
-	}
-	
-	var ____ClassA=React.Component;for(var ____ClassA____Key in ____ClassA){if(____ClassA.hasOwnProperty(____ClassA____Key)){TextCell[____ClassA____Key]=____ClassA[____ClassA____Key];}}var ____SuperProtoOf____ClassA=____ClassA===null?null:____ClassA.prototype;TextCell.prototype=Object.create(____SuperProtoOf____ClassA);TextCell.prototype.constructor=TextCell;TextCell.__superConstructor__=____ClassA;function TextCell(){"use strict";if(____ClassA!==null){____ClassA.apply(this,arguments);}}
-	  Object.defineProperty(TextCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
-	    const $__0=     this.props,rowIndex=$__0.rowIndex,field=$__0.field,data=$__0.data,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{rowIndex:1,field:1,data:1});
-	    return (
-	      React.createElement(Cell, React.__spread({},  props), 
-	        data[rowIndex][field]
-	      )
-	    );
-	  }});
-	
-	
-	var ____ClassB=React.Component;for(var ____ClassB____Key in ____ClassB){if(____ClassB.hasOwnProperty(____ClassB____Key)){EmailCell[____ClassB____Key]=____ClassB[____ClassB____Key];}}var ____SuperProtoOf____ClassB=____ClassB===null?null:____ClassB.prototype;EmailCell.prototype=Object.create(____SuperProtoOf____ClassB);EmailCell.prototype.constructor=EmailCell;EmailCell.__superConstructor__=____ClassB;function EmailCell(){"use strict";if(____ClassB!==null){____ClassB.apply(this,arguments);}}
-	  Object.defineProperty(EmailCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
-	    const $__0=     this.props,rowIndex=$__0.rowIndex,field=$__0.field,data=$__0.data,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{rowIndex:1,field:1,data:1});
-	    const link = data[rowIndex][field];
-	    return (
-	      React.createElement(Cell, React.__spread({},  props), 
-	        React.createElement("a", {href: 'mailto:'+link}, link)
-	      )
-	    );
-	  }});
-	
-	
-	var ____ClassC=React.Component;for(var ____ClassC____Key in ____ClassC){if(____ClassC.hasOwnProperty(____ClassC____Key)){SortHeaderCell[____ClassC____Key]=____ClassC[____ClassC____Key];}}var ____SuperProtoOf____ClassC=____ClassC===null?null:____ClassC.prototype;SortHeaderCell.prototype=Object.create(____SuperProtoOf____ClassC);SortHeaderCell.prototype.constructor=SortHeaderCell;SortHeaderCell.__superConstructor__=____ClassC;
-	  function SortHeaderCell(props) {"use strict";
-	    ____ClassC.call(this,props);
-	
-	    this.$SortHeaderCell_onSortChange = this.$SortHeaderCell_onSortChange.bind(this);
-	  }
-	
-	  Object.defineProperty(SortHeaderCell.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
-	    var $__0=    this.props,sortDir=$__0.sortDir,children=$__0.children,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{sortDir:1,children:1});
-	    return (
-	      React.createElement(Cell, React.__spread({},  props), 
-	        React.createElement("a", {onClick: this.$SortHeaderCell_onSortChange}, 
-	          children, " ", sortDir ? (sortDir === SortTypes.DESC ? '↓' : '↑') : ''
-	        )
-	      )
-	    );
-	  }});
-	
-	  Object.defineProperty(SortHeaderCell.prototype,"$SortHeaderCell_onSortChange",{writable:true,configurable:true,value:function(e) {"use strict";
-	    e.preventDefault();
-	
-	    if (this.props.onSortChange) {
-	      this.props.onSortChange(
-	        this.props.columnKey,
-	        this.props.sortDir ?
-	          reverseSortDirection(this.props.sortDir) :
-	          SortTypes.DESC
-	      );
-	    }
-	  }});
-	
-	
-	
-	  function DataListWrapper(indexMap, data) {"use strict";
-	    this.$DataListWrapper_indexMap = indexMap;
-	    this.$DataListWrapper_data = data;
-	  }
-	
-	  Object.defineProperty(DataListWrapper.prototype,"getSize",{writable:true,configurable:true,value:function() {"use strict";
-	    return this.$DataListWrapper_indexMap.length;
-	  }});
-	
-	  Object.defineProperty(DataListWrapper.prototype,"getObjectAt",{writable:true,configurable:true,value:function(index) {"use strict";
-	    return this.$DataListWrapper_data.getObjectAt(
-	      this.$DataListWrapper_indexMap[index]
-	    );
-	  }});
-	
-	
-	var ____ClassD=React.Component;for(var ____ClassD____Key in ____ClassD){if(____ClassD.hasOwnProperty(____ClassD____Key)){MyTable[____ClassD____Key]=____ClassD[____ClassD____Key];}}var ____SuperProtoOf____ClassD=____ClassD===null?null:____ClassD.prototype;MyTable.prototype=Object.create(____SuperProtoOf____ClassD);MyTable.prototype.constructor=MyTable;MyTable.__superConstructor__=____ClassD;
+	var ____ClassE=React.Component;for(var ____ClassE____Key in ____ClassE){if(____ClassE.hasOwnProperty(____ClassE____Key)){MyTable[____ClassE____Key]=____ClassE[____ClassE____Key];}}var ____SuperProtoOf____ClassE=____ClassE===null?null:____ClassE.prototype;MyTable.prototype=Object.create(____SuperProtoOf____ClassE);MyTable.prototype.constructor=MyTable;MyTable.__superConstructor__=____ClassE;
 	  function MyTable(props) {"use strict";
-	    ____ClassD.call(this,props);
+	    ____ClassE.call(this,props);
 	
 	    this.state = {
 	      myTableData: [
