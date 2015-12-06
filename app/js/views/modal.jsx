@@ -5,7 +5,46 @@ module.exports = React.createClass({
     modalShow: React.PropTypes.string.isRequired,
     handleToggle: React.PropTypes.func.isRequired
   },
-
+  getInitialState: function() {
+    return {
+      firstname: '',
+      lastname: '',
+      dob: '',
+      phone: '',
+      email: '',
+      notes: '',
+    };
+  },
+  handleFirstnameChange: function(event){
+    this.setState({
+      firstname: event.target.value
+    });
+  },
+  handleLastnameChange: function(event){
+    this.setState({
+      lastname: event.target.value
+    });
+  },
+  handleDobChange: function(event){
+    this.setState({
+      dob: event.target.value
+    });
+  },
+  handlePhoneChange: function(event){
+    this.setState({
+      phone: event.target.value
+    });
+  },
+  handleEmailChange: function(event){
+    this.setState({
+      email: event.target.value
+    });
+  },
+  handleNotesChange: function(event){
+    this.setState({
+      notes: event.target.value
+    });
+  },
   render() {
     return (
       <div className={'modal-show '+this.props.modalShow}>
@@ -22,27 +61,27 @@ module.exports = React.createClass({
             <div className='modal-body'>
               <div className='form-group'>
                 <label> First Name </label>
-                <input type='text'/>
+                <input type='text'onChange={handleFirstnameChange} value={this.state.firstname}/>
               </div>
               <div className='form-group'>
                 <label> Last Name </label>
-                <input type='text'/>
+                <input type='text'onChange={handleLastnameChange} value={this.state.lastname}/>
               </div>
               <div className='form-group'>
                 <label> Date of Birth </label>
-                <input type='text'/>
+                <input type='text'onChange={handleDobChange} value={this.state.dob}/>
               </div>
               <div className='form-group'>
                 <label> Phone Number </label>
-                <input type='text'/>
+                <input type='text'onChange={handlePhoneChange} value={this.state.phone}/>
               </div>
               <div className='form-group'>
                 <label> Email </label>
-                <input type='text'/>
+                <input type='text'onChange={handleEmailChange} value={this.state.email}/>
               </div>
               <div className='form-group wide'>
                 <label> Notes </label>
-                <textarea />
+                <textarea onChange={handleNotesChange} value={this.state.notes}/>
               </div>
             </div>
             <div className='modal-footer'>

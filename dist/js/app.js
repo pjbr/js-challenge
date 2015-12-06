@@ -26928,7 +26928,46 @@
 	    modalShow: React.PropTypes.string.isRequired,
 	    handleToggle: React.PropTypes.func.isRequired
 	  },
-	
+	  getInitialState: function() {
+	    return {
+	      firstname: '',
+	      lastname: '',
+	      dob: '',
+	      phone: '',
+	      email: '',
+	      notes: '',
+	    };
+	  },
+	  handleFirstnameChange: function(event){
+	    this.setState({
+	      firstname: event.target.value
+	    });
+	  },
+	  handleLastnameChange: function(event){
+	    this.setState({
+	      lastname: event.target.value
+	    });
+	  },
+	  handleDobChange: function(event){
+	    this.setState({
+	      dob: event.target.value
+	    });
+	  },
+	  handlePhoneChange: function(event){
+	    this.setState({
+	      phone: event.target.value
+	    });
+	  },
+	  handleEmailChange: function(event){
+	    this.setState({
+	      email: event.target.value
+	    });
+	  },
+	  handleNotesChange: function(event){
+	    this.setState({
+	      notes: event.target.value
+	    });
+	  },
 	  render:function() {
 	    return (
 	      React.createElement("div", {className: 'modal-show '+this.props.modalShow}, 
@@ -26945,27 +26984,27 @@
 	            React.createElement("div", {className: "modal-body"}, 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " First Name "), 
-	                React.createElement("input", {type: "text"})
+	                React.createElement("input", {type: "text", onChange: handleFirstnameChange, value: this.state.firstname})
 	              ), 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " Last Name "), 
-	                React.createElement("input", {type: "text"})
+	                React.createElement("input", {type: "text", onChange: handleLastnameChange, value: this.state.lastname})
 	              ), 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " Date of Birth "), 
-	                React.createElement("input", {type: "text"})
+	                React.createElement("input", {type: "text", onChange: handleDobChange, value: this.state.dob})
 	              ), 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " Phone Number "), 
-	                React.createElement("input", {type: "text"})
+	                React.createElement("input", {type: "text", onChange: handlePhoneChange, value: this.state.phone})
 	              ), 
 	              React.createElement("div", {className: "form-group"}, 
 	                React.createElement("label", null, " Email "), 
-	                React.createElement("input", {type: "text"})
+	                React.createElement("input", {type: "text", onChange: handleEmailChange, value: this.state.email})
 	              ), 
 	              React.createElement("div", {className: "form-group wide"}, 
 	                React.createElement("label", null, " Notes "), 
-	                React.createElement("textarea", null)
+	                React.createElement("textarea", {onChange: handleNotesChange, value: this.state.notes})
 	              )
 	            ), 
 	            React.createElement("div", {className: "modal-footer"}, 
