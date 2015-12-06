@@ -1,14 +1,21 @@
 const React = require('react');
 
 module.exports = React.createClass({
+  propTypes: {
+    modalShow: React.PropTypes.string.isRequired,
+    handleToggle: React.PropTypes.func.isRequired
+  },
   render() {
     return (
-      <div className='modal-show hide'>
+      <div className={'modal-show '+this.props.modalShow}>
         <div className='modal-backdrop'>
         </div>
         <div className='modal'>
           <div className='modal-header'>
             <span className='title'> Contacts Keeper </span>
+            <span className='modal-close' onClick={this.props.handleToggle}>
+              ×
+            </span>
           </div>
           <form>
             <div className='modal-body'>

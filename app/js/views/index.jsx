@@ -7,17 +7,36 @@ const Table = require('./table.jsx');
 const Modal = require('./modal.jsx');
 
 module.exports = React.createClass({
+  handleModalToggle: function(){
+    if('hide' === this.state.modal_show){
+      this.setState({
+        modal_show: '',
+        body_modal_class: 'modal-active',
+      })
+    } else {
+      this.setState({
+        modal_show: 'hide',
+        body_modal_class: '',
+      })
+    }
+  },
+  getInitialState: function() {
+    return {
+      modal_show: 'hide',
+      body_modal_class: ''
+    };
+  },
   render() {
     return (
-      <div className='appContainer'>
+      <div className={this.state.body_modal_class}>
         <Header/>
         <SearchButton/>
-        <ModalButton/>
+        <ModalButton handleClick={this.handleModalToggle}/>
         <Table/>
         <div className='footer'>
           <hr/>
         </div>
-        <Modal/>
+        <Modal modalShow={this.state.modal_show} handleToggle={this.handleModalToggle}/>
       </div>
     );
   },

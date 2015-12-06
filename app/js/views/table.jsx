@@ -1,7 +1,28 @@
 const React = require('react');
 const {Table, Column, Cell} = require('fixed-data-table');
 
+class TextCell extends React.Component {
+  render() {
+    const {rowIndex, field, data, ...props} = this.props;
+    return (
+      <Cell {...props}>
+        {data[rowIndex][field]}
+      </Cell>
+    );
+  }
+}
 
+class EmailCell extends React.Component {
+  render() {
+    const {rowIndex, field, data, ...props} = this.props;
+    const link = data[rowIndex][field];
+    return (
+      <Cell {...props}>
+        <a href={'mailto:'+link}>{link}</a>
+      </Cell>
+    );
+  }
+}
 class MyTable extends React.Component {
   constructor(props) {
     super(props);

@@ -71,6 +71,18 @@
     .title{
       margin-left:30px;
     }
+    .modal-close{
+      color:$CK_orange;
+      background-color: $white;
+      border-radius:100%;
+      float:right;
+      width:1em;
+      height:1em;
+      margin-right: 30px;
+      cursor:pointer;
+      line-height: 1em;
+      text-align: center;
+    }
   }
   .modal-footer{
     hr{
