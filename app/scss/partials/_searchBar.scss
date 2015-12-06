@@ -12,7 +12,6 @@
     border: 1px solid black;
     font-size: 10pt;
     float: left;
-    color: #fff;
     padding-left: 10px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -40,12 +39,6 @@
     outline: none;
     opacity: 1;
     margin-left: -45px;
-
-    -webkit-transition: background-color .55s ease;
-    -moz-transition: background-color .55s ease;
-    -ms-transition: background-color .55s ease;
-    -o-transition: background-color .55s ease;
-    transition: background-color .55s ease;
 
     &:hover{
       background: darken($CK_blue, 20%);

@@ -5,6 +5,7 @@ module.exports = React.createClass({
     modalShow: React.PropTypes.string.isRequired,
     handleToggle: React.PropTypes.func.isRequired
   },
+
   render() {
     return (
       <div className={'modal-show '+this.props.modalShow}>

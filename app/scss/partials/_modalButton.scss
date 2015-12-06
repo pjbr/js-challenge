@@ -12,11 +12,6 @@
   margin: 50px 80px 50px 0;
   float:right;
   clear: none;
-  -webkit-transition: background-color .55s ease;
-  -moz-transition: background-color .55s ease;
-  -ms-transition: background-color .55s ease;
-  -o-transition: background-color .55s ease;
-  transition: background-color .55s ease;
     &:hover{
       background: darken($CK_blue, 20%);
     }
