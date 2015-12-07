@@ -60,7 +60,7 @@ make sure you have gulp installed globally and run npm install
 ```
   $ gulp build
 ```
-this will build the assets in dist from /app
+this will build the assets in dist from /app you can open them as static files, but some css from cdn's may not be loaded correctly.
 ### To run dev server assets:
 ```
   $ gulp serve
@@ -70,7 +70,8 @@ browsersync will reload your window on change.
 
 # In the app
 
-Hit the '+Contacts Keeper' button to add a contact via modal. Also from the modal you have the option to seed the contacts with 296 contacts from a json object.
+Hit the '+Contacts Keeper' button to add a contact via modal. Also from the modal you have the option to seed the contacts with 296 contacts from a json object. Contacts is stored locally in localStorage if you want to start from nothing delete the 'state' key from your browser.
+
 
 
 
