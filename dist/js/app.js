@@ -62,13 +62,13 @@
 	
 	//import Redux from 'Redux'
 	
-	var _redux = __webpack_require__(215);
+	var _redux = __webpack_require__(221);
 	
-	var _reactRedux = __webpack_require__(226);
+	var _reactRedux = __webpack_require__(214);
 	
 	var _jsReduxReducer = __webpack_require__(235);
 	
-	var css = __webpack_require__(236);
+	var css = __webpack_require__(238);
 	
 	var container = document.getElementById('content');
 	var store = (0, _redux.createStore)(_jsReduxReducer.appReducer);
@@ -19697,7 +19697,7 @@
 	
 	var _tableJsx2 = _interopRequireDefault(_tableJsx);
 	
-	var _modalJsx = __webpack_require__(214);
+	var _modalJsx = __webpack_require__(232);
 	
 	var _modalJsx2 = _interopRequireDefault(_modalJsx);
 	
@@ -19725,7 +19725,6 @@
 	      body_modal_class: ''
 	    };
 	  },
-	  handleContactSubmit: function handleContactSubmit() {},
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
@@ -19737,7 +19736,7 @@
 	        _react2['default'].createElement(_searchButtonJsx2['default'], null),
 	        _react2['default'].createElement(_modalButtonJsx2['default'], { handleClick: this.handleModalToggle }),
 	        _react2['default'].createElement(_tableJsx2['default'], null),
-	        _react2['default'].createElement(_modalJsx2['default'], { modalShow: this.state.modal_show, handleToggle: this.handleModalToggle, onContactSubmit: this.handleContactSubmit })
+	        _react2['default'].createElement(_modalJsx2['default'], { modalShow: this.state.modal_show, handleToggle: this.handleModalToggle })
 	      ),
 	      _react2['default'].createElement(
 	        'div',
@@ -19817,20 +19816,24 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(1);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	module.exports = React.createClass({
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	module.exports = _react2['default'].createClass({
 	  displayName: 'exports',
 	
 	  propTypes: {
-	    handleClick: React.PropTypes.func.isRequired
+	    handleClick: _react2['default'].PropTypes.func.isRequired
 	  },
 	  render: function render() {
-	    return React.createElement(
+	    return _react2['default'].createElement(
 	      'button',
 	      { type: 'button', className: 'modal-button', title: 'Add Contact', onClick: this.props.handleClick },
-	      React.createElement('span', { className: 'fa fa-plus-circle' }),
-	      '   Contacts Keeper'
+	      _react2['default'].createElement('span', { className: 'fa fa-plus-circle' }),
+	      ' Contacts Keeper'
 	    );
 	  }
 	});
@@ -19840,6 +19843,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
@@ -19858,6 +19865,16 @@
 	var _react2 = _interopRequireDefault(_react);
 	
 	var _fixedDataTable = __webpack_require__(164);
+	
+	var _reactRedux = __webpack_require__(214);
+	
+	// Which props do we want to inject, given the global state?
+	// Note: use https://github.com/faassen/reselect for better performance.
+	function select(state) {
+	  return {
+	    state: state
+	  };
+	}
 	
 	var TextCell = (function (_React$Component) {
 	  _inherits(TextCell, _React$Component);
@@ -19924,114 +19941,105 @@
 	  return EmailCell;
 	})(_react2['default'].Component);
 	
-	var MyTable = (function (_React$Component3) {
-	  _inherits(MyTable, _React$Component3);
+	var MyTable = _react2['default'].createClass({
+	  displayName: 'MyTable',
 	
-	  function MyTable(props) {
-	    _classCallCheck(this, MyTable);
+	  propTypes: {
+	    state: _react2['default'].PropTypes.any.isRequired,
+	    dispatch: _react2['default'].PropTypes.func.isRequired
+	  },
 	
-	    _get(Object.getPrototypeOf(MyTable.prototype), 'constructor', this).call(this, props);
-	
-	    this.state = {
-	      myTableData: [{ firstname: 'Rylan', lastname: 'Rylan', dob: 'Rylan', phone: 'Rylan', notes: 'Rylan', email: 'Angelita_Weimann42@gmail.com' }, { firstname: 'Amelia', lastname: 'Amelia', dob: 'Amelia', phone: 'Amelia', notes: 'Amelia', email: 'Dexter.Trantow57@hotmail.com' }, { firstname: 'Estevan', lastname: 'Estevan', dob: 'Estevan', phone: 'Estevan', notes: 'Estevan', email: 'Aimee7@hotmail.com' }, { firstname: 'Florence', lastname: 'Florence', dob: 'Florence', phone: 'Florence', notes: 'Florence', email: 'Jarrod.Bernier13@yahoo.com' }, { firstname: 'Tressa', lastname: 'Tressa', dob: 'Tressa', phone: 'Tressa', notes: 'Tressa', email: 'Yadira1@hotmail.com' }]
-	    };
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'table' },
+	      _react2['default'].createElement(
+	        _fixedDataTable.Table,
+	        {
+	          rowsCount: this.props.state.contacts.length,
+	          rowHeight: 30,
+	          headerHeight: 30,
+	          width: 1000,
+	          maxHeight: 500 },
+	        _react2['default'].createElement(_fixedDataTable.Column, {
+	          header: _react2['default'].createElement(
+	            _fixedDataTable.Cell,
+	            null,
+	            'First Name'
+	          ),
+	          cell: _react2['default'].createElement(TextCell, {
+	            data: this.props.state.contacts,
+	            field: 'firstname'
+	          }),
+	          width: 100
+	        }),
+	        _react2['default'].createElement(_fixedDataTable.Column, {
+	          header: _react2['default'].createElement(
+	            _fixedDataTable.Cell,
+	            null,
+	            'Last Name'
+	          ),
+	          cell: _react2['default'].createElement(TextCell, {
+	            data: this.props.state.contacts,
+	            field: 'lastname'
+	          }),
+	          width: 100
+	        }),
+	        _react2['default'].createElement(_fixedDataTable.Column, {
+	          header: _react2['default'].createElement(
+	            _fixedDataTable.Cell,
+	            null,
+	            'Date of Birth'
+	          ),
+	          cell: _react2['default'].createElement(TextCell, {
+	            data: this.props.state.contacts,
+	            field: 'dob'
+	          }),
+	          width: 100
+	        }),
+	        _react2['default'].createElement(_fixedDataTable.Column, {
+	          header: _react2['default'].createElement(
+	            _fixedDataTable.Cell,
+	            null,
+	            'Phone'
+	          ),
+	          cell: _react2['default'].createElement(TextCell, {
+	            data: this.props.state.contacts,
+	            field: 'phone'
+	          }),
+	          width: 100
+	        }),
+	        _react2['default'].createElement(_fixedDataTable.Column, {
+	          header: _react2['default'].createElement(
+	            _fixedDataTable.Cell,
+	            null,
+	            'Email'
+	          ),
+	          cell: _react2['default'].createElement(EmailCell, {
+	            data: this.props.state.contacts,
+	            field: 'email'
+	          }),
+	          width: 300
+	        }),
+	        _react2['default'].createElement(_fixedDataTable.Column, {
+	          header: _react2['default'].createElement(
+	            _fixedDataTable.Cell,
+	            null,
+	            'Notes'
+	          ),
+	          cell: _react2['default'].createElement(TextCell, {
+	            data: this.props.state.contacts,
+	            field: 'notes'
+	          }),
+	          width: 300
+	        })
+	      )
+	    );
 	  }
+	});
 	
-	  _createClass(MyTable, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2['default'].createElement(
-	        'div',
-	        { className: 'table' },
-	        _react2['default'].createElement(
-	          _fixedDataTable.Table,
-	          {
-	            rowsCount: this.state.myTableData.length,
-	            rowHeight: 30,
-	            headerHeight: 30,
-	            width: 1000,
-	            maxHeight: 500 },
-	          _react2['default'].createElement(_fixedDataTable.Column, {
-	            header: _react2['default'].createElement(
-	              _fixedDataTable.Cell,
-	              null,
-	              'First Name'
-	            ),
-	            cell: _react2['default'].createElement(TextCell, {
-	              data: this.state.myTableData,
-	              field: 'firstname'
-	            }),
-	            width: 100
-	          }),
-	          _react2['default'].createElement(_fixedDataTable.Column, {
-	            header: _react2['default'].createElement(
-	              _fixedDataTable.Cell,
-	              null,
-	              'Last Name'
-	            ),
-	            cell: _react2['default'].createElement(TextCell, {
-	              data: this.state.myTableData,
-	              field: 'lastname'
-	            }),
-	            width: 100
-	          }),
-	          _react2['default'].createElement(_fixedDataTable.Column, {
-	            header: _react2['default'].createElement(
-	              _fixedDataTable.Cell,
-	              null,
-	              'Date of Birth'
-	            ),
-	            cell: _react2['default'].createElement(TextCell, {
-	              data: this.state.myTableData,
-	              field: 'dob'
-	            }),
-	            width: 100
-	          }),
-	          _react2['default'].createElement(_fixedDataTable.Column, {
-	            header: _react2['default'].createElement(
-	              _fixedDataTable.Cell,
-	              null,
-	              'Phone'
-	            ),
-	            cell: _react2['default'].createElement(TextCell, {
-	              data: this.state.myTableData,
-	              field: 'phone'
-	            }),
-	            width: 100
-	          }),
-	          _react2['default'].createElement(_fixedDataTable.Column, {
-	            header: _react2['default'].createElement(
-	              _fixedDataTable.Cell,
-	              null,
-	              'Email'
-	            ),
-	            cell: _react2['default'].createElement(EmailCell, {
-	              data: this.state.myTableData,
-	              field: 'email'
-	            }),
-	            width: 300
-	          }),
-	          _react2['default'].createElement(_fixedDataTable.Column, {
-	            header: _react2['default'].createElement(
-	              _fixedDataTable.Cell,
-	              null,
-	              'Notes'
-	            ),
-	            cell: _react2['default'].createElement(TextCell, {
-	              data: this.state.myTableData,
-	              field: 'notes'
-	            }),
-	            width: 300
-	          })
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return MyTable;
-	})(_react2['default'].Component);
-	
-	module.exports = MyTable;
+	exports['default'] = (0, _reactRedux.connect)(select)(MyTable);
+	module.exports = exports['default'];
 
 /***/ },
 /* 164 */
@@ -26761,863 +26769,22 @@
 
 	'use strict';
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _redux = __webpack_require__(215);
-	
-	var _reduxActionsJs = __webpack_require__(224);
-	
-	module.exports = _react2['default'].createClass({
-	  displayName: 'exports',
-	
-	  propTypes: {
-	    modalShow: _react2['default'].PropTypes.string.isRequired,
-	    handleToggle: _react2['default'].PropTypes.func.isRequired,
-	    state: _react2['default'].PropTypes.any.isRequired,
-	    dispatch: _react2['default'].PropTypes.func.isRequired
-	  },
-	  getInitialState: function getInitialState() {
-	    return {
-	      firstname: '',
-	      lastname: '',
-	      dob: '',
-	      phone: '',
-	      email: '',
-	      notes: ''
-	    };
-	  },
-	  clearInputs: function clearInputs() {
-	    this.setState({
-	      firstname: '',
-	      lastname: '',
-	      dob: '',
-	      phone: '',
-	      email: '',
-	      notes: ''
-	    });
-	  },
-	  handleFirstnameChange: function handleFirstnameChange(event) {
-	    this.setState({
-	      firstname: event.target.value
-	    });
-	  },
-	  handleLastnameChange: function handleLastnameChange(event) {
-	    this.setState({
-	      lastname: event.target.value
-	    });
-	  },
-	  handleDOBChange: function handleDOBChange(event) {
-	    this.setState({
-	      dob: event.target.value
-	    });
-	  },
-	  handlePhoneChange: function handlePhoneChange(event) {
-	    this.setState({
-	      phone: event.target.value
-	    });
-	  },
-	  handleEmailChange: function handleEmailChange(event) {
-	    this.setState({
-	      email: event.target.value
-	    });
-	  },
-	  handleNotesChange: function handleNotesChange(event) {
-	    this.setState({
-	      notes: event.target.value
-	    });
-	  },
-	  handleSubmit: function handleSubmit(e) {
-	    e.preventDefault();
-	    this.props.dispatch((0, _reduxActionsJs.addContact)(this.state));
-	    // TODO: send request to the server
-	    this.clearInputs();
-	    this.props.CloseModal();
-	  },
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'modal-show ' + this.props.modalShow },
-	      _react2['default'].createElement('div', { className: 'modal-backdrop' }),
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'modal' },
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'modal-header' },
-	          _react2['default'].createElement(
-	            'span',
-	            { className: 'title' },
-	            ' Contacts Keeper '
-	          ),
-	          _react2['default'].createElement(
-	            'span',
-	            { className: 'modal-close', onClick: this.props.handleToggle },
-	            '×'
-	          )
-	        ),
-	        _react2['default'].createElement(
-	          'form',
-	          { onSubmit: this.handleSubmit },
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'modal-body' },
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'form-group' },
-	              _react2['default'].createElement(
-	                'label',
-	                null,
-	                ' First Name '
-	              ),
-	              _react2['default'].createElement('input', { type: 'text', onChange: this.handleFirstnameChange, value: this.state.firstname })
-	            ),
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'form-group' },
-	              _react2['default'].createElement(
-	                'label',
-	                null,
-	                ' Last Name '
-	              ),
-	              _react2['default'].createElement('input', { type: 'text', onChange: this.handleLastnameChange, value: this.state.lastname })
-	            ),
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'form-group' },
-	              _react2['default'].createElement(
-	                'label',
-	                null,
-	                ' Date of Birth '
-	              ),
-	              _react2['default'].createElement('input', { type: 'text', onChange: this.handleDOBChange, value: this.state.dob })
-	            ),
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'form-group' },
-	              _react2['default'].createElement(
-	                'label',
-	                null,
-	                ' Phone Number '
-	              ),
-	              _react2['default'].createElement('input', { type: 'text', onChange: this.handlePhoneChange, value: this.state.phone })
-	            ),
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'form-group' },
-	              _react2['default'].createElement(
-	                'label',
-	                null,
-	                ' Email '
-	              ),
-	              _react2['default'].createElement('input', { type: 'text', onChange: this.handleEmailChange, value: this.state.email })
-	            ),
-	            _react2['default'].createElement(
-	              'div',
-	              { className: 'form-group wide' },
-	              _react2['default'].createElement(
-	                'label',
-	                null,
-	                ' Notes '
-	              ),
-	              _react2['default'].createElement('textarea', { onChange: this.handleNotesChange, value: this.state.notes })
-	            )
-	          ),
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'modal-footer' },
-	            _react2['default'].createElement('hr', null),
-	            _react2['default'].createElement(
-	              'button',
-	              { type: 'submit' },
-	              ' Save '
-	            )
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-/***/ },
-/* 215 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _createStore = __webpack_require__(216);
-	
-	var _createStore2 = _interopRequireDefault(_createStore);
-	
-	var _utilsCombineReducers = __webpack_require__(218);
-	
-	var _utilsCombineReducers2 = _interopRequireDefault(_utilsCombineReducers);
-	
-	var _utilsBindActionCreators = __webpack_require__(221);
-	
-	var _utilsBindActionCreators2 = _interopRequireDefault(_utilsBindActionCreators);
-	
-	var _utilsApplyMiddleware = __webpack_require__(222);
-	
-	var _utilsApplyMiddleware2 = _interopRequireDefault(_utilsApplyMiddleware);
-	
-	var _utilsCompose = __webpack_require__(223);
-	
-	var _utilsCompose2 = _interopRequireDefault(_utilsCompose);
-	
-	exports.createStore = _createStore2['default'];
-	exports.combineReducers = _utilsCombineReducers2['default'];
-	exports.bindActionCreators = _utilsBindActionCreators2['default'];
-	exports.applyMiddleware = _utilsApplyMiddleware2['default'];
-	exports.compose = _utilsCompose2['default'];
-
-/***/ },
-/* 216 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	exports['default'] = createStore;
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _utilsIsPlainObject = __webpack_require__(217);
-	
-	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
-	
-	/**
-	 * These are private action types reserved by Redux.
-	 * For any unknown actions, you must return the current state.
-	 * If the current state is undefined, you must return the initial state.
-	 * Do not reference these action types directly in your code.
-	 */
-	var ActionTypes = {
-	  INIT: '@@redux/INIT'
-	};
-	
-	exports.ActionTypes = ActionTypes;
-	/**
-	 * Creates a Redux store that holds the state tree.
-	 * The only way to change the data in the store is to call `dispatch()` on it.
-	 *
-	 * There should only be a single store in your app. To specify how different
-	 * parts of the state tree respond to actions, you may combine several reducers
-	 * into a single reducer function by using `combineReducers`.
-	 *
-	 * @param {Function} reducer A function that returns the next state tree, given
-	 * the current state tree and the action to handle.
-	 *
-	 * @param {any} [initialState] The initial state. You may optionally specify it
-	 * to hydrate the state from the server in universal apps, or to restore a
-	 * previously serialized user session.
-	 * If you use `combineReducers` to produce the root reducer function, this must be
-	 * an object with the same shape as `combineReducers` keys.
-	 *
-	 * @returns {Store} A Redux store that lets you read the state, dispatch actions
-	 * and subscribe to changes.
-	 */
-	
-	function createStore(reducer, initialState) {
-	  if (typeof reducer !== 'function') {
-	    throw new Error('Expected the reducer to be a function.');
-	  }
-	
-	  var currentReducer = reducer;
-	  var currentState = initialState;
-	  var listeners = [];
-	  var isDispatching = false;
-	
-	  /**
-	   * Reads the state tree managed by the store.
-	   *
-	   * @returns {any} The current state tree of your application.
-	   */
-	  function getState() {
-	    return currentState;
-	  }
-	
-	  /**
-	   * Adds a change listener. It will be called any time an action is dispatched,
-	   * and some part of the state tree may potentially have changed. You may then
-	   * call `getState()` to read the current state tree inside the callback.
-	   *
-	   * @param {Function} listener A callback to be invoked on every dispatch.
-	   * @returns {Function} A function to remove this change listener.
-	   */
-	  function subscribe(listener) {
-	    listeners.push(listener);
-	    var isSubscribed = true;
-	
-	    return function unsubscribe() {
-	      if (!isSubscribed) {
-	        return;
-	      }
-	
-	      isSubscribed = false;
-	      var index = listeners.indexOf(listener);
-	      listeners.splice(index, 1);
-	    };
-	  }
-	
-	  /**
-	   * Dispatches an action. It is the only way to trigger a state change.
-	   *
-	   * The `reducer` function, used to create the store, will be called with the
-	   * current state tree and the given `action`. Its return value will
-	   * be considered the **next** state of the tree, and the change listeners
-	   * will be notified.
-	   *
-	   * The base implementation only supports plain object actions. If you want to
-	   * dispatch a Promise, an Observable, a thunk, or something else, you need to
-	   * wrap your store creating function into the corresponding middleware. For
-	   * example, see the documentation for the `redux-thunk` package. Even the
-	   * middleware will eventually dispatch plain object actions using this method.
-	   *
-	   * @param {Object} action A plain object representing “what changed”. It is
-	   * a good idea to keep actions serializable so you can record and replay user
-	   * sessions, or use the time travelling `redux-devtools`. An action must have
-	   * a `type` property which may not be `undefined`. It is a good idea to use
-	   * string constants for action types.
-	   *
-	   * @returns {Object} For convenience, the same action object you dispatched.
-	   *
-	   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
-	   * return something else (for example, a Promise you can await).
-	   */
-	  function dispatch(action) {
-	    if (!_utilsIsPlainObject2['default'](action)) {
-	      throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
-	    }
-	
-	    if (typeof action.type === 'undefined') {
-	      throw new Error('Actions may not have an undefined "type" property. ' + 'Have you misspelled a constant?');
-	    }
-	
-	    if (isDispatching) {
-	      throw new Error('Reducers may not dispatch actions.');
-	    }
-	
-	    try {
-	      isDispatching = true;
-	      currentState = currentReducer(currentState, action);
-	    } finally {
-	      isDispatching = false;
-	    }
-	
-	    listeners.slice().forEach(function (listener) {
-	      return listener();
-	    });
-	    return action;
-	  }
-	
-	  /**
-	   * Replaces the reducer currently used by the store to calculate the state.
-	   *
-	   * You might need this if your app implements code splitting and you want to
-	   * load some of the reducers dynamically. You might also need this if you
-	   * implement a hot reloading mechanism for Redux.
-	   *
-	   * @param {Function} nextReducer The reducer for the store to use instead.
-	   * @returns {void}
-	   */
-	  function replaceReducer(nextReducer) {
-	    currentReducer = nextReducer;
-	    dispatch({ type: ActionTypes.INIT });
-	  }
-	
-	  // When a store is created, an "INIT" action is dispatched so that every
-	  // reducer returns their initial state. This effectively populates
-	  // the initial state tree.
-	  dispatch({ type: ActionTypes.INIT });
-	
-	  return {
-	    dispatch: dispatch,
-	    subscribe: subscribe,
-	    getState: getState,
-	    replaceReducer: replaceReducer
-	  };
-	}
-
-/***/ },
-/* 217 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	exports['default'] = isPlainObject;
-	var fnToString = function fnToString(fn) {
-	  return Function.prototype.toString.call(fn);
-	};
-	
-	/**
-	 * @param {any} obj The object to inspect.
-	 * @returns {boolean} True if the argument appears to be a plain object.
-	 */
-	
-	function isPlainObject(obj) {
-	  if (!obj || typeof obj !== 'object') {
-	    return false;
-	  }
-	
-	  var proto = typeof obj.constructor === 'function' ? Object.getPrototypeOf(obj) : Object.prototype;
-	
-	  if (proto === null) {
-	    return true;
-	  }
-	
-	  var constructor = proto.constructor;
-	
-	  return typeof constructor === 'function' && constructor instanceof constructor && fnToString(constructor) === fnToString(Object);
-	}
-	
-	module.exports = exports['default'];
-
-/***/ },
-/* 218 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-	
-	exports.__esModule = true;
-	exports['default'] = combineReducers;
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _createStore = __webpack_require__(216);
-	
-	var _utilsIsPlainObject = __webpack_require__(217);
-	
-	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
-	
-	var _utilsMapValues = __webpack_require__(219);
-	
-	var _utilsMapValues2 = _interopRequireDefault(_utilsMapValues);
-	
-	var _utilsPick = __webpack_require__(220);
-	
-	var _utilsPick2 = _interopRequireDefault(_utilsPick);
-	
-	/* eslint-disable no-console */
-	
-	function getUndefinedStateErrorMessage(key, action) {
-	  var actionType = action && action.type;
-	  var actionName = actionType && '"' + actionType.toString() + '"' || 'an action';
-	
-	  return 'Reducer "' + key + '" returned undefined handling ' + actionName + '. ' + 'To ignore an action, you must explicitly return the previous state.';
-	}
-	
-	function getUnexpectedStateKeyWarningMessage(inputState, outputState, action) {
-	  var reducerKeys = Object.keys(outputState);
-	  var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
-	
-	  if (reducerKeys.length === 0) {
-	    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
-	  }
-	
-	  if (!_utilsIsPlainObject2['default'](inputState)) {
-	    return 'The ' + argumentName + ' has unexpected type of "' + ({}).toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
-	  }
-	
-	  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
-	    return reducerKeys.indexOf(key) < 0;
-	  });
-	
-	  if (unexpectedKeys.length > 0) {
-	    return 'Unexpected ' + (unexpectedKeys.length > 1 ? 'keys' : 'key') + ' ' + ('"' + unexpectedKeys.join('", "') + '" found in ' + argumentName + '. ') + 'Expected to find one of the known reducer keys instead: ' + ('"' + reducerKeys.join('", "') + '". Unexpected keys will be ignored.');
-	  }
-	}
-	
-	function assertReducerSanity(reducers) {
-	  Object.keys(reducers).forEach(function (key) {
-	    var reducer = reducers[key];
-	    var initialState = reducer(undefined, { type: _createStore.ActionTypes.INIT });
-	
-	    if (typeof initialState === 'undefined') {
-	      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined.');
-	    }
-	
-	    var type = '@@redux/PROBE_UNKNOWN_ACTION_' + Math.random().toString(36).substring(7).split('').join('.');
-	    if (typeof reducer(undefined, { type: type }) === 'undefined') {
-	      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + _createStore.ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined.');
-	    }
-	  });
-	}
-	
-	/**
-	 * Turns an object whose values are different reducer functions, into a single
-	 * reducer function. It will call every child reducer, and gather their results
-	 * into a single state object, whose keys correspond to the keys of the passed
-	 * reducer functions.
-	 *
-	 * @param {Object} reducers An object whose values correspond to different
-	 * reducer functions that need to be combined into one. One handy way to obtain
-	 * it is to use ES6 `import * as reducers` syntax. The reducers may never return
-	 * undefined for any action. Instead, they should return their initial state
-	 * if the state passed to them was undefined, and the current state for any
-	 * unrecognized action.
-	 *
-	 * @returns {Function} A reducer function that invokes every reducer inside the
-	 * passed object, and builds a state object with the same shape.
-	 */
-	
-	function combineReducers(reducers) {
-	  var finalReducers = _utilsPick2['default'](reducers, function (val) {
-	    return typeof val === 'function';
-	  });
-	  var sanityError;
-	
-	  try {
-	    assertReducerSanity(finalReducers);
-	  } catch (e) {
-	    sanityError = e;
-	  }
-	
-	  var defaultState = _utilsMapValues2['default'](finalReducers, function () {
-	    return undefined;
-	  });
-	
-	  return function combination(state, action) {
-	    if (state === undefined) state = defaultState;
-	
-	    if (sanityError) {
-	      throw sanityError;
-	    }
-	
-	    var hasChanged = false;
-	    var finalState = _utilsMapValues2['default'](finalReducers, function (reducer, key) {
-	      var previousStateForKey = state[key];
-	      var nextStateForKey = reducer(previousStateForKey, action);
-	      if (typeof nextStateForKey === 'undefined') {
-	        var errorMessage = getUndefinedStateErrorMessage(key, action);
-	        throw new Error(errorMessage);
-	      }
-	      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
-	      return nextStateForKey;
-	    });
-	
-	    if (process.env.NODE_ENV !== 'production') {
-	      var warningMessage = getUnexpectedStateKeyWarningMessage(state, finalState, action);
-	      if (warningMessage) {
-	        console.error(warningMessage);
-	      }
-	    }
-	
-	    return hasChanged ? finalState : state;
-	  };
-	}
-	
-	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
-
-/***/ },
-/* 219 */
-/***/ function(module, exports) {
-
-	/**
-	 * Applies a function to every key-value pair inside an object.
-	 *
-	 * @param {Object} obj The source object.
-	 * @param {Function} fn The mapper function that receives the value and the key.
-	 * @returns {Object} A new object that contains the mapped values for the keys.
-	 */
-	"use strict";
-	
-	exports.__esModule = true;
-	exports["default"] = mapValues;
-	
-	function mapValues(obj, fn) {
-	  return Object.keys(obj).reduce(function (result, key) {
-	    result[key] = fn(obj[key], key);
-	    return result;
-	  }, {});
-	}
-	
-	module.exports = exports["default"];
-
-/***/ },
-/* 220 */
-/***/ function(module, exports) {
-
-	/**
-	 * Picks key-value pairs from an object where values satisfy a predicate.
-	 *
-	 * @param {Object} obj The object to pick from.
-	 * @param {Function} fn The predicate the values must satisfy to be copied.
-	 * @returns {Object} The object with the values that satisfied the predicate.
-	 */
-	"use strict";
-	
-	exports.__esModule = true;
-	exports["default"] = pick;
-	
-	function pick(obj, fn) {
-	  return Object.keys(obj).reduce(function (result, key) {
-	    if (fn(obj[key])) {
-	      result[key] = obj[key];
-	    }
-	    return result;
-	  }, {});
-	}
-	
-	module.exports = exports["default"];
-
-/***/ },
-/* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	exports['default'] = bindActionCreators;
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _utilsMapValues = __webpack_require__(219);
-	
-	var _utilsMapValues2 = _interopRequireDefault(_utilsMapValues);
-	
-	function bindActionCreator(actionCreator, dispatch) {
-	  return function () {
-	    return dispatch(actionCreator.apply(undefined, arguments));
-	  };
-	}
-	
-	/**
-	 * Turns an object whose values are action creators, into an object with the
-	 * same keys, but with every function wrapped into a `dispatch` call so they
-	 * may be invoked directly. This is just a convenience method, as you can call
-	 * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
-	 *
-	 * For convenience, you can also pass a single function as the first argument,
-	 * and get a function in return.
-	 *
-	 * @param {Function|Object} actionCreators An object whose values are action
-	 * creator functions. One handy way to obtain it is to use ES6 `import * as`
-	 * syntax. You may also pass a single function.
-	 *
-	 * @param {Function} dispatch The `dispatch` function available on your Redux
-	 * store.
-	 *
-	 * @returns {Function|Object} The object mimicking the original object, but with
-	 * every action creator wrapped into the `dispatch` call. If you passed a
-	 * function as `actionCreators`, the return value will also be a single
-	 * function.
-	 */
-	
-	function bindActionCreators(actionCreators, dispatch) {
-	  if (typeof actionCreators === 'function') {
-	    return bindActionCreator(actionCreators, dispatch);
-	  }
-	
-	  if (typeof actionCreators !== 'object' || actionCreators === null || actionCreators === undefined) {
-	    // eslint-disable-line no-eq-null
-	    throw new Error('bindActionCreators expected an object or a function, instead received ' + (actionCreators === null ? 'null' : typeof actionCreators) + '. ' + 'Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?');
-	  }
-	
-	  return _utilsMapValues2['default'](actionCreators, function (actionCreator) {
-	    return bindActionCreator(actionCreator, dispatch);
-	  });
-	}
-	
-	module.exports = exports['default'];
-
-/***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	
-	var _extends = Object.assign || function (target) {
-	  for (var i = 1; i < arguments.length; i++) {
-	    var source = arguments[i];for (var key in source) {
-	      if (Object.prototype.hasOwnProperty.call(source, key)) {
-	        target[key] = source[key];
-	      }
-	    }
-	  }return target;
-	};
-	
-	exports['default'] = applyMiddleware;
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _compose = __webpack_require__(223);
-	
-	var _compose2 = _interopRequireDefault(_compose);
-	
-	/**
-	 * Creates a store enhancer that applies middleware to the dispatch method
-	 * of the Redux store. This is handy for a variety of tasks, such as expressing
-	 * asynchronous actions in a concise manner, or logging every action payload.
-	 *
-	 * See `redux-thunk` package as an example of the Redux middleware.
-	 *
-	 * Because middleware is potentially asynchronous, this should be the first
-	 * store enhancer in the composition chain.
-	 *
-	 * Note that each middleware will be given the `dispatch` and `getState` functions
-	 * as named arguments.
-	 *
-	 * @param {...Function} middlewares The middleware chain to be applied.
-	 * @returns {Function} A store enhancer applying the middleware.
-	 */
-	
-	function applyMiddleware() {
-	  for (var _len = arguments.length, middlewares = Array(_len), _key = 0; _key < _len; _key++) {
-	    middlewares[_key] = arguments[_key];
-	  }
-	
-	  return function (next) {
-	    return function (reducer, initialState) {
-	      var store = next(reducer, initialState);
-	      var _dispatch = store.dispatch;
-	      var chain = [];
-	
-	      var middlewareAPI = {
-	        getState: store.getState,
-	        dispatch: function dispatch(action) {
-	          return _dispatch(action);
-	        }
-	      };
-	      chain = middlewares.map(function (middleware) {
-	        return middleware(middlewareAPI);
-	      });
-	      _dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);
-	
-	      return _extends({}, store, {
-	        dispatch: _dispatch
-	      });
-	    };
-	  };
-	}
-	
-	module.exports = exports['default'];
-
-/***/ },
-/* 223 */
-/***/ function(module, exports) {
-
-	/**
-	 * Composes single-argument functions from right to left.
-	 *
-	 * @param {...Function} funcs The functions to compose.
-	 * @returns {Function} A function obtained by composing functions from right to
-	 * left. For example, compose(f, g, h) is identical to arg => f(g(h(arg))).
-	 */
-	"use strict";
-	
-	exports.__esModule = true;
-	exports["default"] = compose;
-	
-	function compose() {
-	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
-	    funcs[_key] = arguments[_key];
-	  }
-	
-	  return function (arg) {
-	    return funcs.reduceRight(function (composed, f) {
-	      return f(composed);
-	    }, arg);
-	  };
-	}
-	
-	module.exports = exports["default"];
-
-/***/ },
-/* 224 */
-/***/ function(module, exports, __webpack_require__) {
-
-	//import actionTypes export Actions
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	exports.addContact = addContact;
-	exports.sortTable = sortTable;
-	exports.sortTable = sortTable;
-	exports.seedContacts = seedContacts;
-	
-	var _actiontypes = __webpack_require__(225);
-	
-	function addContact(contact) {
-	  return { type: _actiontypes.ADD_CONTACT, contact: contact };
-	}
-	
-	function sortTable(direction, field) {
-	  return { type: _actiontypes.SORT_TABLE, direction: direction, field: field };
-	}
-	
-	function sortTable(query) {
-	  return { type: _actiontypes.SEARCH_TABLE, query: query };
-	}
-	
-	function seedContacts(count) {
-	  return { type: _actiontypes.SEED_CONTACTS, count: count };
-	}
-
-/***/ },
-/* 225 */
-/***/ function(module, exports) {
-
-	//actionTypes
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	var ADD_CONTACT = 'ADD_CONTACT';
-	exports.ADD_CONTACT = ADD_CONTACT;
-	var SORT_TABLE = 'SORT_TABLE';
-	exports.SORT_TABLE = SORT_TABLE;
-	var SEARCH_TABLE = 'SEARCH_TABLE';
-	exports.SEARCH_TABLE = SEARCH_TABLE;
-	var SEED_CONTACTS = 'SEED_CONTACTS';
-	exports.SEED_CONTACTS = SEED_CONTACTS;
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
 	exports.__esModule = true;
 	
 	function _interopRequire(obj) {
 	  return obj && obj.__esModule ? obj['default'] : obj;
 	}
 	
-	var _componentsProvider = __webpack_require__(227);
+	var _componentsProvider = __webpack_require__(215);
 	
 	exports.Provider = _interopRequire(_componentsProvider);
 	
-	var _componentsConnect = __webpack_require__(229);
+	var _componentsConnect = __webpack_require__(217);
 	
 	exports.connect = _interopRequire(_componentsConnect);
 
 /***/ },
-/* 227 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27642,7 +26809,7 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _utilsStoreShape = __webpack_require__(228);
+	var _utilsStoreShape = __webpack_require__(216);
 	
 	var _utilsStoreShape2 = _interopRequireDefault(_utilsStoreShape);
 	
@@ -27701,7 +26868,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 228 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27718,7 +26885,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 229 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27757,27 +26924,27 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utilsStoreShape = __webpack_require__(228);
+	var _utilsStoreShape = __webpack_require__(216);
 	
 	var _utilsStoreShape2 = _interopRequireDefault(_utilsStoreShape);
 	
-	var _utilsShallowEqual = __webpack_require__(230);
+	var _utilsShallowEqual = __webpack_require__(218);
 	
 	var _utilsShallowEqual2 = _interopRequireDefault(_utilsShallowEqual);
 	
-	var _utilsIsPlainObject = __webpack_require__(231);
+	var _utilsIsPlainObject = __webpack_require__(219);
 	
 	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
 	
-	var _utilsWrapActionCreators = __webpack_require__(232);
+	var _utilsWrapActionCreators = __webpack_require__(220);
 	
 	var _utilsWrapActionCreators2 = _interopRequireDefault(_utilsWrapActionCreators);
 	
-	var _hoistNonReactStatics = __webpack_require__(233);
+	var _hoistNonReactStatics = __webpack_require__(230);
 	
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 	
-	var _invariant = __webpack_require__(234);
+	var _invariant = __webpack_require__(231);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -28006,7 +27173,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 230 */
+/* 218 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28040,7 +27207,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 231 */
+/* 219 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28075,7 +27242,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 232 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28083,7 +27250,7 @@
 	exports.__esModule = true;
 	exports['default'] = wrapActionCreators;
 	
-	var _redux = __webpack_require__(215);
+	var _redux = __webpack_require__(221);
 	
 	function wrapActionCreators(actionCreators) {
 	  return function (dispatch) {
@@ -28094,7 +27261,609 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 233 */
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _createStore = __webpack_require__(222);
+	
+	var _createStore2 = _interopRequireDefault(_createStore);
+	
+	var _utilsCombineReducers = __webpack_require__(224);
+	
+	var _utilsCombineReducers2 = _interopRequireDefault(_utilsCombineReducers);
+	
+	var _utilsBindActionCreators = __webpack_require__(227);
+	
+	var _utilsBindActionCreators2 = _interopRequireDefault(_utilsBindActionCreators);
+	
+	var _utilsApplyMiddleware = __webpack_require__(228);
+	
+	var _utilsApplyMiddleware2 = _interopRequireDefault(_utilsApplyMiddleware);
+	
+	var _utilsCompose = __webpack_require__(229);
+	
+	var _utilsCompose2 = _interopRequireDefault(_utilsCompose);
+	
+	exports.createStore = _createStore2['default'];
+	exports.combineReducers = _utilsCombineReducers2['default'];
+	exports.bindActionCreators = _utilsBindActionCreators2['default'];
+	exports.applyMiddleware = _utilsApplyMiddleware2['default'];
+	exports.compose = _utilsCompose2['default'];
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports['default'] = createStore;
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _utilsIsPlainObject = __webpack_require__(223);
+	
+	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
+	
+	/**
+	 * These are private action types reserved by Redux.
+	 * For any unknown actions, you must return the current state.
+	 * If the current state is undefined, you must return the initial state.
+	 * Do not reference these action types directly in your code.
+	 */
+	var ActionTypes = {
+	  INIT: '@@redux/INIT'
+	};
+	
+	exports.ActionTypes = ActionTypes;
+	/**
+	 * Creates a Redux store that holds the state tree.
+	 * The only way to change the data in the store is to call `dispatch()` on it.
+	 *
+	 * There should only be a single store in your app. To specify how different
+	 * parts of the state tree respond to actions, you may combine several reducers
+	 * into a single reducer function by using `combineReducers`.
+	 *
+	 * @param {Function} reducer A function that returns the next state tree, given
+	 * the current state tree and the action to handle.
+	 *
+	 * @param {any} [initialState] The initial state. You may optionally specify it
+	 * to hydrate the state from the server in universal apps, or to restore a
+	 * previously serialized user session.
+	 * If you use `combineReducers` to produce the root reducer function, this must be
+	 * an object with the same shape as `combineReducers` keys.
+	 *
+	 * @returns {Store} A Redux store that lets you read the state, dispatch actions
+	 * and subscribe to changes.
+	 */
+	
+	function createStore(reducer, initialState) {
+	  if (typeof reducer !== 'function') {
+	    throw new Error('Expected the reducer to be a function.');
+	  }
+	
+	  var currentReducer = reducer;
+	  var currentState = initialState;
+	  var listeners = [];
+	  var isDispatching = false;
+	
+	  /**
+	   * Reads the state tree managed by the store.
+	   *
+	   * @returns {any} The current state tree of your application.
+	   */
+	  function getState() {
+	    return currentState;
+	  }
+	
+	  /**
+	   * Adds a change listener. It will be called any time an action is dispatched,
+	   * and some part of the state tree may potentially have changed. You may then
+	   * call `getState()` to read the current state tree inside the callback.
+	   *
+	   * @param {Function} listener A callback to be invoked on every dispatch.
+	   * @returns {Function} A function to remove this change listener.
+	   */
+	  function subscribe(listener) {
+	    listeners.push(listener);
+	    var isSubscribed = true;
+	
+	    return function unsubscribe() {
+	      if (!isSubscribed) {
+	        return;
+	      }
+	
+	      isSubscribed = false;
+	      var index = listeners.indexOf(listener);
+	      listeners.splice(index, 1);
+	    };
+	  }
+	
+	  /**
+	   * Dispatches an action. It is the only way to trigger a state change.
+	   *
+	   * The `reducer` function, used to create the store, will be called with the
+	   * current state tree and the given `action`. Its return value will
+	   * be considered the **next** state of the tree, and the change listeners
+	   * will be notified.
+	   *
+	   * The base implementation only supports plain object actions. If you want to
+	   * dispatch a Promise, an Observable, a thunk, or something else, you need to
+	   * wrap your store creating function into the corresponding middleware. For
+	   * example, see the documentation for the `redux-thunk` package. Even the
+	   * middleware will eventually dispatch plain object actions using this method.
+	   *
+	   * @param {Object} action A plain object representing “what changed”. It is
+	   * a good idea to keep actions serializable so you can record and replay user
+	   * sessions, or use the time travelling `redux-devtools`. An action must have
+	   * a `type` property which may not be `undefined`. It is a good idea to use
+	   * string constants for action types.
+	   *
+	   * @returns {Object} For convenience, the same action object you dispatched.
+	   *
+	   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
+	   * return something else (for example, a Promise you can await).
+	   */
+	  function dispatch(action) {
+	    if (!_utilsIsPlainObject2['default'](action)) {
+	      throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
+	    }
+	
+	    if (typeof action.type === 'undefined') {
+	      throw new Error('Actions may not have an undefined "type" property. ' + 'Have you misspelled a constant?');
+	    }
+	
+	    if (isDispatching) {
+	      throw new Error('Reducers may not dispatch actions.');
+	    }
+	
+	    try {
+	      isDispatching = true;
+	      currentState = currentReducer(currentState, action);
+	    } finally {
+	      isDispatching = false;
+	    }
+	
+	    listeners.slice().forEach(function (listener) {
+	      return listener();
+	    });
+	    return action;
+	  }
+	
+	  /**
+	   * Replaces the reducer currently used by the store to calculate the state.
+	   *
+	   * You might need this if your app implements code splitting and you want to
+	   * load some of the reducers dynamically. You might also need this if you
+	   * implement a hot reloading mechanism for Redux.
+	   *
+	   * @param {Function} nextReducer The reducer for the store to use instead.
+	   * @returns {void}
+	   */
+	  function replaceReducer(nextReducer) {
+	    currentReducer = nextReducer;
+	    dispatch({ type: ActionTypes.INIT });
+	  }
+	
+	  // When a store is created, an "INIT" action is dispatched so that every
+	  // reducer returns their initial state. This effectively populates
+	  // the initial state tree.
+	  dispatch({ type: ActionTypes.INIT });
+	
+	  return {
+	    dispatch: dispatch,
+	    subscribe: subscribe,
+	    getState: getState,
+	    replaceReducer: replaceReducer
+	  };
+	}
+
+/***/ },
+/* 223 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports['default'] = isPlainObject;
+	var fnToString = function fnToString(fn) {
+	  return Function.prototype.toString.call(fn);
+	};
+	
+	/**
+	 * @param {any} obj The object to inspect.
+	 * @returns {boolean} True if the argument appears to be a plain object.
+	 */
+	
+	function isPlainObject(obj) {
+	  if (!obj || typeof obj !== 'object') {
+	    return false;
+	  }
+	
+	  var proto = typeof obj.constructor === 'function' ? Object.getPrototypeOf(obj) : Object.prototype;
+	
+	  if (proto === null) {
+	    return true;
+	  }
+	
+	  var constructor = proto.constructor;
+	
+	  return typeof constructor === 'function' && constructor instanceof constructor && fnToString(constructor) === fnToString(Object);
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	exports.__esModule = true;
+	exports['default'] = combineReducers;
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _createStore = __webpack_require__(222);
+	
+	var _utilsIsPlainObject = __webpack_require__(223);
+	
+	var _utilsIsPlainObject2 = _interopRequireDefault(_utilsIsPlainObject);
+	
+	var _utilsMapValues = __webpack_require__(225);
+	
+	var _utilsMapValues2 = _interopRequireDefault(_utilsMapValues);
+	
+	var _utilsPick = __webpack_require__(226);
+	
+	var _utilsPick2 = _interopRequireDefault(_utilsPick);
+	
+	/* eslint-disable no-console */
+	
+	function getUndefinedStateErrorMessage(key, action) {
+	  var actionType = action && action.type;
+	  var actionName = actionType && '"' + actionType.toString() + '"' || 'an action';
+	
+	  return 'Reducer "' + key + '" returned undefined handling ' + actionName + '. ' + 'To ignore an action, you must explicitly return the previous state.';
+	}
+	
+	function getUnexpectedStateKeyWarningMessage(inputState, outputState, action) {
+	  var reducerKeys = Object.keys(outputState);
+	  var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
+	
+	  if (reducerKeys.length === 0) {
+	    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
+	  }
+	
+	  if (!_utilsIsPlainObject2['default'](inputState)) {
+	    return 'The ' + argumentName + ' has unexpected type of "' + ({}).toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
+	  }
+	
+	  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
+	    return reducerKeys.indexOf(key) < 0;
+	  });
+	
+	  if (unexpectedKeys.length > 0) {
+	    return 'Unexpected ' + (unexpectedKeys.length > 1 ? 'keys' : 'key') + ' ' + ('"' + unexpectedKeys.join('", "') + '" found in ' + argumentName + '. ') + 'Expected to find one of the known reducer keys instead: ' + ('"' + reducerKeys.join('", "') + '". Unexpected keys will be ignored.');
+	  }
+	}
+	
+	function assertReducerSanity(reducers) {
+	  Object.keys(reducers).forEach(function (key) {
+	    var reducer = reducers[key];
+	    var initialState = reducer(undefined, { type: _createStore.ActionTypes.INIT });
+	
+	    if (typeof initialState === 'undefined') {
+	      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined.');
+	    }
+	
+	    var type = '@@redux/PROBE_UNKNOWN_ACTION_' + Math.random().toString(36).substring(7).split('').join('.');
+	    if (typeof reducer(undefined, { type: type }) === 'undefined') {
+	      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + _createStore.ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined.');
+	    }
+	  });
+	}
+	
+	/**
+	 * Turns an object whose values are different reducer functions, into a single
+	 * reducer function. It will call every child reducer, and gather their results
+	 * into a single state object, whose keys correspond to the keys of the passed
+	 * reducer functions.
+	 *
+	 * @param {Object} reducers An object whose values correspond to different
+	 * reducer functions that need to be combined into one. One handy way to obtain
+	 * it is to use ES6 `import * as reducers` syntax. The reducers may never return
+	 * undefined for any action. Instead, they should return their initial state
+	 * if the state passed to them was undefined, and the current state for any
+	 * unrecognized action.
+	 *
+	 * @returns {Function} A reducer function that invokes every reducer inside the
+	 * passed object, and builds a state object with the same shape.
+	 */
+	
+	function combineReducers(reducers) {
+	  var finalReducers = _utilsPick2['default'](reducers, function (val) {
+	    return typeof val === 'function';
+	  });
+	  var sanityError;
+	
+	  try {
+	    assertReducerSanity(finalReducers);
+	  } catch (e) {
+	    sanityError = e;
+	  }
+	
+	  var defaultState = _utilsMapValues2['default'](finalReducers, function () {
+	    return undefined;
+	  });
+	
+	  return function combination(state, action) {
+	    if (state === undefined) state = defaultState;
+	
+	    if (sanityError) {
+	      throw sanityError;
+	    }
+	
+	    var hasChanged = false;
+	    var finalState = _utilsMapValues2['default'](finalReducers, function (reducer, key) {
+	      var previousStateForKey = state[key];
+	      var nextStateForKey = reducer(previousStateForKey, action);
+	      if (typeof nextStateForKey === 'undefined') {
+	        var errorMessage = getUndefinedStateErrorMessage(key, action);
+	        throw new Error(errorMessage);
+	      }
+	      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
+	      return nextStateForKey;
+	    });
+	
+	    if (process.env.NODE_ENV !== 'production') {
+	      var warningMessage = getUnexpectedStateKeyWarningMessage(state, finalState, action);
+	      if (warningMessage) {
+	        console.error(warningMessage);
+	      }
+	    }
+	
+	    return hasChanged ? finalState : state;
+	  };
+	}
+	
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 225 */
+/***/ function(module, exports) {
+
+	/**
+	 * Applies a function to every key-value pair inside an object.
+	 *
+	 * @param {Object} obj The source object.
+	 * @param {Function} fn The mapper function that receives the value and the key.
+	 * @returns {Object} A new object that contains the mapped values for the keys.
+	 */
+	"use strict";
+	
+	exports.__esModule = true;
+	exports["default"] = mapValues;
+	
+	function mapValues(obj, fn) {
+	  return Object.keys(obj).reduce(function (result, key) {
+	    result[key] = fn(obj[key], key);
+	    return result;
+	  }, {});
+	}
+	
+	module.exports = exports["default"];
+
+/***/ },
+/* 226 */
+/***/ function(module, exports) {
+
+	/**
+	 * Picks key-value pairs from an object where values satisfy a predicate.
+	 *
+	 * @param {Object} obj The object to pick from.
+	 * @param {Function} fn The predicate the values must satisfy to be copied.
+	 * @returns {Object} The object with the values that satisfied the predicate.
+	 */
+	"use strict";
+	
+	exports.__esModule = true;
+	exports["default"] = pick;
+	
+	function pick(obj, fn) {
+	  return Object.keys(obj).reduce(function (result, key) {
+	    if (fn(obj[key])) {
+	      result[key] = obj[key];
+	    }
+	    return result;
+	  }, {});
+	}
+	
+	module.exports = exports["default"];
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	exports['default'] = bindActionCreators;
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _utilsMapValues = __webpack_require__(225);
+	
+	var _utilsMapValues2 = _interopRequireDefault(_utilsMapValues);
+	
+	function bindActionCreator(actionCreator, dispatch) {
+	  return function () {
+	    return dispatch(actionCreator.apply(undefined, arguments));
+	  };
+	}
+	
+	/**
+	 * Turns an object whose values are action creators, into an object with the
+	 * same keys, but with every function wrapped into a `dispatch` call so they
+	 * may be invoked directly. This is just a convenience method, as you can call
+	 * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
+	 *
+	 * For convenience, you can also pass a single function as the first argument,
+	 * and get a function in return.
+	 *
+	 * @param {Function|Object} actionCreators An object whose values are action
+	 * creator functions. One handy way to obtain it is to use ES6 `import * as`
+	 * syntax. You may also pass a single function.
+	 *
+	 * @param {Function} dispatch The `dispatch` function available on your Redux
+	 * store.
+	 *
+	 * @returns {Function|Object} The object mimicking the original object, but with
+	 * every action creator wrapped into the `dispatch` call. If you passed a
+	 * function as `actionCreators`, the return value will also be a single
+	 * function.
+	 */
+	
+	function bindActionCreators(actionCreators, dispatch) {
+	  if (typeof actionCreators === 'function') {
+	    return bindActionCreator(actionCreators, dispatch);
+	  }
+	
+	  if (typeof actionCreators !== 'object' || actionCreators === null || actionCreators === undefined) {
+	    // eslint-disable-line no-eq-null
+	    throw new Error('bindActionCreators expected an object or a function, instead received ' + (actionCreators === null ? 'null' : typeof actionCreators) + '. ' + 'Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?');
+	  }
+	
+	  return _utilsMapValues2['default'](actionCreators, function (actionCreator) {
+	    return bindActionCreator(actionCreator, dispatch);
+	  });
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }return target;
+	};
+	
+	exports['default'] = applyMiddleware;
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _compose = __webpack_require__(229);
+	
+	var _compose2 = _interopRequireDefault(_compose);
+	
+	/**
+	 * Creates a store enhancer that applies middleware to the dispatch method
+	 * of the Redux store. This is handy for a variety of tasks, such as expressing
+	 * asynchronous actions in a concise manner, or logging every action payload.
+	 *
+	 * See `redux-thunk` package as an example of the Redux middleware.
+	 *
+	 * Because middleware is potentially asynchronous, this should be the first
+	 * store enhancer in the composition chain.
+	 *
+	 * Note that each middleware will be given the `dispatch` and `getState` functions
+	 * as named arguments.
+	 *
+	 * @param {...Function} middlewares The middleware chain to be applied.
+	 * @returns {Function} A store enhancer applying the middleware.
+	 */
+	
+	function applyMiddleware() {
+	  for (var _len = arguments.length, middlewares = Array(_len), _key = 0; _key < _len; _key++) {
+	    middlewares[_key] = arguments[_key];
+	  }
+	
+	  return function (next) {
+	    return function (reducer, initialState) {
+	      var store = next(reducer, initialState);
+	      var _dispatch = store.dispatch;
+	      var chain = [];
+	
+	      var middlewareAPI = {
+	        getState: store.getState,
+	        dispatch: function dispatch(action) {
+	          return _dispatch(action);
+	        }
+	      };
+	      chain = middlewares.map(function (middleware) {
+	        return middleware(middlewareAPI);
+	      });
+	      _dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);
+	
+	      return _extends({}, store, {
+	        dispatch: _dispatch
+	      });
+	    };
+	  };
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 229 */
+/***/ function(module, exports) {
+
+	/**
+	 * Composes single-argument functions from right to left.
+	 *
+	 * @param {...Function} funcs The functions to compose.
+	 * @returns {Function} A function obtained by composing functions from right to
+	 * left. For example, compose(f, g, h) is identical to arg => f(g(h(arg))).
+	 */
+	"use strict";
+	
+	exports.__esModule = true;
+	exports["default"] = compose;
+	
+	function compose() {
+	  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
+	    funcs[_key] = arguments[_key];
+	  }
+	
+	  return function (arg) {
+	    return funcs.reduceRight(function (composed, f) {
+	      return f(composed);
+	    }, arg);
+	  };
+	}
+	
+	module.exports = exports["default"];
+
+/***/ },
+/* 230 */
 /***/ function(module, exports) {
 
 	/**
@@ -28135,7 +27904,7 @@
 	};
 
 /***/ },
-/* 234 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -28189,6 +27958,260 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(214);
+	
+	var _reduxActionsJs = __webpack_require__(233);
+	
+	// Which props do we want to inject, given the global state?
+	// Note: use https://github.com/faassen/reselect for better performance.
+	function select(state) {
+	  return {
+	    state: state
+	  };
+	}
+	
+	var ModalClass = _react2['default'].createClass({
+	  displayName: 'ModalClass',
+	
+	  propTypes: {
+	    modalShow: _react2['default'].PropTypes.string.isRequired,
+	    handleToggle: _react2['default'].PropTypes.func.isRequired,
+	    state: _react2['default'].PropTypes.any.isRequired,
+	    dispatch: _react2['default'].PropTypes.func.isRequired
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      firstname: '',
+	      lastname: '',
+	      dob: '',
+	      phone: '',
+	      email: '',
+	      notes: ''
+	    };
+	  },
+	  clearInputs: function clearInputs() {
+	    this.setState({
+	      firstname: '',
+	      lastname: '',
+	      dob: '',
+	      phone: '',
+	      email: '',
+	      notes: ''
+	    });
+	  },
+	  handleFirstnameChange: function handleFirstnameChange(event) {
+	    this.setState({
+	      firstname: event.target.value
+	    });
+	  },
+	  handleLastnameChange: function handleLastnameChange(event) {
+	    this.setState({
+	      lastname: event.target.value
+	    });
+	  },
+	  handleDOBChange: function handleDOBChange(event) {
+	    this.setState({
+	      dob: event.target.value
+	    });
+	  },
+	  handlePhoneChange: function handlePhoneChange(event) {
+	    this.setState({
+	      phone: event.target.value
+	    });
+	  },
+	  handleEmailChange: function handleEmailChange(event) {
+	    this.setState({
+	      email: event.target.value
+	    });
+	  },
+	  handleNotesChange: function handleNotesChange(event) {
+	    this.setState({
+	      notes: event.target.value
+	    });
+	  },
+	  handleSubmit: function handleSubmit(e) {
+	    e.preventDefault();
+	    this.props.dispatch((0, _reduxActionsJs.addContact)(this.state));
+	    // TODO: send request to the server
+	    this.clearInputs();
+	    this.props.handleToggle();
+	  },
+	  handleSeed: function handleSeed(e) {
+	    e.preventDefault();
+	    this.props.dispatch((0, _reduxActionsJs.seedContacts)(this.state));
+	    this.props.handleToggle();
+	  },
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'modal-show ' + this.props.modalShow },
+	      _react2['default'].createElement('div', { className: 'modal-backdrop' }),
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'modal' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'modal-header' },
+	          _react2['default'].createElement(
+	            'span',
+	            { className: 'title' },
+	            ' Contacts Keeper '
+	          ),
+	          _react2['default'].createElement(
+	            'span',
+	            { className: 'modal-close', onClick: this.props.handleToggle },
+	            '×'
+	          )
+	        ),
+	        _react2['default'].createElement(
+	          'form',
+	          { onSubmit: this.handleSubmit },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'modal-body' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _react2['default'].createElement(
+	                'label',
+	                null,
+	                ' First Name '
+	              ),
+	              _react2['default'].createElement('input', { type: 'text', onChange: this.handleFirstnameChange, value: this.state.firstname })
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _react2['default'].createElement(
+	                'label',
+	                null,
+	                ' Last Name '
+	              ),
+	              _react2['default'].createElement('input', { type: 'text', onChange: this.handleLastnameChange, value: this.state.lastname })
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _react2['default'].createElement(
+	                'label',
+	                null,
+	                ' Date of Birth '
+	              ),
+	              _react2['default'].createElement('input', { type: 'text', onChange: this.handleDOBChange, value: this.state.dob })
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _react2['default'].createElement(
+	                'label',
+	                null,
+	                ' Phone Number '
+	              ),
+	              _react2['default'].createElement('input', { type: 'text', onChange: this.handlePhoneChange, value: this.state.phone })
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'form-group' },
+	              _react2['default'].createElement(
+	                'label',
+	                null,
+	                ' Email '
+	              ),
+	              _react2['default'].createElement('input', { type: 'text', onChange: this.handleEmailChange, value: this.state.email })
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'form-group wide' },
+	              _react2['default'].createElement(
+	                'label',
+	                null,
+	                ' Notes '
+	              ),
+	              _react2['default'].createElement('textarea', { onChange: this.handleNotesChange, value: this.state.notes })
+	            )
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'modal-footer' },
+	            _react2['default'].createElement('hr', null),
+	            _react2['default'].createElement(
+	              'button',
+	              { type: 'submit' },
+	              ' Save '
+	            ),
+	            _react2['default'].createElement(
+	              'button',
+	              { onClick: this.handleSeed },
+	              ' Seed Contacts (adds 100+ contacts) '
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	exports['default'] = (0, _reactRedux.connect)(select)(ModalClass);
+	module.exports = exports['default'];
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//import actionTypes export Actions
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports.addContact = addContact;
+	exports.seedContacts = seedContacts;
+	
+	var _actiontypes = __webpack_require__(234);
+	
+	function addContact(contact) {
+	  return { type: _actiontypes.ADD_CONTACT, contact: contact };
+	}
+	
+	function seedContacts() {
+	  return { type: _actiontypes.SEED_CONTACTS };
+	}
+
+/***/ },
+/* 234 */
+/***/ function(module, exports) {
+
+	//actionTypes
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	var ADD_CONTACT = 'ADD_CONTACT';
+	exports.ADD_CONTACT = ADD_CONTACT;
+	var SORT_TABLE = 'SORT_TABLE';
+	exports.SORT_TABLE = SORT_TABLE;
+	var SEARCH_TABLE = 'SEARCH_TABLE';
+	exports.SEARCH_TABLE = SEARCH_TABLE;
+	var SEED_CONTACTS = 'SEED_CONTACTS';
+	exports.SEED_CONTACTS = SEED_CONTACTS;
+
+/***/ },
 /* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -28203,19 +28226,37 @@
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
 	
-	var _redux = __webpack_require__(215);
+	var _redux = __webpack_require__(221);
 	
 	var _redux2 = _interopRequireDefault(_redux);
 	
-	var _actiontypes = __webpack_require__(225);
+	var _dataSeed = __webpack_require__(236);
+	
+	var _dataSeed2 = _interopRequireDefault(_dataSeed);
+	
+	var _dataEmpty = __webpack_require__(237);
+	
+	var _dataEmpty2 = _interopRequireDefault(_dataEmpty);
+	
+	var _actiontypes = __webpack_require__(234);
 	
 	// this is an action reducer, a simple switch will determine the action type and return a new state object if the state changes
-	var DEFAULT_STATE = {
-	  contacts: [],
-	  sort: {
-	    direction: 'ASC',
-	    field: 'lastname'
-	  }
+	if (localStorage.getItem('state')) {
+	  var DEFAULT_STATE = {
+	    contacts: JSON.parse(localStorage.getItem('state')),
+	    sort: {
+	      direction: 'ASC',
+	      field: 'lastname'
+	    }
+	  };
+	} else {
+	  var DEFAULT_STATE = {
+	    contacts: _dataEmpty2['default'],
+	    sort: {
+	      direction: 'ASC',
+	      field: 'lastname'
+	    }
+	  };
 	};
 	
 	function contactReducer(state, action) {
@@ -28223,8 +28264,11 @@
 	
 	  switch (action.type) {
 	    case 'ADD_CONTACT':
-	      return [].concat(_toConsumableArray(state), [action.contact]);
+	      localStorage.setItem('state', JSON.stringify([action.contact].concat(_toConsumableArray(state))));
+	      return [action.contact].concat(_toConsumableArray(state));
 	    case 'SEED_CONTACTS':
+	      localStorage.setItem('state', JSON.stringify([].concat(_toConsumableArray(_dataSeed2['default']), _toConsumableArray(state))));
+	      return [].concat(_toConsumableArray(_dataSeed2['default']), _toConsumableArray(state));
 	    default:
 	      return state;
 	  }
@@ -28243,10 +28287,8 @@
 	
 	      if ('DESC' === action.direction) {};
 	
-	    case 'SEARCH_TABLE':
-	
-	    case 'SEED_CONTACTS':
-	
+	    //case 'SEARCH_TABLE':
+	    //case 'SEED_CONTACTS':
 	    default:
 	      return state;
 	  }
@@ -28254,15 +28296,39 @@
 
 /***/ },
 /* 236 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = [{ firstname: "Lilith", lastname: "Smith", dob: "05/19/1989", phone: "555-555-5555", email: "Lilith.Smith@fakegmail.com", notes: "N/A" }, { firstname: "Luke", lastname: "Johnson", dob: "05/19/1989", phone: "555-555-5555", email: "Luke.Johnson@fakegmail.com", notes: "N/A" }, { firstname: "Zane", lastname: "Miller", dob: "05/19/1989", phone: "555-555-5555", email: "Zane.Miller@fakegmail.com", notes: "N/A" }, { firstname: "Odette", lastname: "Brown", dob: "05/19/1989", phone: "555-555-5555", email: "Odette.Brown@fakegmail.com", notes: "N/A" }, { firstname: "Dana", lastname: "Jones", dob: "05/19/1989", phone: "555-555-5555", email: "Dana.Jones@fakegmail.com", notes: "N/A" }, { firstname: "Austin", lastname: "Williams", dob: "05/19/1989", phone: "555-555-5555", email: "Austin.Williams@fakegmail.com", notes: "N/A" }, { firstname: "Arcturis", lastname: "Davis", dob: "05/19/1989", phone: "555-555-5555", email: "Arcturis.Davis@fakegmail.com", notes: "N/A" }, { firstname: "Raven", lastname: "Anderson", dob: "05/19/1989", phone: "555-555-5555", email: "Raven.Anderson@fakegmail.com", notes: "N/A" }, { firstname: "Connor", lastname: "Wilson", dob: "05/19/1989", phone: "555-555-5555", email: "Connor.Wilson@fakegmail.com", notes: "N/A" }, { firstname: "Jocelyn", lastname: "Martin", dob: "05/19/1989", phone: "555-555-5555", email: "Jocelyn.Martin@fakegmail.com", notes: "N/A" }, { firstname: "Requiem", lastname: "Taylor", dob: "05/19/1989", phone: "555-555-5555", email: "Requiem.Taylor@fakegmail.com", notes: "N/A" }, { firstname: "Joseph", lastname: "Moore", dob: "05/19/1989", phone: "555-555-5555", email: "Joseph.Moore@fakegmail.com", notes: "N/A" }, { firstname: "Willow", lastname: "Thompson", dob: "05/19/1989", phone: "555-555-5555", email: "Willow.Thompson@fakegmail.com", notes: "N/A" }, { firstname: "Marissa", lastname: "White", dob: "05/19/1989", phone: "555-555-5555", email: "Marissa.White@fakegmail.com", notes: "N/A" }, { firstname: "Viola", lastname: "Clark", dob: "05/19/1989", phone: "555-555-5555", email: "Viola.Clark@fakegmail.com", notes: "N/A" }, { firstname: "Daisy", lastname: "Thomas", dob: "05/19/1989", phone: "555-555-5555", email: "Daisy.Thomas@fakegmail.com", notes: "N/A" }, { firstname: "Tia", lastname: "Hall", dob: "05/19/1989", phone: "555-555-5555", email: "Tia.Hall@fakegmail.com", notes: "N/A" }, { firstname: "Andrew", lastname: "Baker", dob: "05/19/1989", phone: "555-555-5555", email: "Andrew.Baker@fakegmail.com", notes: "N/A" }, { firstname: "Demetri", lastname: "Nelson", dob: "05/19/1989", phone: "555-555-5555", email: "Demetri.Nelson@fakegmail.com", notes: "N/A" }, { firstname: "Cassandra", lastname: "Allen", dob: "05/19/1989", phone: "555-555-5555", email: "Cassandra.Allen@fakegmail.com", notes: "N/A" }, { firstname: "Vienna", lastname: "Young", dob: "05/19/1989", phone: "555-555-5555", email: "Vienna.Young@fakegmail.com", notes: "N/A" }, { firstname: "Wolfgang", lastname: "Harris", dob: "05/19/1989", phone: "555-555-5555", email: "Wolfgang.Harris@fakegmail.com", notes: "N/A" }, { firstname: "Natalie", lastname: "King", dob: "05/19/1989", phone: "555-555-5555", email: "Natalie.King@fakegmail.com", notes: "N/A" }, { firstname: "Belle", lastname: "Adams", dob: "05/19/1989", phone: "555-555-5555", email: "Belle.Adams@fakegmail.com", notes: "N/A" }, { firstname: "Cadence", lastname: "Lewis", dob: "05/19/1989", phone: "555-555-5555", email: "Cadence.Lewis@fakegmail.com", notes: "N/A" }, { firstname: "Estelle", lastname: "Walker", dob: "05/19/1989", phone: "555-555-5555", email: "Estelle.Walker@fakegmail.com", notes: "N/A" }, { firstname: "Daniel", lastname: "Wright", dob: "05/19/1989", phone: "555-555-5555", email: "Daniel.Wright@fakegmail.com", notes: "N/A" }, { firstname: "Elijah", lastname: "Roberts", dob: "05/19/1989", phone: "555-555-5555", email: "Elijah.Roberts@fakegmail.com", notes: "N/A" }, { firstname: "Rose", lastname: "Campbell", dob: "05/19/1989", phone: "555-555-5555", email: "Rose.Campbell@fakegmail.com", notes: "N/A" }, { firstname: "Lillian", lastname: "Jackson", dob: "05/19/1989", phone: "555-555-5555", email: "Lillian.Jackson@fakegmail.com", notes: "N/A" }, { firstname: "Anthony", lastname: "Phillips", dob: "05/19/1989", phone: "555-555-5555", email: "Anthony.Phillips@fakegmail.com", notes: "N/A" }, { firstname: "Vixen", lastname: "Hill", dob: "05/19/1989", phone: "555-555-5555", email: "Vixen.Hill@fakegmail.com", notes: "N/A" }, { firstname: "Valetta", lastname: "Scott", dob: "05/19/1989", phone: "555-555-5555", email: "Valetta.Scott@fakegmail.com", notes: "N/A" }, { firstname: "Claire", lastname: "Robinson", dob: "05/19/1989", phone: "555-555-5555", email: "Claire.Robinson@fakegmail.com", notes: "N/A" }, { firstname: "Eli", lastname: "Murphy", dob: "05/19/1989", phone: "555-555-5555", email: "Eli.Murphy@fakegmail.com", notes: "N/A" }, { firstname: "Calypso", lastname: "Cook", dob: "05/19/1989", phone: "555-555-5555", email: "Calypso.Cook@fakegmail.com", notes: "N/A" }, { firstname: "David", lastname: "Green", dob: "05/19/1989", phone: "555-555-5555", email: "David.Green@fakegmail.com", notes: "N/A" }, { firstname: "Katie", lastname: "Lee", dob: "05/19/1989", phone: "555-555-5555", email: "Katie.Lee@fakegmail.com", notes: "N/A" }, { firstname: "Ruby", lastname: "Evans", dob: "05/19/1989", phone: "555-555-5555", email: "Ruby.Evans@fakegmail.com", notes: "N/A" }, { firstname: "Caspian", lastname: "Peterson", dob: "05/19/1989", phone: "555-555-5555", email: "Caspian.Peterson@fakegmail.com", notes: "N/A" }, { firstname: "Autumn", lastname: "Morris", dob: "05/19/1989", phone: "555-555-5555", email: "Autumn.Morris@fakegmail.com", notes: "N/A" }, { firstname: "Nicole", lastname: "Collins", dob: "05/19/1989", phone: "555-555-5555", email: "Nicole.Collins@fakegmail.com", notes: "N/A" }, { firstname: "Constance", lastname: "Mitchell", dob: "05/19/1989", phone: "555-555-5555", email: "Constance.Mitchell@fakegmail.com", notes: "N/A" }, { firstname: "Marie", lastname: "Parker", dob: "05/19/1989", phone: "555-555-5555", email: "Marie.Parker@fakegmail.com", notes: "N/A" }, { firstname: "Chloe", lastname: "Rogers", dob: "05/19/1989", phone: "555-555-5555", email: "Chloe.Rogers@fakegmail.com", notes: "N/A" }, { firstname: "Matthew", lastname: "Stewart", dob: "05/19/1989", phone: "555-555-5555", email: "Matthew.Stewart@fakegmail.com", notes: "N/A" }, { firstname: "Amy", lastname: "Turner", dob: "05/19/1989", phone: "555-555-5555", email: "Amy.Turner@fakegmail.com", notes: "N/A" }, { firstname: "Alice", lastname: "Wood", dob: "05/19/1989", phone: "555-555-5555", email: "Alice.Wood@fakegmail.com", notes: "N/A" }, { firstname: "Anne", lastname: "Carter", dob: "05/19/1989", phone: "555-555-5555", email: "Anne.Carter@fakegmail.com", notes: "N/A" }, { firstname: "Leonardo", lastname: "Morgan", dob: "05/19/1989", phone: "555-555-5555", email: "Leonardo.Morgan@fakegmail.com", notes: "N/A" }, { firstname: "Charlotte", lastname: "Cox", dob: "05/19/1989", phone: "555-555-5555", email: "Charlotte.Cox@fakegmail.com", notes: "N/A" }, { firstname: "Bradley", lastname: "Kelly", dob: "05/19/1989", phone: "555-555-5555", email: "Bradley.Kelly@fakegmail.com", notes: "N/A" }, { firstname: "Madelyn", lastname: "Edwards", dob: "05/19/1989", phone: "555-555-5555", email: "Madelyn.Edwards@fakegmail.com", notes: "N/A" }, { firstname: "Isaiah", lastname: "Bailey", dob: "05/19/1989", phone: "555-555-5555", email: "Isaiah.Bailey@fakegmail.com", notes: "N/A" }, { firstname: "Mia", lastname: "Ward", dob: "05/19/1989", phone: "555-555-5555", email: "Mia.Ward@fakegmail.com", notes: "N/A" }, { firstname: "Lewis", lastname: "Reed", dob: "05/19/1989", phone: "555-555-5555", email: "Lewis.Reed@fakegmail.com", notes: "N/A" }, { firstname: "Juniper", lastname: "Myers", dob: "05/19/1989", phone: "555-555-5555", email: "Juniper.Myers@fakegmail.com", notes: "N/A" }, { firstname: "Annelise", lastname: "Sullivan", dob: "05/19/1989", phone: "555-555-5555", email: "Annelise.Sullivan@fakegmail.com", notes: "N/A" }, { firstname: "Evelyn", lastname: "Cooper", dob: "05/19/1989", phone: "555-555-5555", email: "Evelyn.Cooper@fakegmail.com", notes: "N/A" }, { firstname: "India", lastname: "Bennett", dob: "05/19/1989", phone: "555-555-5555", email: "India.Bennett@fakegmail.com", notes: "N/A" }, { firstname: "Rochelle", lastname: "Hughes", dob: "05/19/1989", phone: "555-555-5555", email: "Rochelle.Hughes@fakegmail.com", notes: "N/A" }, { firstname: "Hannah", lastname: "Long", dob: "05/19/1989", phone: "555-555-5555", email: "Hannah.Long@fakegmail.com", notes: "N/A" }, { firstname: "Edward", lastname: "Fisher", dob: "05/19/1989", phone: "555-555-5555", email: "Edward.Fisher@fakegmail.com", notes: "N/A" }, { firstname: "Emily", lastname: "Price", dob: "05/19/1989", phone: "555-555-5555", email: "Emily.Price@fakegmail.com", notes: "N/A" }, { firstname: "Grace", lastname: "Russell", dob: "05/19/1989", phone: "555-555-5555", email: "Grace.Russell@fakegmail.com", notes: "N/A" }, { firstname: "Jayden", lastname: "Howard", dob: "05/19/1989", phone: "555-555-5555", email: "Jayden.Howard@fakegmail.com", notes: "N/A" }, { firstname: "Noah", lastname: "Gray", dob: "05/19/1989", phone: "555-555-5555", email: "Noah.Gray@fakegmail.com", notes: "N/A" }, { firstname: "Evie", lastname: "Bell", dob: "05/19/1989", phone: "555-555-5555", email: "Evie.Bell@fakegmail.com", notes: "N/A" }, { firstname: "William", lastname: "Watson", dob: "05/19/1989", phone: "555-555-5555", email: "William.Watson@fakegmail.com", notes: "N/A" }, { firstname: "Samuel", lastname: "Reynolds", dob: "05/19/1989", phone: "555-555-5555", email: "Samuel.Reynolds@fakegmail.com", notes: "N/A" }, { firstname: "Adam", lastname: "Foster", dob: "05/19/1989", phone: "555-555-5555", email: "Adam.Foster@fakegmail.com", notes: "N/A" }, { firstname: "Jasper", lastname: "Ross", dob: "05/19/1989", phone: "555-555-5555", email: "Jasper.Ross@fakegmail.com", notes: "N/A" }, { firstname: "Violet", lastname: "Olson", dob: "05/19/1989", phone: "555-555-5555", email: "Violet.Olson@fakegmail.com", notes: "N/A" }, { firstname: "Lucius", lastname: "Richardson", dob: "05/19/1989", phone: "555-555-5555", email: "Lucius.Richardson@fakegmail.com", notes: "N/A" }, { firstname: "Alexandria", lastname: "Snyder", dob: "05/19/1989", phone: "555-555-5555", email: "Alexandria.Snyder@fakegmail.com", notes: "N/A" }, { firstname: "Mae", lastname: "Powell", dob: "05/19/1989", phone: "555-555-5555", email: "Mae.Powell@fakegmail.com", notes: "N/A" }, { firstname: "Nicholas", lastname: "Stevens", dob: "05/19/1989", phone: "555-555-5555", email: "Nicholas.Stevens@fakegmail.com", notes: "N/A" }, { firstname: "June", lastname: "Brooks", dob: "05/19/1989", phone: "555-555-5555", email: "June.Brooks@fakegmail.com", notes: "N/A" }, { firstname: "Ember", lastname: "Perry", dob: "05/19/1989", phone: "555-555-5555", email: "Ember.Perry@fakegmail.com", notes: "N/A" }, { firstname: "Ivy", lastname: "West", dob: "05/19/1989", phone: "555-555-5555", email: "Ivy.West@fakegmail.com", notes: "N/A" }, { firstname: "Athena", lastname: "Cole", dob: "05/19/1989", phone: "555-555-5555", email: "Athena.Cole@fakegmail.com", notes: "N/A" }, { firstname: "Jamie", lastname: "Wagner", dob: "05/19/1989", phone: "555-555-5555", email: "Jamie.Wagner@fakegmail.com", notes: "N/A" }, { firstname: "Merlin", lastname: "Meyer", dob: "05/19/1989", phone: "555-555-5555", email: "Merlin.Meyer@fakegmail.com", notes: "N/A" }, { firstname: "Dorian", lastname: "Kennedy", dob: "05/19/1989", phone: "555-555-5555", email: "Dorian.Kennedy@fakegmail.com", notes: "N/A" }, { firstname: "Wednesday", lastname: "Barnes", dob: "05/19/1989", phone: "555-555-5555", email: "Wednesday.Barnes@fakegmail.com", notes: "N/A" }, { firstname: "Delilah", lastname: "Hamilton", dob: "05/19/1989", phone: "555-555-5555", email: "Delilah.Hamilton@fakegmail.com", notes: "N/A" }, { firstname: "Atlantis", lastname: "Graham", dob: "05/19/1989", phone: "555-555-5555", email: "Atlantis.Graham@fakegmail.com", notes: "N/A" }, { firstname: "Heidi", lastname: "Schmidt", dob: "05/19/1989", phone: "555-555-5555", email: "Heidi.Schmidt@fakegmail.com", notes: "N/A" }, { firstname: "Pagan", lastname: "Sanders", dob: "05/19/1989", phone: "555-555-5555", email: "Pagan.Sanders@fakegmail.com", notes: "N/A" }, { firstname: "Vincent", lastname: "Mcdonald", dob: "05/19/1989", phone: "555-555-5555", email: "Vincent.Mcdonald@fakegmail.com", notes: "N/A" }, { firstname: "Aaron", lastname: "Patterson", dob: "05/19/1989", phone: "555-555-5555", email: "Aaron.Patterson@fakegmail.com", notes: "N/A" }, { firstname: "Kate", lastname: "Murray", dob: "05/19/1989", phone: "555-555-5555", email: "Kate.Murray@fakegmail.com", notes: "N/A" }, { firstname: "Tahlia", lastname: "Gibson", dob: "05/19/1989", phone: "555-555-5555", email: "Tahlia.Gibson@fakegmail.com", notes: "N/A" }, { firstname: "Ella", lastname: "Wallace", dob: "05/19/1989", phone: "555-555-5555", email: "Ella.Wallace@fakegmail.com", notes: "N/A" }, { firstname: "Esmeralda", lastname: "Butler", dob: "05/19/1989", phone: "555-555-5555", email: "Esmeralda.Butler@fakegmail.com", notes: "N/A" }, { firstname: "Raine", lastname: "Hayes", dob: "05/19/1989", phone: "555-555-5555", email: "Raine.Hayes@fakegmail.com", notes: "N/A" }, { firstname: "Evan", lastname: "Burns", dob: "05/19/1989", phone: "555-555-5555", email: "Evan.Burns@fakegmail.com", notes: "N/A" }, { firstname: "Vincenzo", lastname: "Ellis", dob: "05/19/1989", phone: "555-555-5555", email: "Vincenzo.Ellis@fakegmail.com", notes: "N/A" }, { firstname: "Felicity", lastname: "Fox", dob: "05/19/1989", phone: "555-555-5555", email: "Felicity.Fox@fakegmail.com", notes: "N/A" }, { firstname: "Madeleine", lastname: "Stone", dob: "05/19/1989", phone: "555-555-5555", email: "Madeleine.Stone@fakegmail.com", notes: "N/A" }, { firstname: "Harrison", lastname: "Henderson", dob: "05/19/1989", phone: "555-555-5555", email: "Harrison.Henderson@fakegmail.com", notes: "N/A" }, { firstname: "Nora", lastname: "Wells", dob: "05/19/1989", phone: "555-555-5555", email: "Nora.Wells@fakegmail.com", notes: "N/A" }, { firstname: "Stella", lastname: "Ryan", dob: "05/19/1989", phone: "555-555-5555", email: "Stella.Ryan@fakegmail.com", notes: "N/A" }, { firstname: "Caroline", lastname: "Jenkins", dob: "05/19/1989", phone: "555-555-5555", email: "Caroline.Jenkins@fakegmail.com", notes: "N/A" }, { firstname: "John", lastname: "Hansen", dob: "05/19/1989", phone: "555-555-5555", email: "John.Hansen@fakegmail.com", notes: "N/A" }, { firstname: "Taylor", lastname: "Webb", dob: "05/19/1989", phone: "555-555-5555", email: "Taylor.Webb@fakegmail.com", notes: "N/A" }, { firstname: "Jamie", lastname: "James", dob: "05/19/1989", phone: "555-555-5555", email: "Jamie.James@fakegmail.com", notes: "N/A" }, { firstname: "Annabelle", lastname: "Jordan", dob: "05/19/1989", phone: "555-555-5555", email: "Annabelle.Jordan@fakegmail.com", notes: "N/A" }, { firstname: "Harvey", lastname: "Griffin", dob: "05/19/1989", phone: "555-555-5555", email: "Harvey.Griffin@fakegmail.com", notes: "N/A" }, { firstname: "Raine", lastname: "Hoffman", dob: "05/19/1989", phone: "555-555-5555", email: "Raine.Hoffman@fakegmail.com", notes: "N/A" }, { firstname: "Isla", lastname: "Harrison", dob: "05/19/1989", phone: "555-555-5555", email: "Isla.Harrison@fakegmail.com", notes: "N/A" }, { firstname: "Gerard", lastname: "Rose", dob: "05/19/1989", phone: "555-555-5555", email: "Gerard.Rose@fakegmail.com", notes: "N/A" }, { firstname: "Arcadia", lastname: "Simmons", dob: "05/19/1989", phone: "555-555-5555", email: "Arcadia.Simmons@fakegmail.com", notes: "N/A" }, { firstname: "Thomas", lastname: "Marshall", dob: "05/19/1989", phone: "555-555-5555", email: "Thomas.Marshall@fakegmail.com", notes: "N/A" }, { firstname: "Alistair", lastname: "Johnston", dob: "05/19/1989", phone: "555-555-5555", email: "Alistair.Johnston@fakegmail.com", notes: "N/A" }, { firstname: "Caitlin", lastname: "Owens", dob: "05/19/1989", phone: "555-555-5555", email: "Caitlin.Owens@fakegmail.com", notes: "N/A" }, { firstname: "Summer", lastname: "Nichols", dob: "05/19/1989", phone: "555-555-5555", email: "Summer.Nichols@fakegmail.com", notes: "N/A" }, { firstname: "Amity", lastname: "Weaver", dob: "05/19/1989", phone: "555-555-5555", email: "Amity.Weaver@fakegmail.com", notes: "N/A" }, { firstname: "Cedric", lastname: "Kelley", dob: "05/19/1989", phone: "555-555-5555", email: "Cedric.Kelley@fakegmail.com", notes: "N/A" }, { firstname: "Felix", lastname: "Mills", dob: "05/19/1989", phone: "555-555-5555", email: "Felix.Mills@fakegmail.com", notes: "N/A" }, { firstname: "Taylor", lastname: "Alexander", dob: "05/19/1989", phone: "555-555-5555", email: "Taylor.Alexander@fakegmail.com", notes: "N/A" }, { firstname: "Elena", lastname: "Tucker", dob: "05/19/1989", phone: "555-555-5555", email: "Elena.Tucker@fakegmail.com", notes: "N/A" }, { firstname: "Elise", lastname: "Palmer", dob: "05/19/1989", phone: "555-555-5555", email: "Elise.Palmer@fakegmail.com", notes: "N/A" }, { firstname: "Benjamin", lastname: "Rice", dob: "05/19/1989", phone: "555-555-5555", email: "Benjamin.Rice@fakegmail.com", notes: "N/A" }, { firstname: "Sienna", lastname: "Larson", dob: "05/19/1989", phone: "555-555-5555", email: "Sienna.Larson@fakegmail.com", notes: "N/A" }, { firstname: "Dina", lastname: "Simpson", dob: "05/19/1989", phone: "555-555-5555", email: "Dina.Simpson@fakegmail.com", notes: "N/A" }, { firstname: "Emery", lastname: "Shaw", dob: "05/19/1989", phone: "555-555-5555", email: "Emery.Shaw@fakegmail.com", notes: "N/A" }, { firstname: "Finch", lastname: "Carlson", dob: "05/19/1989", phone: "555-555-5555", email: "Finch.Carlson@fakegmail.com", notes: "N/A" }, { firstname: "Anastasia", lastname: "Hunt", dob: "05/19/1989", phone: "555-555-5555", email: "Anastasia.Hunt@fakegmail.com", notes: "N/A" }, { firstname: "Elsie", lastname: "Black", dob: "05/19/1989", phone: "555-555-5555", email: "Elsie.Black@fakegmail.com", notes: "N/A" }, { firstname: "Drake", lastname: "Ford", dob: "05/19/1989", phone: "555-555-5555", email: "Drake.Ford@fakegmail.com", notes: "N/A" }, { firstname: "Jessica", lastname: "Peters", dob: "05/19/1989", phone: "555-555-5555", email: "Jessica.Peters@fakegmail.com", notes: "N/A" }, { firstname: "Regulus", lastname: "Arnold", dob: "05/19/1989", phone: "555-555-5555", email: "Regulus.Arnold@fakegmail.com", notes: "N/A" }, { firstname: "Ivory", lastname: "Robertson", dob: "05/19/1989", phone: "555-555-5555", email: "Ivory.Robertson@fakegmail.com", notes: "N/A" }, { firstname: "Emmett", lastname: "Pierce", dob: "05/19/1989", phone: "555-555-5555", email: "Emmett.Pierce@fakegmail.com", notes: "N/A" }, { firstname: "Melody", lastname: "Dunn", dob: "05/19/1989", phone: "555-555-5555", email: "Melody.Dunn@fakegmail.com", notes: "N/A" }, { firstname: "Maria", lastname: "Crawford", dob: "05/19/1989", phone: "555-555-5555", email: "Maria.Crawford@fakegmail.com", notes: "N/A" }, { firstname: "Ashley", lastname: "Bryant", dob: "05/19/1989", phone: "555-555-5555", email: "Ashley.Bryant@fakegmail.com", notes: "N/A" }, { firstname: "Nolan", lastname: "Carpenter", dob: "05/19/1989", phone: "555-555-5555", email: "Nolan.Carpenter@fakegmail.com", notes: "N/A" }, { firstname: "Jared", lastname: "Porter", dob: "05/19/1989", phone: "555-555-5555", email: "Jared.Porter@fakegmail.com", notes: "N/A" }, { firstname: "Helena", lastname: "Carroll", dob: "05/19/1989", phone: "555-555-5555", email: "Helena.Carroll@fakegmail.com", notes: "N/A" }, { firstname: "Jupiter", lastname: "Elliott", dob: "05/19/1989", phone: "555-555-5555", email: "Jupiter.Elliott@fakegmail.com", notes: "N/A" }, { firstname: "Delores", lastname: "Freeman", dob: "05/19/1989", phone: "555-555-5555", email: "Delores.Freeman@fakegmail.com", notes: "N/A" }, { firstname: "Penelope", lastname: "Mason", dob: "05/19/1989", phone: "555-555-5555", email: "Penelope.Mason@fakegmail.com", notes: "N/A" }, { firstname: "Sarah", lastname: "Ferguson", dob: "05/19/1989", phone: "555-555-5555", email: "Sarah.Ferguson@fakegmail.com", notes: "N/A" }, { firstname: "Lydia", lastname: "Obrien", dob: "05/19/1989", phone: "555-555-5555", email: "Lydia.Obrien@fakegmail.com", notes: "N/A" }, { firstname: "Chelsea", lastname: "Hart", dob: "05/19/1989", phone: "555-555-5555", email: "Chelsea.Hart@fakegmail.com", notes: "N/A" }, { firstname: "Estella", lastname: "Coleman", dob: "05/19/1989", phone: "555-555-5555", email: "Estella.Coleman@fakegmail.com", notes: "N/A" }, { firstname: "Henry", lastname: "Warren", dob: "05/19/1989", phone: "555-555-5555", email: "Henry.Warren@fakegmail.com", notes: "N/A" }, { firstname: "Indigo", lastname: "Jensen", dob: "05/19/1989", phone: "555-555-5555", email: "Indigo.Jensen@fakegmail.com", notes: "N/A" }, { firstname: "Leo", lastname: "Gardner", dob: "05/19/1989", phone: "555-555-5555", email: "Leo.Gardner@fakegmail.com", notes: "N/A" }, { firstname: "Scott", lastname: "Hicks", dob: "05/19/1989", phone: "555-555-5555", email: "Scott.Hicks@fakegmail.com", notes: "N/A" }, { firstname: "Seraphina", lastname: "Stephens", dob: "05/19/1989", phone: "555-555-5555", email: "Seraphina.Stephens@fakegmail.com", notes: "N/A" }, { firstname: "Lucifer", lastname: "Henry", dob: "05/19/1989", phone: "555-555-5555", email: "Lucifer.Henry@fakegmail.com", notes: "N/A" }, { firstname: "Victoria", lastname: "Gordon", dob: "05/19/1989", phone: "555-555-5555", email: "Victoria.Gordon@fakegmail.com", notes: "N/A" }, { firstname: "Mitchell", lastname: "Burke", dob: "05/19/1989", phone: "555-555-5555", email: "Mitchell.Burke@fakegmail.com", notes: "N/A" }, { firstname: "Audrey", lastname: "Weber", dob: "05/19/1989", phone: "555-555-5555", email: "Audrey.Weber@fakegmail.com", notes: "N/A" }, { firstname: "Dakota", lastname: "Duncan", dob: "05/19/1989", phone: "555-555-5555", email: "Dakota.Duncan@fakegmail.com", notes: "N/A" }, { firstname: "Molly", lastname: "Richards", dob: "05/19/1989", phone: "555-555-5555", email: "Molly.Richards@fakegmail.com", notes: "N/A" }, { firstname: "Alexis", lastname: "Woods", dob: "05/19/1989", phone: "555-555-5555", email: "Alexis.Woods@fakegmail.com", notes: "N/A" }, { firstname: "Paige", lastname: "Hanson", dob: "05/19/1989", phone: "555-555-5555", email: "Paige.Hanson@fakegmail.com", notes: "N/A" }, { firstname: "Hazel", lastname: "Lane", dob: "05/19/1989", phone: "555-555-5555", email: "Hazel.Lane@fakegmail.com", notes: "N/A" }, { firstname: "Jackson", lastname: "Payne", dob: "05/19/1989", phone: "555-555-5555", email: "Jackson.Payne@fakegmail.com", notes: "N/A" }, { firstname: "Catherine", lastname: "Chapman", dob: "05/19/1989", phone: "555-555-5555", email: "Catherine.Chapman@fakegmail.com", notes: "N/A" }, { firstname: "November", lastname: "Schultz", dob: "05/19/1989", phone: "555-555-5555", email: "November.Schultz@fakegmail.com", notes: "N/A" }, { firstname: "Josephine", lastname: "Wheeler", dob: "05/19/1989", phone: "555-555-5555", email: "Josephine.Wheeler@fakegmail.com", notes: "N/A" }, { firstname: "Georgia", lastname: "Ray", dob: "05/19/1989", phone: "555-555-5555", email: "Georgia.Ray@fakegmail.com", notes: "N/A" }, { firstname: "Everett", lastname: "Cunningham", dob: "05/19/1989", phone: "555-555-5555", email: "Everett.Cunningham@fakegmail.com", notes: "N/A" }, { firstname: "Percival", lastname: "Walsh", dob: "05/19/1989", phone: "555-555-5555", email: "Percival.Walsh@fakegmail.com", notes: "N/A" }, { firstname: "Everly", lastname: "Knight", dob: "05/19/1989", phone: "555-555-5555", email: "Everly.Knight@fakegmail.com", notes: "N/A" }, { firstname: "Arabelle", lastname: "Bishop", dob: "05/19/1989", phone: "555-555-5555", email: "Arabelle.Bishop@fakegmail.com", notes: "N/A" }, { firstname: "Hailey", lastname: "Boyd", dob: "05/19/1989", phone: "555-555-5555", email: "Hailey.Boyd@fakegmail.com", notes: "N/A" }, { firstname: "Rosalie", lastname: "Armstrong", dob: "05/19/1989", phone: "555-555-5555", email: "Rosalie.Armstrong@fakegmail.com", notes: "N/A" }, { firstname: "Rachael", lastname: "Schneider", dob: "05/19/1989", phone: "555-555-5555", email: "Rachael.Schneider@fakegmail.com", notes: "N/A" }, { firstname: "Carina", lastname: "Hunter", dob: "05/19/1989", phone: "555-555-5555", email: "Carina.Hunter@fakegmail.com", notes: "N/A" }, { firstname: "Wolfe", lastname: "Spencer", dob: "05/19/1989", phone: "555-555-5555", email: "Wolfe.Spencer@fakegmail.com", notes: "N/A" }, { firstname: "Juliet", lastname: "Lynch", dob: "05/19/1989", phone: "555-555-5555", email: "Juliet.Lynch@fakegmail.com", notes: "N/A" }, { firstname: "Jane", lastname: "Morrison", dob: "05/19/1989", phone: "555-555-5555", email: "Jane.Morrison@fakegmail.com", notes: "N/A" }, { firstname: "Eden", lastname: "Riley", dob: "05/19/1989", phone: "555-555-5555", email: "Eden.Riley@fakegmail.com", notes: "N/A" }, { firstname: "Jacob", lastname: "Andrews", dob: "05/19/1989", phone: "555-555-5555", email: "Jacob.Andrews@fakegmail.com", notes: "N/A" }, { firstname: "Lycan", lastname: "Berry", dob: "05/19/1989", phone: "555-555-5555", email: "Lycan.Berry@fakegmail.com", notes: "N/A" }, { firstname: "Sophia", lastname: "Bradley", dob: "05/19/1989", phone: "555-555-5555", email: "Sophia.Bradley@fakegmail.com", notes: "N/A" }, { firstname: "Oliver", lastname: "Perkins", dob: "05/19/1989", phone: "555-555-5555", email: "Oliver.Perkins@fakegmail.com", notes: "N/A" }, { firstname: "Yasmin", lastname: "Hudson", dob: "05/19/1989", phone: "555-555-5555", email: "Yasmin.Hudson@fakegmail.com", notes: "N/A" }, { firstname: "Skye", lastname: "Welch", dob: "05/19/1989", phone: "555-555-5555", email: "Skye.Welch@fakegmail.com", notes: "N/A" }, { firstname: "Xyla", lastname: "Gilbert", dob: "05/19/1989", phone: "555-555-5555", email: "Xyla.Gilbert@fakegmail.com", notes: "N/A" }, { firstname: "Isabella", lastname: "Lawrence", dob: "05/19/1989", phone: "555-555-5555", email: "Isabella.Lawrence@fakegmail.com", notes: "N/A" }, { firstname: "Freya", lastname: "Howell", dob: "05/19/1989", phone: "555-555-5555", email: "Freya.Howell@fakegmail.com", notes: "N/A" }, { firstname: "Declan", lastname: "Walters", dob: "05/19/1989", phone: "555-555-5555", email: "Declan.Walters@fakegmail.com", notes: "N/A" }, { firstname: "Elle", lastname: "Holmes", dob: "05/19/1989", phone: "555-555-5555", email: "Elle.Holmes@fakegmail.com", notes: "N/A" }, { firstname: "Winter", lastname: "Williamson", dob: "05/19/1989", phone: "555-555-5555", email: "Winter.Williamson@fakegmail.com", notes: "N/A" }, { firstname: "Theodore", lastname: "Jacobs", dob: "05/19/1989", phone: "555-555-5555", email: "Theodore.Jacobs@fakegmail.com", notes: "N/A" }, { firstname: "Damien", lastname: "Davidson", dob: "05/19/1989", phone: "555-555-5555", email: "Damien.Davidson@fakegmail.com", notes: "N/A" }, { firstname: "Luther", lastname: "Lawson", dob: "05/19/1989", phone: "555-555-5555", email: "Luther.Lawson@fakegmail.com", notes: "N/A" }, { firstname: "Oscar", lastname: "Keller", dob: "05/19/1989", phone: "555-555-5555", email: "Oscar.Keller@fakegmail.com", notes: "N/A" }, { firstname: "Zara", lastname: "May", dob: "05/19/1989", phone: "555-555-5555", email: "Zara.May@fakegmail.com", notes: "N/A" }, { firstname: "Jade", lastname: "Dixon", dob: "05/19/1989", phone: "555-555-5555", email: "Jade.Dixon@fakegmail.com", notes: "N/A" }, { firstname: "Julian", lastname: "Day", dob: "05/19/1989", phone: "555-555-5555", email: "Julian.Day@fakegmail.com", notes: "N/A" }, { firstname: "Lucy", lastname: "Carr", dob: "05/19/1989", phone: "555-555-5555", email: "Lucy.Carr@fakegmail.com", notes: "N/A" }, { firstname: "Roman", lastname: "Dean", dob: "05/19/1989", phone: "555-555-5555", email: "Roman.Dean@fakegmail.com", notes: "N/A" }, { firstname: "Cassidy", lastname: "George", dob: "05/19/1989", phone: "555-555-5555", email: "Cassidy.George@fakegmail.com", notes: "N/A" }, { firstname: "Atticus", lastname: "Fowler", dob: "05/19/1989", phone: "555-555-5555", email: "Atticus.Fowler@fakegmail.com", notes: "N/A" }, { firstname: "Phoebe", lastname: "Beck", dob: "05/19/1989", phone: "555-555-5555", email: "Phoebe.Beck@fakegmail.com", notes: "N/A" }, { firstname: "Lucille", lastname: "Newman", dob: "05/19/1989", phone: "555-555-5555", email: "Lucille.Newman@fakegmail.com", notes: "N/A" }, { firstname: "Emerald", lastname: "Hawkins", dob: "05/19/1989", phone: "555-555-5555", email: "Emerald.Hawkins@fakegmail.com", notes: "N/A" }, { firstname: "Kayla", lastname: "Becker", dob: "05/19/1989", phone: "555-555-5555", email: "Kayla.Becker@fakegmail.com", notes: "N/A" }, { firstname: "Ava", lastname: "Bowman", dob: "05/19/1989", phone: "555-555-5555", email: "Ava.Bowman@fakegmail.com", notes: "N/A" }, { firstname: "Jude", lastname: "Greene", dob: "05/19/1989", phone: "555-555-5555", email: "Jude.Greene@fakegmail.com", notes: "N/A" }, { firstname: "Draco", lastname: "Harper", dob: "05/19/1989", phone: "555-555-5555", email: "Draco.Harper@fakegmail.com", notes: "N/A" }, { firstname: "Anna", lastname: "Brewer", dob: "05/19/1989", phone: "555-555-5555", email: "Anna.Brewer@fakegmail.com", notes: "N/A" }, { firstname: "Jacqueline", lastname: "Matthews", dob: "05/19/1989", phone: "555-555-5555", email: "Jacqueline.Matthews@fakegmail.com", notes: "N/A" }, { firstname: "Danielle", lastname: "Powers", dob: "05/19/1989", phone: "555-555-5555", email: "Danielle.Powers@fakegmail.com", notes: "N/A" }, { firstname: "Savannah", lastname: "Schwartz", dob: "05/19/1989", phone: "555-555-5555", email: "Savannah.Schwartz@fakegmail.com", notes: "N/A" }, { firstname: "Sapphire", lastname: "Willis", dob: "05/19/1989", phone: "555-555-5555", email: "Sapphire.Willis@fakegmail.com", notes: "N/A" }, { firstname: "Zephyr", lastname: "Fuller", dob: "05/19/1989", phone: "555-555-5555", email: "Zephyr.Fuller@fakegmail.com", notes: "N/A" }, { firstname: "Vander", lastname: "Barrett", dob: "05/19/1989", phone: "555-555-5555", email: "Vander.Barrett@fakegmail.com", notes: "N/A" }, { firstname: "Elizabeth", lastname: "Daniels", dob: "05/19/1989", phone: "555-555-5555", email: "Elizabeth.Daniels@fakegmail.com", notes: "N/A" }, { firstname: "Oceana", lastname: "Harvey", dob: "05/19/1989", phone: "555-555-5555", email: "Oceana.Harvey@fakegmail.com", notes: "N/A" }, { firstname: "Bridget", lastname: "Cohen", dob: "05/19/1989", phone: "555-555-5555", email: "Bridget.Cohen@fakegmail.com", notes: "N/A" }, { firstname: "Tegan", lastname: "Curtis", dob: "05/19/1989", phone: "555-555-5555", email: "Tegan.Curtis@fakegmail.com", notes: "N/A" }, { firstname: "Stryker", lastname: "Watkins", dob: "05/19/1989", phone: "555-555-5555", email: "Stryker.Watkins@fakegmail.com", notes: "N/A" }, { firstname: "Zoe", lastname: "Holland", dob: "05/19/1989", phone: "555-555-5555", email: "Zoe.Holland@fakegmail.com", notes: "N/A" }, { firstname: "Amadeus", lastname: "Montgomery", dob: "05/19/1989", phone: "555-555-5555", email: "Amadeus.Montgomery@fakegmail.com", notes: "N/A" }, { firstname: "Dakota", lastname: "Austin", dob: "05/19/1989", phone: "555-555-5555", email: "Dakota.Austin@fakegmail.com", notes: "N/A" }, { firstname: "Serena", lastname: "Grant", dob: "05/19/1989", phone: "555-555-5555", email: "Serena.Grant@fakegmail.com", notes: "N/A" }, { firstname: "Christopher", lastname: "Garrett", dob: "05/19/1989", phone: "555-555-5555", email: "Christopher.Garrett@fakegmail.com", notes: "N/A" }, { firstname: "Xander", lastname: "Erickson", dob: "05/19/1989", phone: "555-555-5555", email: "Xander.Erickson@fakegmail.com", notes: "N/A" }, { firstname: "Archimedes", lastname: "Lambert", dob: "05/19/1989", phone: "555-555-5555", email: "Archimedes.Lambert@fakegmail.com", notes: "N/A" }, { firstname: "Timothy", lastname: "Klein", dob: "05/19/1989", phone: "555-555-5555", email: "Timothy.Klein@fakegmail.com", notes: "N/A" }, { firstname: "Samantha", lastname: "Zimmerman", dob: "05/19/1989", phone: "555-555-5555", email: "Samantha.Zimmerman@fakegmail.com", notes: "N/A" }, { firstname: "Damon", lastname: "Wolfe", dob: "05/19/1989", phone: "555-555-5555", email: "Damon.Wolfe@fakegmail.com", notes: "N/A" }, { firstname: "Emmanuel", lastname: "Mccarthy", dob: "05/19/1989", phone: "555-555-5555", email: "Emmanuel.Mccarthy@fakegmail.com", notes: "N/A" }, { firstname: "Isis", lastname: "Stanley", dob: "05/19/1989", phone: "555-555-5555", email: "Isis.Stanley@fakegmail.com", notes: "N/A" }, { firstname: "Esme", lastname: "Barker", dob: "05/19/1989", phone: "555-555-5555", email: "Esme.Barker@fakegmail.com", notes: "N/A" }, { firstname: "Sara", lastname: "Burton", dob: "05/19/1989", phone: "555-555-5555", email: "Sara.Burton@fakegmail.com", notes: "N/A" }, { firstname: "Zachary", lastname: "Oliver", dob: "05/19/1989", phone: "555-555-5555", email: "Zachary.Oliver@fakegmail.com", notes: "N/A" }, { firstname: "Lavender", lastname: "Little", dob: "05/19/1989", phone: "555-555-5555", email: "Lavender.Little@fakegmail.com", notes: "N/A" }, { firstname: "Simon", lastname: "Lucas", dob: "05/19/1989", phone: "555-555-5555", email: "Simon.Lucas@fakegmail.com", notes: "N/A" }, { firstname: "Lachlan", lastname: "Leonard", dob: "05/19/1989", phone: "555-555-5555", email: "Lachlan.Leonard@fakegmail.com", notes: "N/A" }, { firstname: "Kyle", lastname: "Pearson", dob: "05/19/1989", phone: "555-555-5555", email: "Kyle.Pearson@fakegmail.com", notes: "N/A" }, { firstname: "Brianna", lastname: "Mccoy", dob: "05/19/1989", phone: "555-555-5555", email: "Brianna.Mccoy@fakegmail.com", notes: "N/A" }, { firstname: "Blake", lastname: "Craig", dob: "05/19/1989", phone: "555-555-5555", email: "Blake.Craig@fakegmail.com", notes: "N/A" }, { firstname: "Vivienne", lastname: "Barnett", dob: "05/19/1989", phone: "555-555-5555", email: "Vivienne.Barnett@fakegmail.com", notes: "N/A" }, { firstname: "Amber", lastname: "Bates", dob: "05/19/1989", phone: "555-555-5555", email: "Amber.Bates@fakegmail.com", notes: "N/A" }, { firstname: "James", lastname: "Gregory", dob: "05/19/1989", phone: "555-555-5555", email: "James.Gregory@fakegmail.com", notes: "N/A" }, { firstname: "Elektra", lastname: "Hopkins", dob: "05/19/1989", phone: "555-555-5555", email: "Elektra.Hopkins@fakegmail.com", notes: "N/A" }, { firstname: "Imogen", lastname: "Oconnor", dob: "05/19/1989", phone: "555-555-5555", email: "Imogen.Oconnor@fakegmail.com", notes: "N/A" }, { firstname: "Amaranth", lastname: "Warner", dob: "05/19/1989", phone: "555-555-5555", email: "Amaranth.Warner@fakegmail.com", notes: "N/A" }, { firstname: "Kelsey", lastname: "Swanson", dob: "05/19/1989", phone: "555-555-5555", email: "Kelsey.Swanson@fakegmail.com", notes: "N/A" }, { firstname: "Jasmine", lastname: "Norris", dob: "05/19/1989", phone: "555-555-5555", email: "Jasmine.Norris@fakegmail.com", notes: "N/A" }, { firstname: "Wulfric", lastname: "Hale", dob: "05/19/1989", phone: "555-555-5555", email: "Wulfric.Hale@fakegmail.com", notes: "N/A" }, { firstname: "Valerie", lastname: "Robbins", dob: "05/19/1989", phone: "555-555-5555", email: "Valerie.Robbins@fakegmail.com", notes: "N/A" }, { firstname: "Cooper", lastname: "Holt", dob: "05/19/1989", phone: "555-555-5555", email: "Cooper.Holt@fakegmail.com", notes: "N/A" }, { firstname: "Lily", lastname: "Rhodes", dob: "05/19/1989", phone: "555-555-5555", email: "Lily.Rhodes@fakegmail.com", notes: "N/A" }, { firstname: "Eric", lastname: "Christensen", dob: "05/19/1989", phone: "555-555-5555", email: "Eric.Christensen@fakegmail.com", notes: "N/A" }, { firstname: "Joshua", lastname: "Steele", dob: "05/19/1989", phone: "555-555-5555", email: "Joshua.Steele@fakegmail.com", notes: "N/A" }, { firstname: "Luna", lastname: "Mcdaniel", dob: "05/19/1989", phone: "555-555-5555", email: "Luna.Mcdaniel@fakegmail.com", notes: "N/A" }, { firstname: "Jordan", lastname: "Benson", dob: "05/19/1989", phone: "555-555-5555", email: "Jordan.Benson@fakegmail.com", notes: "N/A" }, { firstname: "Atreyu", lastname: "Mann", dob: "05/19/1989", phone: "555-555-5555", email: "Atreyu.Mann@fakegmail.com", notes: "N/A" }, { firstname: "Ryan", lastname: "Shelton", dob: "05/19/1989", phone: "555-555-5555", email: "Ryan.Shelton@fakegmail.com", notes: "N/A" }, { firstname: "Mina", lastname: "Lowe", dob: "05/19/1989", phone: "555-555-5555", email: "Mina.Lowe@fakegmail.com", notes: "N/A" }, { firstname: "Victor", lastname: "Higgins", dob: "05/19/1989", phone: "555-555-5555", email: "Victor.Higgins@fakegmail.com", notes: "N/A" }, { firstname: "Alexander", lastname: "Fischer", dob: "05/19/1989", phone: "555-555-5555", email: "Alexander.Fischer@fakegmail.com", notes: "N/A" }, { firstname: "December", lastname: "Doyle", dob: "05/19/1989", phone: "555-555-5555", email: "December.Doyle@fakegmail.com", notes: "N/A" }, { firstname: "Cora", lastname: "Griffith", dob: "05/19/1989", phone: "555-555-5555", email: "Cora.Griffith@fakegmail.com", notes: "N/A" }, { firstname: "Scarlett", lastname: "Reid", dob: "05/19/1989", phone: "555-555-5555", email: "Scarlett.Reid@fakegmail.com", notes: "N/A" }, { firstname: "Seth", lastname: "Franklin", dob: "05/19/1989", phone: "555-555-5555", email: "Seth.Franklin@fakegmail.com", notes: "N/A" }, { firstname: "Amelia", lastname: "Quinn", dob: "05/19/1989", phone: "555-555-5555", email: "Amelia.Quinn@fakegmail.com", notes: "N/A" }, { firstname: "Gabrielle", lastname: "Fleming", dob: "05/19/1989", phone: "555-555-5555", email: "Gabrielle.Fleming@fakegmail.com", notes: "N/A" }, { firstname: "Alexandra", lastname: "Sutton", dob: "05/19/1989", phone: "555-555-5555", email: "Alexandra.Sutton@fakegmail.com", notes: "N/A" }, { firstname: "Lyra", lastname: "Ball", dob: "05/19/1989", phone: "555-555-5555", email: "Lyra.Ball@fakegmail.com", notes: "N/A" }, { firstname: "Faye", lastname: "Mclaughlin", dob: "05/19/1989", phone: "555-555-5555", email: "Faye.Mclaughlin@fakegmail.com", notes: "N/A" }, { firstname: "Lucian", lastname: "Wolf", dob: "05/19/1989", phone: "555-555-5555", email: "Lucian.Wolf@fakegmail.com", notes: "N/A" }, { firstname: "Alchemy", lastname: "Sharp", dob: "05/19/1989", phone: "555-555-5555", email: "Alchemy.Sharp@fakegmail.com", notes: "N/A" }, { firstname: "Lacey", lastname: "Gallagher", dob: "05/19/1989", phone: "555-555-5555", email: "Lacey.Gallagher@fakegmail.com", notes: "N/A" }, { firstname: "Elliott", lastname: "Bowen", dob: "05/19/1989", phone: "555-555-5555", email: "Elliott.Bowen@fakegmail.com", notes: "N/A" }, { firstname: "Amethyst", lastname: "Fitzgerald", dob: "05/19/1989", phone: "555-555-5555", email: "Amethyst.Fitzgerald@fakegmail.com", notes: "N/A" }, { firstname: "Isaac", lastname: "Gross", dob: "05/19/1989", phone: "555-555-5555", email: "Isaac.Gross@fakegmail.com", notes: "N/A" }, { firstname: "Dexter", lastname: "Schroeder", dob: "05/19/1989", phone: "555-555-5555", email: "Dexter.Schroeder@fakegmail.com", notes: "N/A" }, { firstname: "Sierra", lastname: "Potter", dob: "05/19/1989", phone: "555-555-5555", email: "Sierra.Potter@fakegmail.com", notes: "N/A" }, { firstname: "Dominic", lastname: "Caldwell", dob: "05/19/1989", phone: "555-555-5555", email: "Dominic.Caldwell@fakegmail.com", notes: "N/A" }, { firstname: "Matilda", lastname: "Jennings", dob: "05/19/1989", phone: "555-555-5555", email: "Matilda.Jennings@fakegmail.com", notes: "N/A" }, { firstname: "Alexia", lastname: "Reeves", dob: "05/19/1989", phone: "555-555-5555", email: "Alexia.Reeves@fakegmail.com", notes: "N/A" }, { firstname: "Spencer", lastname: "Adkins", dob: "05/19/1989", phone: "555-555-5555", email: "Spencer.Adkins@fakegmail.com", notes: "N/A" }, { firstname: "Xavier", lastname: "Brady", dob: "05/19/1989", phone: "555-555-5555", email: "Xavier.Brady@fakegmail.com", notes: "N/A" }, { firstname: "Sebastian", lastname: "Lyons", dob: "05/19/1989", phone: "555-555-5555", email: "Sebastian.Lyons@fakegmail.com", notes: "N/A" }, { firstname: "Olivia", lastname: "Mullins", dob: "05/19/1989", phone: "555-555-5555", email: "Olivia.Mullins@fakegmail.com", notes: "N/A" }, { firstname: "Emma", lastname: "Wade", dob: "05/19/1989", phone: "555-555-5555", email: "Emma.Wade@fakegmail.com", notes: "N/A" }, { firstname: "Faith", lastname: "Baldwin", dob: "05/19/1989", phone: "555-555-5555", email: "Faith.Baldwin@fakegmail.com", notes: "N/A" }, { firstname: "Jordan", lastname: "Vaughn", dob: "05/19/1989", phone: "555-555-5555", email: "Jordan.Vaughn@fakegmail.com", notes: "N/A" }, { firstname: "Jonathon", lastname: "Mueller", dob: "05/19/1989", phone: "555-555-5555", email: "Jonathon.Mueller@fakegmail.com", notes: "N/A" }, { firstname: "Tamina", lastname: "Chambers", dob: "05/19/1989", phone: "555-555-5555", email: "Tamina.Chambers@fakegmail.com", notes: "N/A" }, { firstname: "Raina", lastname: "Page", dob: "05/19/1989", phone: "555-555-5555", email: "Raina.Page@fakegmail.com", notes: "N/A" }, { firstname: "Jerome", lastname: "Parks", dob: "05/19/1989", phone: "555-555-5555", email: "Jerome.Parks@fakegmail.com", notes: "N/A" }, { firstname: "Liam", lastname: "Blair", dob: "05/19/1989", phone: "555-555-5555", email: "Liam.Blair@fakegmail.com", notes: "N/A" }, { firstname: "Owen", lastname: "Fields", dob: "05/19/1989", phone: "555-555-5555", email: "Owen.Fields@fakegmail.com", notes: "N/A" }];
+	module.exports = exports["default"];
+
+/***/ },
+/* 237 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = [{ firstname: "", lastname: "", dob: "", phone: "", email: "", notes: "" }, { firstname: "", lastname: "", dob: "", phone: "", email: "", notes: "" }, { firstname: "", lastname: "", dob: "", phone: "", email: "", notes: "" }, { firstname: "", lastname: "", dob: "", phone: "", email: "", notes: "" }, { firstname: "", lastname: "", dob: "", phone: "", email: "", notes: "" }, { firstname: "", lastname: "", dob: "", phone: "", email: "", notes: "" }];
+	module.exports = exports["default"];
+
+/***/ },
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(237);
+	var content = __webpack_require__(239);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(239)(content, {});
+	var update = __webpack_require__(241)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -28279,13 +28345,13 @@
 	}
 
 /***/ },
-/* 237 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(238)();
+	exports = module.exports = __webpack_require__(240)();
 	// imports
-	exports.push([module.id, "@import url(//fonts.googleapis.com/css?family=Open+Sans);", ""]);
-	exports.push([module.id, "@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);", ""]);
+	exports.push([module.id, "@import url(http://fonts.googleapis.com/css?family=Open+Sans);", ""]);
+	exports.push([module.id, "@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);", ""]);
 	
 	// module
 	exports.push([module.id, "/*! normalize.scss v0.1.0 | MIT License | based on git.io/normalize */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS text size adjust after orientation change, without disabling\n *    user zoom.\n */\nhtml {\n  font-family: 'Open Sans', sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability when focused and also mouse hovered in all browsers.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome\n *    (include `-moz` to future-proof).\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  /* 2 */\n  box-sizing: content-box; }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/**\n * FixedDataTable v0.6.0\n *\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n */\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule Scrollbar\n *\n */\n/**\n * Scrollbars.\n */\n/* Touching the scroll-track directly makes the scroll-track bolder */\n.public_Scrollbar_main.public_Scrollbar_mainActive,\n.public_Scrollbar_main:hover {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.public_Scrollbar_mainOpaque,\n.public_Scrollbar_mainOpaque.public_Scrollbar_mainActive,\n.public_Scrollbar_mainOpaque:hover {\n  background-color: #fff; }\n\n.public_Scrollbar_face:after {\n  background-color: #c2c2c2; }\n\n.public_Scrollbar_main:hover .public_Scrollbar_face:after,\n.public_Scrollbar_mainActive .public_Scrollbar_face:after,\n.public_Scrollbar_faceActive:after {\n  background-color: #7d7d7d; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTable\n *\n */\n/**\n * Table.\n */\n.public_fixedDataTable_main {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_header,\n.public_fixedDataTable_hasBottomBorder {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_header .public_fixedDataTableCell_main {\n  font-weight: bold; }\n\n.public_fixedDataTable_header,\n.public_fixedDataTable_header .public_fixedDataTableCell_main {\n  background-color: #f6f7f8;\n  background-image: -webkit-linear-gradient(#fff, #efefef);\n  background-image: linear-gradient(#fff, #efefef); }\n\n.public_fixedDataTable_footer .public_fixedDataTableCell_main {\n  background-color: #f6f7f8;\n  border-color: #d3d3d3; }\n\n.public_fixedDataTable_topShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAF0lEQVR4AWPUkNeSBhHCjJoK2twgFisAFagCCp3pJlAAAAAASUVORK5CYII=) repeat-x; }\n\n.public_fixedDataTable_bottomShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAHElEQVQI12MwNjZmZdAT1+Nm0JDWEGZQk1GTBgAWkwIeAEp52AAAAABJRU5ErkJggg==) repeat-x; }\n\n.public_fixedDataTable_horizontalScrollbar .public_Scrollbar_mainHorizontal {\n  background-color: #fff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCell\n */\n/**\n * Table cell.\n */\n.public_fixedDataTableCell_main {\n  background-color: #fff;\n  border-color: #d3d3d3; }\n\n.public_fixedDataTableCell_highlighted {\n  background-color: #f4f4f4; }\n\n.public_fixedDataTableCell_cellContent {\n  padding: 8px; }\n\n.public_fixedDataTableCell_columnResizerKnob {\n  background-color: #0284ff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableColumnResizerLine\n *\n */\n/**\n * Column resizer line.\n */\n.public_fixedDataTableColumnResizerLine_main {\n  border-color: #0284ff; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableRow\n */\n/**\n * Table row.\n */\n.public_fixedDataTableRow_main {\n  background-color: #fff; }\n\n.public_fixedDataTableRow_highlighted,\n.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {\n  background-color: #f6f7f8; }\n\n.public_fixedDataTableRow_fixedColumnsDivider {\n  border-color: #d3d3d3; }\n\n.public_fixedDataTableRow_columnsShadow {\n  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==) repeat-y; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule ScrollbarLayout\n */\n.ScrollbarLayout_main {\n  box-sizing: border-box;\n  outline: none;\n  overflow: hidden;\n  position: absolute;\n  -webkit-transition-duration: 250ms;\n  transition-duration: 250ms;\n  -webkit-transition-timing-function: ease;\n  transition-timing-function: ease;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.ScrollbarLayout_mainVertical {\n  bottom: 0;\n  right: 0;\n  top: 0;\n  -webkit-transition-property: background-color width;\n  transition-property: background-color width;\n  width: 15px; }\n\n.ScrollbarLayout_mainVertical.public_Scrollbar_mainActive,\n.ScrollbarLayout_mainVertical:hover {\n  width: 17px; }\n\n.ScrollbarLayout_mainHorizontal {\n  bottom: 0;\n  height: 15px;\n  left: 0;\n  -webkit-transition-property: background-color height;\n  transition-property: background-color height; }\n\n/* Touching the scroll-track directly makes the scroll-track bolder */\n.ScrollbarLayout_mainHorizontal.public_Scrollbar_mainActive,\n.ScrollbarLayout_mainHorizontal:hover {\n  height: 17px; }\n\n.ScrollbarLayout_face {\n  left: 0;\n  overflow: hidden;\n  position: absolute;\n  z-index: 1; }\n\n/**\n * This selector renders the \"nub\" of the scrollface. The nub must\n * be rendered as pseudo-element so that it won't receive any UI events then\n * we can get the correct `event.offsetX` and `event.offsetY` from the\n * scrollface element while dragging it.\n */\n.ScrollbarLayout_face:after {\n  border-radius: 6px;\n  content: '';\n  display: block;\n  position: absolute;\n  -webkit-transition: background-color 250ms ease;\n  transition: background-color 250ms ease; }\n\n.ScrollbarLayout_faceHorizontal {\n  bottom: 0;\n  left: 0;\n  top: 0; }\n\n.ScrollbarLayout_faceHorizontal:after {\n  bottom: 4px;\n  left: 0;\n  top: 4px;\n  width: 100%; }\n\n.ScrollbarLayout_faceVertical {\n  left: 0;\n  right: 0;\n  top: 0; }\n\n.ScrollbarLayout_faceVertical:after {\n  height: 100%;\n  left: 4px;\n  right: 4px;\n  top: 0; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCellGroupLayout\n */\n.fixedDataTableCellGroupLayout_cellGroup {\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  left: 0;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  white-space: nowrap; }\n\n.fixedDataTableCellGroupLayout_cellGroup > .public_fixedDataTableCell_main {\n  display: inline-block;\n  vertical-align: top;\n  white-space: normal; }\n\n.fixedDataTableCellGroupLayout_cellGroupWrapper {\n  position: absolute;\n  top: 0; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableCellLayout\n */\n.fixedDataTableCellLayout_main {\n  border-right-style: solid;\n  border-right-width: 1px;\n  border-width: 0 1px 0 0;\n  box-sizing: border-box;\n  display: block;\n  overflow: hidden;\n  position: absolute;\n  white-space: normal; }\n\n.fixedDataTableCellLayout_lastChild {\n  border-width: 0 1px 1px 0; }\n\n.fixedDataTableCellLayout_alignRight {\n  text-align: right; }\n\n.fixedDataTableCellLayout_alignCenter {\n  text-align: center; }\n\n.fixedDataTableCellLayout_wrap1 {\n  display: table; }\n\n.fixedDataTableCellLayout_wrap2 {\n  display: table-row; }\n\n.fixedDataTableCellLayout_wrap3 {\n  display: table-cell;\n  vertical-align: middle; }\n\n.fixedDataTableCellLayout_columnResizerContainer {\n  position: absolute;\n  right: 0px;\n  width: 6px;\n  z-index: 1; }\n\n.fixedDataTableCellLayout_columnResizerContainer:hover {\n  cursor: ew-resize; }\n\n.fixedDataTableCellLayout_columnResizerContainer:hover .fixedDataTableCellLayout_columnResizerKnob {\n  visibility: visible; }\n\n.fixedDataTableCellLayout_columnResizerKnob {\n  position: absolute;\n  right: 0px;\n  visibility: hidden;\n  width: 4px; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableColumnResizerLineLayout\n */\n.fixedDataTableColumnResizerLineLayout_mouseArea {\n  cursor: ew-resize;\n  position: absolute;\n  right: -5px;\n  width: 12px; }\n\n.fixedDataTableColumnResizerLineLayout_main {\n  border-right-style: solid;\n  border-right-width: 1px;\n  box-sizing: border-box;\n  position: absolute;\n  z-index: 10; }\n\nbody[dir=\"rtl\"] .fixedDataTableColumnResizerLineLayout_main {\n  /* the resizer line is in the wrong position in RTL with no easy fix.\n   * Disabling is more useful than displaying it.\n   * #167 (github) should look into this and come up with a permanent fix.\n   */\n  display: none !important; }\n\n.fixedDataTableColumnResizerLineLayout_hiddenElem {\n  display: none !important; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableLayout\n */\n.fixedDataTableLayout_main {\n  border-style: solid;\n  border-width: 1px;\n  box-sizing: border-box;\n  overflow: hidden;\n  position: relative; }\n\n.fixedDataTableLayout_header,\n.fixedDataTableLayout_hasBottomBorder {\n  border-bottom-style: solid;\n  border-bottom-width: 1px; }\n\n.fixedDataTableLayout_footer .public_fixedDataTableCell_main {\n  border-top-style: solid;\n  border-top-width: 1px; }\n\n.fixedDataTableLayout_topShadow,\n.fixedDataTableLayout_bottomShadow {\n  height: 4px;\n  left: 0;\n  position: absolute;\n  right: 0;\n  z-index: 1; }\n\n.fixedDataTableLayout_bottomShadow {\n  margin-top: -4px; }\n\n.fixedDataTableLayout_rowsContainer {\n  overflow: hidden;\n  position: relative; }\n\n.fixedDataTableLayout_horizontalScrollbar {\n  bottom: 0;\n  position: absolute; }\n\n/**\n * Copyright (c) 2015, Facebook, Inc.\n * All rights reserved.\n *\n * This source code is licensed under the BSD-style license found in the\n * LICENSE file in the root directory of this source tree. An additional grant\n * of patent rights can be found in the PATENTS file in the same directory.\n *\n * @providesModule fixedDataTableRowLayout\n */\n.fixedDataTableRowLayout_main {\n  box-sizing: border-box;\n  overflow: hidden;\n  position: absolute;\n  top: 0; }\n\n.fixedDataTableRowLayout_body {\n  left: 0;\n  position: absolute;\n  top: 0; }\n\n.fixedDataTableRowLayout_fixedColumnsDivider {\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  border-left-style: solid;\n  border-left-width: 1px;\n  left: 0;\n  position: absolute;\n  top: 0;\n  width: 0; }\n\n.fixedDataTableRowLayout_columnsShadow {\n  width: 4px; }\n\n.fixedDataTableRowLayout_rowWrapper {\n  position: absolute;\n  top: 0; }\n\nhtml, body, .page {\n  height: 100%;\n  margin: 0; }\n\n.page-wrap {\n  min-height: 100%;\n  margin-bottom: -50px; }\n\n.page-wrap:after {\n  content: \"\";\n  display: block;\n  height: 40px; }\n\n.footer {\n  width: 100%;\n  height: 40px;\n  position: relative;\n  margin: 0px; }\n  .footer hr {\n    width: 90%;\n    left: 5%;\n    border: 1px solid #e7e7e7; }\n\n.header {\n  background-color: #f58025;\n  color: #fff;\n  width: 100%;\n  padding: 25px 0;\n  margin: 0;\n  border-bottom: 15px solid #e7e7e7; }\n  .header .title {\n    margin-left: 30px; }\n\n.modal-show {\n  display: block; }\n  .modal-show.hide {\n    display: none; }\n\n.modal-backdrop {\n  background-color: rgba(0, 0, 0, 0.7);\n  z-index: 20;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0; }\n\n.modal {\n  z-index: 30;\n  position: absolute;\n  top: 15%;\n  left: 25%;\n  background: #fff;\n  width: 50%;\n  margin-bottom: 40px; }\n  .modal .form-group {\n    width: 50%;\n    float: left;\n    padding: 15px 0; }\n    .modal .form-group label {\n      font-size: 10pt;\n      margin-left: 10%; }\n    .modal .form-group.wide {\n      width: 100%; }\n      .modal .form-group.wide label {\n        margin-left: 5%; }\n  .modal input {\n    height: 30px;\n    width: 80%;\n    background: #fff;\n    border: 1px solid black;\n    font-size: 10pt;\n    float: left;\n    margin-left: 10%;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px; }\n  .modal textarea {\n    border: 1px solid black;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    font-size: 10pt;\n    float: left;\n    width: 90%;\n    margin-left: 5%; }\n  .modal .modal-header, .modal .modal-body, .modal .modal-footer {\n    width: 100%;\n    float: left; }\n  .modal .modal-header {\n    background-color: #216fb5;\n    color: #fff;\n    padding: 25px 0;\n    margin: 0; }\n    .modal .modal-header .title {\n      margin-left: 30px; }\n    .modal .modal-header .modal-close {\n      color: #f58025;\n      background-color: #fff;\n      border-radius: 100%;\n      float: right;\n      width: .8em;\n      height: .8em;\n      margin-right: 30px;\n      cursor: pointer;\n      line-height: .8em;\n      font-size: 1.3em;\n      text-align: center;\n      -webkit-transition: background-color .55s ease;\n      -moz-transition: background-color .55s ease;\n      -ms-transition: background-color .55s ease;\n      -o-transition: background-color .55s ease;\n      transition: background-color .55s ease; }\n      .modal .modal-header .modal-close:hover {\n        background-color: #e7e7e7; }\n  .modal .modal-footer hr {\n    width: 100%;\n    border: 1px solid #e7e7e7;\n    box-sizing: border-box; }\n  .modal .modal-footer button {\n    float: right;\n    margin: 15px 5%;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    border: none;\n    padding: 5px 15px;\n    background: #676767;\n    height: 30px;\n    font-size: 10pt;\n    outline: none;\n    color: #fff;\n    -webkit-transition: background-color .55s ease;\n    -moz-transition: background-color .55s ease;\n    -ms-transition: background-color .55s ease;\n    -o-transition: background-color .55s ease;\n    transition: background-color .55s ease; }\n    .modal .modal-footer button:hover {\n      background: #4e4e4e; }\n\n.search {\n  overflow: hidden;\n  width: 300px;\n  vertical-align: middle;\n  white-space: nowrap;\n  margin: 50px 0 50px 80px;\n  float: left; }\n  .search .search-input {\n    width: 300px;\n    height: 30px;\n    background: #fff;\n    border: 1px solid black;\n    font-size: 10pt;\n    float: left;\n    padding-left: 10px;\n    -webkit-border-radius: 3px;\n    -moz-border-radius: 3px;\n    border-radius: 3px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box; }\n  .search .right-button {\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -webkit-border-top-right-radius: 3px;\n    -webkit-border-bottom-right-radius: 3px;\n    -moz-border-radius-topright: 3px;\n    -moz-border-radius-bottomright: 3px;\n    border-top-right-radius: 3px;\n    border-bottom-right-radius: 3px;\n    border: none;\n    background: #216fb5;\n    height: 30px;\n    width: 45px;\n    color: #fff;\n    font-size: 10pt;\n    top: 0;\n    outline: none;\n    opacity: 1;\n    margin-left: -45px; }\n    .search .right-button:hover {\n      background: #113a5f; }\n\n.modal-active .right-button, .modal-active .right-button:hover {\n  background: #fff;\n  color: #e7e7e7;\n  border: 1px solid #000;\n  border-left: none; }\n\n.modal-button {\n  -webkit-border-radius: 3px;\n  -moz-border-radius: 3px;\n  border-radius: 3px;\n  border: none;\n  padding: 5px 15px;\n  background: #216fb5;\n  height: 30px;\n  font-size: 10pt;\n  outline: none;\n  color: #fff;\n  margin: 50px 80px 50px 0;\n  float: right;\n  clear: none; }\n  .modal-button:hover {\n    background: #113a5f; }\n\n.modal-active .modal-button, .modal-active .modal-button:hover {\n  background: #f58025; }\n\n.table {\n  width: 1000px;\n  margin: 30px auto; }\n  .table .public_fixedDataTable_header, .table .public_fixedDataTable_header .public_fixedDataTableCell_main {\n    background-image: none;\n    background-color: #676767;\n    color: white;\n    font-size: .8em; }\n  .table .public_fixedDataTableCell_cellContent {\n    font-size: .8em; }\n", ""]);
@@ -28294,7 +28360,7 @@
 
 
 /***/ },
-/* 238 */
+/* 240 */
 /***/ function(module, exports) {
 
 	/*
@@ -28349,7 +28415,7 @@
 	};
 
 /***/ },
-/* 239 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

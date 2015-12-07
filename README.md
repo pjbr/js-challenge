@@ -46,4 +46,31 @@ The challenge requirements seem vague, am I missing something?
 - This prompt is designed to be open-ended, so feel free to be creative in the areas that lack strict guidelines.
 
 # Running My App (README.md)
---- Insert your readme here ---
+
+This project is built with webpack and bundled to be dserved statically. Build files are present in the /dist folder and could be served directly by a static file server (*nginx*) or cdn (*cloudfront*). Serving from the node process would not be performant compared to static assets.
+
+## Install
+make sure you have gulp installed globally and run npm install
+
+```
+  $ npm install -d
+  $ npm install gulp -g
+```
+### To build deployable assets:
+```
+  $ gulp build
+```
+this will build the assets in dist from /app
+### To run dev server assets:
+```
+  $ gulp serve
+```
+and navigate to http://localhost:3000/
+browsersync will reload your window on change.
+
+# In the app
+
+Hit the '+Contacts Keeper' button to add a contact via modal. Also from the modal you have the option to seed the contacts with 296 contacts from a json object.
+
+
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addContact} from '../redux/actions.js';
+import {addContact, seedContacts} from '../redux/actions.js';
 
 // Which props do we want to inject, given the global state?
 // Note: use https://github.com/faassen/reselect for better performance.
@@ -74,6 +74,11 @@ const ModalClass = React.createClass({
     this.clearInputs();
     this.props.handleToggle();
   },
+  handleSeed: function(e) {
+    e.preventDefault();
+    this.props.dispatch(seedContacts(this.state));
+    this.props.handleToggle();
+  },
   render() {
     return (
       <div className={'modal-show '+this.props.modalShow}>
@@ -116,6 +121,7 @@ const ModalClass = React.createClass({
             <div className='modal-footer'>
               <hr/>
               <button type='submit'> Save </button>
+              <button onClick={this.handleSeed}> Seed Contacts (adds 100+ contacts) </button>
             </div>
           </form>
         </div>

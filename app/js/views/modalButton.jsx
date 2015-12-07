@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 module.exports = React.createClass({
   propTypes: {
@@ -7,7 +7,7 @@ module.exports = React.createClass({
   render() {
     return (
       <button type="button" className='modal-button' title='Add Contact' onClick={this.props.handleClick}>
-        <span className='fa fa-plus-circle'></span>  &nbsp;Contacts Keeper
+        <span className='fa fa-plus-circle'></span>&nbsp;Contacts Keeper
       </button>
     );
   },

@@ -1,23 +1,47 @@
 import redux from 'redux';
-import {ADD_CONTACT, SORT_TABLE, SEARCH_TABLE, SEED_CONTACTS} from './actiontypes';
+import seed from '../data/seed';
+import empty from '../data/empty';
+import {ADD_CONTACT, SEED_CONTACTS} from './actiontypes';
 
 // this is an action reducer, a simple switch will determine the action type and return a new state object if the state changes
-const DEFAULT_STATE = {
-  contacts: [],
-  sort: {
-    direction: 'ASC',
-    field: 'lastname'
+if(localStorage.getItem('state')){
+  var DEFAULT_STATE  = {
+    contacts: JSON.parse(localStorage.getItem('state')),
+    sort: {
+      direction: 'ASC',
+      field: 'lastname'
+    }
+  }
+} else {
+  var DEFAULT_STATE = {
+    contacts: empty,
+    sort: {
+      direction: 'ASC',
+      field: 'lastname'
+    }
   }
 };
 
 function contactReducer(state=[], action){
   switch (action.type) {
     case 'ADD_CONTACT':
+      localStorage.setItem('state', JSON.stringify([
+        action.contact,
+        ...state
+      ]));
       return[
-        ...state,
-        action.contact
+        action.contact,
+        ...state
       ]
     case 'SEED_CONTACTS':
+      localStorage.setItem('state', JSON.stringify([
+        ...seed,
+        ...state
+      ]));
+      return[
+        ...seed,
+        ...state
+      ]
     default:
       return state
   }
@@ -35,10 +59,8 @@ export function appReducer(state=DEFAULT_STATE, action){
 
       };
 
-    case 'SEARCH_TABLE':
-
-    case 'SEED_CONTACTS':
-
+    //case 'SEARCH_TABLE':
+    //case 'SEED_CONTACTS':
     default:
       return state
   }

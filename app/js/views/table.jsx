@@ -1,5 +1,14 @@
 import React from 'react';
 import {Table, Column, Cell} from 'fixed-data-table';
+import {connect} from 'react-redux';
+
+// Which props do we want to inject, given the global state?
+// Note: use https://github.com/faassen/reselect for better performance.
+function select(state) {
+  return {
+    state
+  }
+}
 
 class TextCell extends React.Component {
   render() {
@@ -23,26 +32,17 @@ class EmailCell extends React.Component {
     );
   }
 }
-class MyTable extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      myTableData: [
-        {firstname: 'Rylan', lastname: 'Rylan', dob: 'Rylan', phone: 'Rylan', notes: 'Rylan',  email: 'Angelita_Weimann42@gmail.com'},
-        {firstname: 'Amelia', lastname: 'Amelia', dob: 'Amelia', phone: 'Amelia', notes: 'Amelia',  email: 'Dexter.Trantow57@hotmail.com'},
-        {firstname: 'Estevan', lastname: 'Estevan', dob: 'Estevan', phone: 'Estevan', notes: 'Estevan',  email: 'Aimee7@hotmail.com'},
-        {firstname: 'Florence', lastname: 'Florence', dob: 'Florence', phone: 'Florence', notes: 'Florence',  email: 'Jarrod.Bernier13@yahoo.com'},
-        {firstname: 'Tressa', lastname: 'Tressa', dob: 'Tressa', phone: 'Tressa', notes: 'Tressa',  email: 'Yadira1@hotmail.com'},
-      ],
-    };
-  }
+const MyTable =  React.createClass ({
+  propTypes: {
+    state: React.PropTypes.any.isRequired,
+    dispatch: React.PropTypes.func.isRequired,
+  },
 
   render() {
     return (
       <div className='table'>
       <Table
-        rowsCount={this.state.myTableData.length}
+        rowsCount={this.props.state.contacts.length}
         rowHeight={30}
         headerHeight={30}
         width={1000}
@@ -51,7 +51,7 @@ class MyTable extends React.Component {
           header={<Cell>First Name</Cell>}
           cell={
             <TextCell
-              data={this.state.myTableData}
+              data={this.props.state.contacts}
               field="firstname"
             />
           }
@@ -61,7 +61,7 @@ class MyTable extends React.Component {
           header={<Cell>Last Name</Cell>}
           cell={
             <TextCell
-              data={this.state.myTableData}
+              data={this.props.state.contacts}
               field="lastname"
             />
           }
@@ -71,7 +71,7 @@ class MyTable extends React.Component {
           header={<Cell>Date of Birth</Cell>}
           cell={
             <TextCell
-              data={this.state.myTableData}
+              data={this.props.state.contacts}
               field="dob"
             />
           }
@@ -81,7 +81,7 @@ class MyTable extends React.Component {
           header={<Cell>Phone</Cell>}
           cell={
             <TextCell
-              data={this.state.myTableData}
+              data={this.props.state.contacts}
               field="phone"
             />
           }
@@ -91,7 +91,7 @@ class MyTable extends React.Component {
           header={<Cell>Email</Cell>}
           cell={
             <EmailCell
-              data={this.state.myTableData}
+              data={this.props.state.contacts}
               field="email"
             />
           }
@@ -101,7 +101,7 @@ class MyTable extends React.Component {
           header={<Cell>Notes</Cell>}
           cell={
             <TextCell
-              data={this.state.myTableData}
+              data={this.props.state.contacts}
               field="notes"
             />
           }
@@ -111,5 +111,6 @@ class MyTable extends React.Component {
       </div>
     );
   }
-}
-module.exports = MyTable;
+});
+
+export default connect(select)(MyTable)

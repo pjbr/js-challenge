@@ -20,7 +20,6 @@ module.exports = {
       { test: /\.woff$/,   loader: "url-loader?prefix=font/&limit=10000&mimetype=application/font-woff" },
       { test: /\.ttf$/,    loader: "file-loader?prefix=font/" },
       { test: /\.eot$/,    loader: "file-loader?prefix=font/" }
-
     ]
   }
 };
